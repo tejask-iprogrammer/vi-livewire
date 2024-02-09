@@ -1,11 +1,11 @@
 <x-default-layout>
 
     @section('title')
-        Permissions
+        Users
     @endsection
 
     @section('breadcrumbs')
-        {{ Breadcrumbs::render('user-management.permissions.index') }}
+        {{ Breadcrumbs::render('user-management.users.index') }}
     @endsection
 
     <div class="card">
@@ -15,8 +15,8 @@
             <div class="card-title">
                 <!--begin::Search-->
                 <div class="d-flex align-items-center position-relative my-1">
-                    {!! getIcon('magnifier','fs-3 position-absolute ms-5') !!}
-                    <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Search Banner" id="mySearchInput"/>
+                    {!! getIcon('magnifier', 'fs-3 position-absolute ms-5') !!}
+                    <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Search user" id="mySearchInput"/>
                 </div>
                 <!--end::Search-->
             </div>
@@ -26,28 +26,17 @@
             <div class="card-toolbar">
                 <!--begin::Toolbar-->
                 <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                    <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_update_permission">
-                        {!! getIcon('plus-square','fs-3', '', 'i') !!}
+                    <!--begin::Add user-->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_banner">
+                        {!! getIcon('plus', 'fs-2', '', 'i') !!}
                         Add Banner
                     </button>
+                    <!--end::Add user-->
                 </div>
                 <!--end::Toolbar-->
 
-                <!--begin::Group actions-->
-                <div class="d-flex justify-content-end align-items-center d-none" data-kt-user-table-toolbar="selected">
-                    <div class="fw-bold me-5">
-                        <span class="me-2" data-kt-user-table-select="selected_count"></span>
-                        Selected
-                    </div>
-
-                    <button type="button" class="btn btn-danger" data-kt-user-table-select="delete_selected">
-                        Delete Selected
-                    </button>
-                </div>
-                <!--end::Group actions-->
-
                 <!--begin::Modal-->
-                <livewire:user.add-user-modal></livewire:user.add-user-modal>
+                <livewire:banner.banner></livewire:banner.banner>
                 <!--end::Modal-->
             </div>
             <!--end::Card toolbar-->
@@ -65,18 +54,16 @@
         <!--end::Card body-->
     </div>
 
-    <!-- <livewire:permission.permission-modal></livewire:permission.permission-modal> -->
-
     @push('scripts')
         {{ $dataTable->scripts() }}
         <script>
             document.getElementById('mySearchInput').addEventListener('keyup', function () {
-                window.LaravelDataTables['permissions-table'].search(this.value).draw();
+                window.LaravelDataTables['users-table'].search(this.value).draw();
             });
             document.addEventListener('livewire:init', function () {
                 Livewire.on('success', function () {
-                    $('#kt_modal_update_permission').modal('hide');
-                    window.LaravelDataTables['permissions-table'].ajax.reload();
+                    $('#kt_modal_add_user').modal('hide');
+                    window.LaravelDataTables['users-table'].ajax.reload();
                 });
             });
         </script>
