@@ -8,8 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Cache;
 
-class Banner extends Authenticatable implements MustVerifyEmail
+class BannerScreen extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
@@ -19,7 +20,7 @@ class Banner extends Authenticatable implements MustVerifyEmail
      *
      * @var array<int, string>
      */
-    protected $table = 'banners';
+    protected $table = 'banner_screens';
 
     protected $fillable = [
         // 'name',
@@ -70,4 +71,15 @@ class Banner extends Authenticatable implements MustVerifyEmail
     // {
     //     return $this->addresses?->first();
     // }
+    public function bannerScreenData(){
+
+        // temporarly removed cache code
+
+        // Cache::tags(BannerScreen::table())->flush();
+        // $cacheKey = str_replace(['\\'], [''], __METHOD__) . ':' . md5(json_encode($params));
+        //Cache::tags not suppport with files and Database
+        // $response = Cache::tags(BannerScreen::table())->remember($cacheKey, $this->ttlCache, function() {
+            return BannerScreen::orderBY('id')->orderBy('updated_at', 'desc')->pluck('screen_title as screen_name','id')->toArray();
+        // });
+    }
 }

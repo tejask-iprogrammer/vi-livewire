@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Banner;
+use App\Models\Banners;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Services\DataTable;
@@ -26,13 +26,13 @@ class ManageBannerDataTable extends DataTable
             // ->editColumn('role', function (Banner $banner) {
             //     return ucwords($banner->roles->first()?->name);
             // })
-            ->editColumn('circle', function (Banner $banner) {
-                return sprintf('<div class="badge badge-light fw-bold">%s</div>', $banner->last_login_at ? $banner->last_login_at->diffForHumans() : $banner->updated_at->diffForHumans());
+            ->editColumn('circle', function (Banners $banner) {
+                return  $banner->circle ? $banner->circle : "";
             })
-            ->editColumn('created_at', function (Banner $banner) {
+            ->editColumn('created_at', function (Banners $banner) {
                 return $banner->created_at->format('d M Y, h:i a');
             })
-            ->addColumn('action', function (Banner $banner) {
+            ->addColumn('action', function (Banners $banner) {
                 return view('pages/apps.banner-management.managebanner.columns._actions', compact('banner'));
             })
             ->setRowId('id');
@@ -42,7 +42,7 @@ class ManageBannerDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(Banner $model): QueryBuilder
+    public function query(Banners $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -69,11 +69,12 @@ class ManageBannerDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('user')->addClass('d-flex align-items-center')->name('name'),
-            Column::make('role')->searchable(false),
+            // Column::make('user')->addClass('d-flex align-items-center')->name('name'),
+            // Column::make('role')->searchable(false),
             // Column::make('username')->title('username'),
             // Column::make('last_login_at')->title('Last Login'),
             Column::make('created_at')->title('Joined Date')->addClass('text-nowrap'),
+            Column::make('circle')->title('circle')->addClass('text-nowrap'),
             Column::computed('action')
                 ->addClass('text-end text-nowrap')
                 ->exportable(false)

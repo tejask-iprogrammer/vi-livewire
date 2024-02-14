@@ -37,16 +37,16 @@
                                     <label class="required fw-semibold fs-6 mb-2">Select Screen</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="selectedState" class="form-control">
+                                    <select wire:model="banner_screen" class="form-control">
                                         <option value="" selected>Select Screen</option>
-                                        @foreach($circleList as $key=>$value)
+                                        @foreach($screenList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                     <!--end::Input-->
                                     <!--begin::Hint-->
                                         <!--end::Hint-->
-                                    @error('username')
+                                    @error('banner_screen')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
@@ -54,14 +54,14 @@
                                     <label class="required fw-semibold fs-6 mb-2">Circle</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="selectedState" class="form-control">
-                                        <option value="" selected>Choose Circle</option>
-                                        @foreach($circleList as $key=>$value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
-                                        @endforeach
-                                    </select>
+                                    <select id="cars" name="cars" multiple>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+        </select>
                                     <!--end::Input-->
-                                    @error('password')
+                                    @error('circle')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -69,10 +69,10 @@
                             <div class="row">
                                     <div class="col mt-4">
                                         <!--begin::Label-->
-                                        <label class="required fw-semibold fs-6 mb-2">Login Type</label>
+                                        <label class="fw-semibold fs-6 mb-2">Login Type</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="selectedState" class="form-control">
+                                        <select wire:model="login_type" class="form-control">
                                             <option value="" selected>Select Login Type</option>
                                             @foreach($loginTypeList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -81,7 +81,7 @@
                                         <!--end::Input-->
                                         <!--begin::Hint-->
                                             <!--end::Hint-->
-                                        @error('username')
+                                        @error('login_type')
                                         <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="col mt-4">
@@ -89,14 +89,14 @@
                                         <label class="required fw-semibold fs-6 mb-2">Select Brand</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="selectedState" class="form-control">
+                                        <select wire:model="brand" class="form-control">
                                             <option value="" selected>Select Brand</option>
                                             @foreach($brandList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
                                         </select>
                                         <!--end::Input-->
-                                        @error('password')
+                                        @error('brand')
                                         <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                             </div>
@@ -104,10 +104,10 @@
                             <div class="row">
                                 <div class="col mt-4">
                                     <!--begin::Label-->
-                                    <label class="required fw-semibold fs-6 mb-2">Select LOB</label>
+                                    <label class="fw-semibold fs-6 mb-2">Select LOB</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="selectedState" class="form-control">
+                                    <select wire:model="lob" class="form-control">
                                         <option value="" selected>Select LOB</option>
                                         @foreach($lobList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
@@ -116,22 +116,22 @@
                                     <!--end::Input-->
                                     <!--begin::Hint-->
                                         <!--end::Hint-->
-                                    @error('username')
+                                    @error('required')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
                                     <!--begin::Label-->
-                                    <label class="required fw-semibold fs-6 mb-2">Plan</label>
+                                    <label class="fw-semibold fs-6 mb-2">Plan</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="selectedState" class="form-control">
+                                    <select wire:model="plan" class="form-control">
                                         <option value="" selected>Select Plan</option>
                                         @foreach($planList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                     <!--end::Input-->
-                                    @error('password')
+                                    @error('plan')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -139,10 +139,10 @@
                             <div class="row">
                                 <div class="col mt-4">
                                     <!--begin::Label-->
-                                    <label class="required fw-semibold fs-6 mb-2">Prepaid Persona</label>
+                                    <label class="fw-semibold fs-6 mb-2">Prepaid Persona</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="selectedState" class="form-control">
+                                    <select wire:model="prepaid_persona" class="form-control">
                                         <option value="" selected>Select Prepaid Persona</option>
                                         @foreach($prepaidPersonaList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
@@ -151,22 +151,22 @@
                                     <!--end::Input-->
                                     <!--begin::Hint-->
                                         <!--end::Hint-->
-                                    @error('username')
+                                    @error('prepaid_persona')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
                                     <!--begin::Label-->
-                                    <label class="required fw-semibold fs-6 mb-2">Postpaid Persona</label>
+                                    <label class="fw-semibold fs-6 mb-2">Postpaid Persona</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="selectedState" class="form-control">
+                                    <select wire:model="postpaid_persona" class="form-control">
                                         <option value="" selected>Select Postpaid Persona</option>
                                         @foreach($postpaidPersonaList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                     <!--end::Input-->
-                                    @error('password')
+                                    @error('postpaid_persona')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -174,10 +174,10 @@
                             <div class="row">
                                 <div class="col mt-4">
                                     <!--begin::Label-->
-                                    <label class="required fw-semibold fs-6 mb-2">Select SocId Include or Exclude</label>
+                                    <label class="fw-semibold fs-6 mb-2">Select SocId Include or Exclude</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="selectedState" class="form-control">
+                                    <select wire:model="socid_include_exclude" class="form-control">
                                         <option value="" selected>Select Prepaid Persona</option>
                                         @foreach($socidIncludeExcludeList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
@@ -186,20 +186,17 @@
                                     <!--end::Input-->
                                     <!--begin::Hint-->
                                         <!--end::Hint-->
-                                    @error('username')
+                                    @error('socid_include_exclude')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
-                                        <label class="required fw-semibold fs-6 mb-2">Enter SocId</label>
+                                        <label class="fw-semibold fs-6 mb-2">Enter SocId</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="fname" name="fname" class="form-control" placeholder="SocId"/>
+                                        <input type="text" wire:model="socid" name="socid" class="form-control" placeholder="SocId"/>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('socid')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -210,54 +207,43 @@
 
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="fname" name="fname" class="form-control" placeholder="Banner Title"/>
+                                        <input type="text" wire:model="banner_title" name="banner_title" class="form-control" placeholder="Banner Title"/>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('banner_title')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
+                                   
                                 </div>
                                 <div class="col mt-4">
                                         <label class="required fw-semibold fs-6 mb-2">Analytics tag</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="fname" name="fname" class="form-control" placeholder="Analytics tag"/>
+                                        <input type="text" wire:model="analytics_tag" name="analytics_tag" class="form-control" placeholder="Analytics tag"/>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('analytics_tag')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col mt-4">
-                                        <label class="required fw-semibold fs-6 mb-2">Banner Subtitle</label>
+                                        <label class="fw-semibold fs-6 mb-2">Banner Subtitle</label>
                                         <span class="help-block">Enter banner title Eg. Postpaid Plan</span>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="fname" name="fname" class="form-control" placeholder="Analytics tag"/>
+                                        <input type="text" wire:model="subtitle" name="subtitle" class="form-control" placeholder="Banner Subtitle"/>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('subtitle')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                  <div class="col mt-4">
-                                        <label class="required fw-semibold fs-6 mb-2">Country</label>
+                                        <label class="fw-semibold fs-6 mb-2">Country</label>
 
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="fname" name="fname" class="form-control" placeholder="Banner Title"/>
+                                        <input type="text" wire:model="country" name="country" class="form-control" placeholder="Country"/>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('country')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -267,7 +253,7 @@
                                     <label class="required fw-semibold fs-6 mb-2">Red Hierarchy</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="selectedState" class="form-control">
+                                    <select wire:model="red_hierarchy" class="form-control">
                                         <option value="" selected>Select</option>
                                         @foreach($redHierarchyList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
@@ -276,31 +262,28 @@
                                     <!--end::Input-->
                                     <!--begin::Hint-->
                                         <!--end::Hint-->
-                                    @error('username')
+                                    @error('red_hierarchy')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                  <div class="col mt-4">
-                                        <label class="required fw-semibold fs-6 mb-2">MRP</label>
+                                        <label class="fw-semibold fs-6 mb-2">MRP</label>
 
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="fname" name="fname" class="form-control" placeholder="Banner Title"/>
+                                        <input type="text" wire:model="mrp" name="mrp" class="form-control" placeholder="MRP"/>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('mrp')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col mt-4">
                                     <!--begin::Label-->
-                                    <label class="required fw-semibold fs-6 mb-2">Link Type</label>
+                                    <label class="fw-semibold fs-6 mb-2">Link Type</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="selectedState" class="form-control">
+                                    <select wire:model="link_type" class="form-control">
                                         <option value="" selected>Select</option>
                                         @foreach($linkTypeList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
@@ -313,11 +296,11 @@
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                  <div class="col mt-4">
-                                        <label class="required fw-semibold fs-6 mb-2">Select Tab</label>
+                                        <label class="fw-semibold fs-6 mb-2">Select Tab</label>
 
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="selectedState" class="form-control">
+                                        <select wire:model="tab_name" class="form-control">
                                             <option value="" selected>Select</option>
                                             @foreach($tabsList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -326,165 +309,130 @@
                                         <!--end::Input-->
                                         @error('fname')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col mt-4">
-                                        <label class="required fw-semibold fs-6 mb-2">Internal Link</label>
+                                        <label class="fw-semibold fs-6 mb-2">Internal Link</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="fname" name="fname" class="form-control" placeholder="Internal Link"/>
+                                        <input type="text" wire:model="internal_link" name="internal_link" class="form-control" placeholder="Internal Link"/>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('internal_link')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
-                                        <label class="required fw-semibold fs-6 mb-2">External Link</label>
+                                        <label class="fw-semibold fs-6 mb-2">External Link</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="fname" name="fname" class="form-control" placeholder="External Link"/>
+                                        <input type="text" wire:model="external_link" name="external_link" class="form-control" placeholder="External Link"/>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('external_link')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col mt-4">
-                                        <label class="required fw-semibold fs-6 mb-2">Campaign Id</label>
+                                        <label class="fw-semibold fs-6 mb-2">Campaign Id</label>
                                         <span class="help-block">Enter - if internal link is cyb plan related else blank</span>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="fname" name="fname" class="form-control" placeholder="Campaign Id"/>
+                                        <input type="text" wire:model="campaign_id" name="campaign_id" class="form-control" placeholder="Campaign Id"/>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('campaign_id')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
-                                        <label class="required fw-semibold fs-6 mb-2">Banner CTA</label>
+                                        <label class="fw-semibold fs-6 mb-2">Banner CTA</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="fname" name="fname" class="form-control" placeholder="Banner CTA"/>
+                                        <input type="text" wire:model="cta_name" name="cta_name" class="form-control" placeholder="Banner CTA"/>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('cta_name')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col mt-4">
-                                        <label class="required fw-semibold fs-6 mb-2">Downtime Start</label>
+                                        <label class="fw-semibold fs-6 mb-2">Downtime Start</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input id="party" type="datetime-local"  wire:model="fname" name="partydate" class="form-control" value="2017-06-01T08:30" />
+                                        <input id="start_date_time" type="datetime-local"  wire:model="start_date_time" name="partydate" class="form-control" value="2017-06-01T08:30" />
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('start_date_time')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
-                                        <label class="required fw-semibold fs-6 mb-2">Downtime End</label>
+                                        <label class="fw-semibold fs-6 mb-2">Downtime End</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input id="party" type="datetime-local"  wire:model="fname" name="partydate" class="form-control" value="2017-06-01T08:30" />
+                                        <input id="end_date_time" type="datetime-local"  wire:model="end_date_time" name="partydate" class="form-control" value="2017-06-01T08:30" />
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('end_date_time')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col mt-4">
-                                        <label class="required fw-semibold fs-6 mb-2">Service Type</label>
+                                        <label class="fw-semibold fs-6 mb-2">Service Type</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="selectedState" class="form-control">
+                                        <select wire:model="service_type" class="form-control">
                                             <option value="" selected>Select Service Type</option>
                                             @foreach($serviceTypeList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
                                         </select>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('service_type')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
                                         <label class="required fw-semibold fs-6 mb-2">Device OS</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="selectedState" class="form-control">
+                                        <select wire:model="device_os" class="form-control">
                                             <option value="" selected>Select Device OS</option>
                                             @foreach($osList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
                                         </select>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('device_os')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col mt-4">
-                                        <label class="required fw-semibold fs-6 mb-2">Banner Text Content</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                        <label class="fw-semibold fs-6 mb-2">Banner Text Content</label>
+                                        <textarea class="form-control" wire:model="banner_text_content" id="banner_text_content" rows="4"></textarea>
                                         <!--end::Input-->
-                                        @error('textcontent')
+                                        @error('banner_text_content')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-3">
                                     <div class="form-group">
-                                    <label class="required fw-semibold fs-6 mb-2">Coupon Code</label>
+                                    <label class="fw-semibold fs-6 mb-2">Coupon Code</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="fname" name="fname" class="form-control" placeholder="Coupon Code"/>
+                                        <input type="text" wire:model="coupon_code" name="coupon_code" class="form-control" placeholder="Coupon Code"/>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('coupon_code')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="form-group">
-                                    <label class="required fw-semibold fs-6 mb-2">Validity Period</label>
+                                    <label class="fw-semibold fs-6 mb-2">Validity Period</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="fname" name="fname" class="form-control" placeholder="Validity Period"/>
+                                        <input type="text" wire:model="validity_period" name="validity_period" class="form-control" placeholder="Validity Period"/>
                                         <!--end::Input-->
-                                        @error('fname')
+                                        @error('validity_period')
                                         <span class="text-danger">{{ $message }}</span> @enderror
-                                    <!--end::Input-->
-                                    @error('password')
-                                    <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
@@ -518,7 +466,7 @@
                                             <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                                 {!! getIcon('pencil','fs-7') !!}
                                                 <!--begin::Inputs-->
-                                                <input type="file" wire:model="avatar" name="avatar" accept=".png, .jpg, .jpeg"/>
+                                                <input type="file" wire:model="banner_name" name="avatar" accept=".png, .jpg, .jpeg"/>
                                                 <input type="hidden" name="avatar_remove"/>
                                                 <!--end::Inputs-->
                                             </label>
@@ -564,7 +512,7 @@
                                             <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                                 {!! getIcon('pencil','fs-7') !!}
                                                 <!--begin::Inputs-->
-                                                <input type="file" wire:model="avatar" name="avatar" accept=".png, .jpg, .jpeg"/>
+                                                <input type="file" wire:model="notified_banner" name="avatar" accept=".png, .jpg, .jpeg"/>
                                                 <input type="hidden" name="avatar_remove"/>
                                                 <!--end::Inputs-->
                                             </label>
@@ -590,16 +538,16 @@
                                     <label class="required fw-semibold fs-6 mb-2">App Version</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="selectedState" class="form-control">
+                                    <select wire:model="app_version" class="form-control">
                                         <option value="" selected>Select Version</option>
-                                        @foreach($appVersion as $key=>$value)
+                                        @foreach($appVersionList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                     <!--end::Input-->
                                     <!--begin::Hint-->
                                         <!--end::Hint-->
-                                    @error('username')
+                                    @error('app_version')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
@@ -607,14 +555,14 @@
                                     <label class="required fw-semibold fs-6 mb-2">Banner Rank</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="selectedState" class="form-control">
+                                    <select wire:model="banner_rank" class="form-control">
                                         <option value="" selected>Choose Banner Rank</option>
                                         @foreach($rankList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                     <!--end::Input-->
-                                    @error('password')
+                                    @error('banner_rank')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -622,28 +570,28 @@
                             <div class="row">
                                 <div class="col mt-4">
                                     <label class="required fw-semibold fs-6 mb-2">Status</label>
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    <input class="form-check-input" wire:model="status" value="1" type="radio" name="flexRadioDefault" id="status" checked>
+                                    <label class="form-check-label" for="status">
                                         Active
                                     </label>
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    <input class="form-check-input" wire:model="status" value="2" type="radio" name="flexRadioDefault" id="status">
+                                    <label class="form-check-label" for="status">
                                         Inactive
                                     </label>
-                                    @error('username')
+                                    @error('status')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
                                     <label class="required fw-semibold fs-6 mb-2">is Notified</label>
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" wire:model="isnotified" value="1" name="isnotified" id="isnotified" checked>
+                                    <label class="form-check-label" for="isnotified">
                                         Active
                                     </label>
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" wire:model="isnotified" value="0" name="isnotified" id="isnotified">
+                                    <label class="form-check-label" for="isnotified">
                                         Inactive
                                     </label>
-                                    @error('username')
+                                    @error('isnotified')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             
