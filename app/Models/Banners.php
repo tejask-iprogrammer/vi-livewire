@@ -22,17 +22,6 @@ class Banners extends Authenticatable implements MustVerifyEmail
     protected $table = 'banners';
 
     protected $fillable = [
-        // 'banner_screen',
-        // 'circle',
-        // 'login_type',
-        // 'socid',
-        // 'socid_include_exclude',
-        // 'device_os',
-        // 'mrp',
-        // "banner_title",
-        // "banner_name",
-        // "banner_rank",
-        // "banner_title",
         "banner_screen",
         "circle",
         "login_type",
