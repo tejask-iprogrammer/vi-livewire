@@ -49,18 +49,20 @@
                                     @error('banner_screen')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
-                                <div class="col mt-4">
-                                    <!--begin::Label-->
-                                    <label class="required fw-semibold fs-6 mb-2">Circle</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <select id="cars" name="cars" multiple>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-        </select>
-                                    <!--end::Input-->
+                                <div class="col mt-4" >
+                                    <div wire:ignore>
+                                        <!--begin::Label-->
+                                        <label class="required fw-semibold fs-6 mb-2">Circle</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <select wire:model="circle" class="circle js-example-basic-multiple form-control" multiple="multiple">
+                                            <!-- <option value="" disabled selected>Choose Circle</option> -->
+                                            @foreach($circleList as $key=>$value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
+                                        <!--end::Input-->
+                                    </div>
                                     @error('circle')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
@@ -107,7 +109,7 @@
                                     <label class="fw-semibold fs-6 mb-2">Select LOB</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="lob" class="form-control">
+                                    <select wire:model="lob" class="form-control lobSelect">
                                         <option value="" selected>Select LOB</option>
                                         @foreach($lobList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
@@ -120,52 +122,59 @@
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
+                                    <div wire:ignore>
                                     <!--begin::Label-->
                                     <label class="fw-semibold fs-6 mb-2">Plan</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="plan" class="form-control">
+                                    <select wire:model="plan" class="form-control planSelect">
                                         <option value="" selected>Select Plan</option>
                                         @foreach($planList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                     <!--end::Input-->
+                                </div>
                                     @error('plan')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         <!-- select prepaid and postpaid persona -->
                             <div class="row">
-                                <div class="col mt-4">
-                                    <!--begin::Label-->
-                                    <label class="fw-semibold fs-6 mb-2">Prepaid Persona</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <select wire:model="prepaid_persona" class="form-control">
-                                        <option value="" selected>Select Prepaid Persona</option>
-                                        @foreach($prepaidPersonaList as $key=>$value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
-                                        @endforeach
-                                    </select>
-                                    <!--end::Input-->
-                                    <!--begin::Hint-->
-                                        <!--end::Hint-->
+                                <div class="col mt-4" >
+                                 <div wire:ignore>
+                                        <!--begin::Label-->
+                                        <label class="fw-semibold fs-6 mb-2">Prepaid Persona</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <!-- <select wire:model="prepaid_persona" class="form-control"> -->
+                                        <select wire:model="prepaid_persona" class="prepaidPersona js-example-basic-multiple form-control prepaidSelect" multiple="multiple">
+                                            <!-- <option value="" selected>Select Prepaid Persona</option> -->
+                                            @foreach($prepaidPersonaList as $key=>$value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
+                                        <!--end::Input-->
+                                        <!--begin::Hint-->
+                                            <!--end::Hint-->
+                                </div>
                                     @error('prepaid_persona')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
-                                    <!--begin::Label-->
-                                    <label class="fw-semibold fs-6 mb-2">Postpaid Persona</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <select wire:model="postpaid_persona" class="form-control">
-                                        <option value="" selected>Select Postpaid Persona</option>
-                                        @foreach($postpaidPersonaList as $key=>$value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
-                                        @endforeach
-                                    </select>
-                                    <!--end::Input-->
+                                    <div wire:ignore>
+                                        <!--begin::Label-->
+                                        <label class="fw-semibold fs-6 mb-2">Postpaid Persona</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <select wire:model="postpaid_persona" class="postpaidPersona js-example-basic-multiple form-control postpaidSelect" multiple="multiple">
+                                            <!-- <option value="" selected>Select Postpaid Persona</option> -->
+                                            @foreach($postpaidPersonaList as $key=>$value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
+                                        <!--end::Input-->
+                                    </div>
                                     @error('postpaid_persona')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
@@ -173,11 +182,12 @@
                         <!-- Select SocId Include or Exclude and Enter SocId -->
                             <div class="row">
                                 <div class="col mt-4">
+                                    <div wire:ignore>
                                     <!--begin::Label-->
                                     <label class="fw-semibold fs-6 mb-2">Select SocId Include or Exclude</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="socid_include_exclude" class="form-control">
+                                    <select wire:model="socid_include_exclude" class="form-control ">
                                         <option value="" selected>Select Prepaid Persona</option>
                                         @foreach($socidIncludeExcludeList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
@@ -186,15 +196,18 @@
                                     <!--end::Input-->
                                     <!--begin::Hint-->
                                         <!--end::Hint-->
+                                </div>
                                     @error('socid_include_exclude')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
+                                    <div wire:ignore>
                                         <label class="fw-semibold fs-6 mb-2">Enter SocId</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="socid" name="socid" class="form-control" placeholder="SocId"/>
+                                        <input type="text" wire:model="socid" name="socid" class="form-control socId" placeholder="SocId"/>
                                         <!--end::Input-->
+                                    </div>
                                         @error('socid')
                                         <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
@@ -249,12 +262,13 @@
 
                             <div class="row">
                                 <div class="col mt-4">
+                                 <div wire:ignore>
                                     <!--begin::Label-->
                                     <label class="required fw-semibold fs-6 mb-2">Red Hierarchy</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="red_hierarchy" class="form-control">
-                                        <option value="" selected>Select</option>
+                                    <select wire:model="red_hierarchy" class="redHierarchy js-example-basic-multiple form-control" multiple="multiple">
+                                        <!-- <option value="" selected>Select</option> -->
                                         @foreach($redHierarchyList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
@@ -262,6 +276,7 @@
                                     <!--end::Input-->
                                     <!--begin::Hint-->
                                         <!--end::Hint-->
+                                </div>
                                     @error('red_hierarchy')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
@@ -283,7 +298,7 @@
                                     <label class="fw-semibold fs-6 mb-2">Link Type</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="link_type" class="form-control">
+                                    <select wire:model="link_type" class="linkType form-control">
                                         <option value="" selected>Select</option>
                                         @foreach($linkTypeList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
@@ -317,7 +332,7 @@
                                         <label class="fw-semibold fs-6 mb-2">Internal Link</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="internal_link" name="internal_link" class="form-control" placeholder="Internal Link"/>
+                                        <input type="text" wire:model="internal_link" name="internal_link" class="form-control internalLink" placeholder="Internal Link"/>
                                         <!--end::Input-->
                                         @error('internal_link')
                                         <span class="text-danger">{{ $message }}</span> @enderror
@@ -326,7 +341,7 @@
                                         <label class="fw-semibold fs-6 mb-2">External Link</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" wire:model="external_link" name="external_link" class="form-control" placeholder="External Link"/>
+                                        <input type="text" wire:model="external_link" name="external_link" class="form-control externalLink" placeholder="External Link"/>
                                         <!--end::Input-->
                                         @error('external_link')
                                         <span class="text-danger">{{ $message }}</span> @enderror
@@ -377,17 +392,19 @@
                             </div>
 
                             <div class="row">
-                                <div class="col mt-4">
+                                <div class="col mt-4" >
+                                    <div wire:ignore>
                                         <label class="fw-semibold fs-6 mb-2">Service Type</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="service_type" class="form-control">
-                                            <option value="" selected>Select Service Type</option>
+                                        <select wire:model="service_type" class="serviceType js-example-basic-multiple form-control" multiple="multiple">
+                                            <!-- <option value="" selected>Select Service Type</option> -->
                                             @foreach($serviceTypeList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
                                         </select>
                                         <!--end::Input-->
+                                </div>
                                         @error('service_type')
                                         <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
@@ -533,13 +550,14 @@
                             </div>
 
                             <div class="row">
-                                <div class="col mt-4">
+                                <div class="col mt-4" wire:ignore>
+                                    <div wire:ignore>
                                     <!--begin::Label-->
                                     <label class="required fw-semibold fs-6 mb-2">App Version</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="app_version" class="form-control">
-                                        <option value="" selected>Select Version</option>
+                                    <select wire:model="app_version" class="appVersion js-example-basic-multiple form-control" multiple="multiple">
+                                        <!-- <option value="" selected>Select Version</option> -->
                                         @foreach($appVersionList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
@@ -547,6 +565,7 @@
                                     <!--end::Input-->
                                     <!--begin::Hint-->
                                         <!--end::Hint-->
+                                </div>
                                     @error('app_version')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
@@ -619,3 +638,37 @@
     </div>
     <!--end::Modal dialog-->
 </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+@push('scripts')
+<script type="text/javascript">
+            document.addEventListener('livewire:init', function () {
+                $('.circle.js-example-basic-multiple').on('change',function(){
+                        let data = $(this).val();
+                        @this.set('circle',data)
+                });
+                $('.prepaidPersona.js-example-basic-multiple').on('change',function(){
+                        let data = $(this).val();
+                        @this.set('prepaid_persona',data)
+                });
+
+                $('.postpaidPersona.js-example-basic-multiple').on('change',function(){
+                        let data = $(this).val();
+                        @this.set('postpaid_persona',data)
+                });
+
+                $('.redHierarchy.js-example-basic-multiple').on('change',function(){
+                        let data = $(this).val();
+                        @this.set('red_hierarchy',data)
+                });
+                $('.serviceType.js-example-basic-multiple').on('change',function(){
+                        let data = $(this).val();
+                        @this.set('service_type',data)
+                });
+                $('.appVersion.js-example-basic-multiple').on('change',function(){
+                        let data = $(this).val();
+                        @this.set('app_version',data)
+                });
+
+            });
+</script>
+@endpush

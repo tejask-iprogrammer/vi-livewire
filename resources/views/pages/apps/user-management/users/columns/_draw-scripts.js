@@ -35,3 +35,25 @@ Livewire.on('success', (message) => {
     // Reload the users-table datatable
     LaravelDataTables['users-table'].ajax.reload();
 });
+
+$('.js-example-basic-multiple').on('change',function(){
+    alert();
+    let data = $(this).val();
+    // JavaScript code
+    // this.Livewire.set('banner_screen',data)
+    // console.log(data);
+    // Livewire.emit('postAdded')
+    // $this->emit('postAdded');
+    this.Livewire.emit('postAdded');
+
+
+
+
+    // Livewire.on('success', function () {
+    //     console.log(data);
+    //     $wire.set('banner_screen',data);
+    //     this.Livewire.set('banner_screen',data)
+    //     //console.log('Hello');
+        // });
+
+});

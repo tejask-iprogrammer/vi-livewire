@@ -61,7 +61,7 @@ class Banner extends Component
     public $edit_mode = false;
     public $saved_avatar;
     public $banner_name;
-
+    public $service_type;
     // model function calls
     public $bannerscreenModel;
     public $tablistModel;
@@ -69,7 +69,9 @@ class Banner extends Component
     protected $listeners = [
         'delete_banner' => 'deleteBanner',
         'update_banner' => 'updateBanner',
+        'postAdded' => "updatePost"
     ];
+
     protected $rules = [
         'banner_screen' => 'required',
         'circle'=> 'required',
@@ -78,7 +80,7 @@ class Banner extends Component
         'banner_title'=> 'required',
         'analytics_tag'=>'required',
         'red_hierarchy' => 'required',
-        'link_type'=> 'required',
+        // 'link_type'=> 'required',
         'device_os'=>'required',
         'app_version' => 'required',
         'banner_rank'=> 'required',
@@ -94,7 +96,7 @@ class Banner extends Component
         'banner_title.required' => 'Banner Title cannot be empty.',
         'analytics_tag.required' => 'Analytics tag cannot be empty.',
         'red_hierarchy.required' => 'Red Hierarchy cannot be empty.',
-        'link_type.required' => 'Link Type cannot be empty.',
+        // 'link_type.required' => 'Link Type cannot be empty.',
         'device_os.required' => 'Device OS cannot be empty.',
         'app_version.required' => 'App version cannot be empty.',
         'banner_rank.required' => 'Banner Rank  cannot be empty.',
@@ -128,8 +130,6 @@ class Banner extends Component
         $screenList = $this->bannerscreenModel->bannerScreenData();
         $tabsList = $this->tablistModel->listTabData();
         $appVersionList = $this->appversionModel->listTabData();
-
-        
         return view('livewire.banner.banner', compact('roles','circleList','loginTypeList','brandList','lobList','planList','prepaidPersonaList','postpaidPersonaList','socidIncludeExcludeList','redHierarchyList','linkTypeList','tabsList','serviceTypeList','osList','appVersion','rankList','screenList','appVersionList'));
     }
     public function submit(){
@@ -147,24 +147,107 @@ class Banner extends Component
             // if (!$this->edit_mode) {
             //     $data['password'] = Hash::make($this->password);
             // }
+
+            $data['start_date_time'] = $this->start_date_time;
+            $data['end_date_time'] = $this->end_date_time;
+            
             if($this->banner_screen){
                 $data['banner_screen'] = $this->banner_screen;
             }
             if($this->circle){
-                $data['circle'] = $this->circle ;
+                $data['circle'] = implode(',', $this->circle);
             }
+            if($this->login_type){
                 $data['login_type'] = $this->login_type;
+            }
+            if($this->socid){
                 $data['socid'] = $this->socid;
+            }
+            if($this->socid_include_exclude){
                 $data['socid_include_exclude'] = $this->socid_include_exclude;
+            }
+            if($this->device_os){
                 $data['device_os'] = $this->device_os;
+            }
+            if($this->mrp){
                 $data['mrp'] = $this->mrp;
+            }
+            if($this->banner_title){
                 $data['banner_title'] = $this->banner_title;
+            }
+            if($this->banner_name){
                 $data['banner_name'] = $this->banner_name;
+            }
+            if($this->banner_rank){
                 $data['banner_rank'] = $this->banner_rank;
+            }
+            if($this->prepaid_persona){
+                $data['prepaid_persona'] = implode(',', $this->prepaid_persona);
+            }
+            if($this->postpaid_persona){
+                $data['postpaid_persona'] = implode(',', $this->postpaid_persona);
+            }
+            if($this->red_hierarchy){
+                $data['red_hierarchy'] = implode(',', $this->red_hierarchy);
+            }
+            if($this->service_type){
+                $data['service_type'] = implode(',', $this->service_type);
+            }
+            if($this->app_version){
+                $data['app_version'] = implode(',', $this->app_version);
+            }
+            if($this->brand){
+                $data['brand'] = $this->brand;
+            }
+            if($this->lob){
+                $data['lob'] = $this->lob;
+            }
+            if($this->plan){
+                $data['plan'] = $this->plan;
+            }
+            if($this->analytics_tag){
+                $data['analytics_tag'] = $this->analytics_tag;
+            }
+            if($this->subtitle){
+                $data['subtitle'] = $this->subtitle;
+            }
+            if($this->country){
+                $data['country'] = $this->country;
+            }
+            // if($this->link_type){
+            //     $data['link_type'] = $this->link_type;
+            // }
+            if($this->tab_name){
+                $data['tab_name'] = $this->tab_name;
+            }
+            if($this->internal_link){
+                $data['internal_link'] = $this->internal_link;
+            }
+            if($this->external_link){
+                $data['external_link'] = $this->external_link;
+            }
+            if($this->campaign_id){
+                $data['campaign_id'] = $this->campaign_id;
+            }
+            if($this->banner_text_content){
+                $data['banner_text_content'] = $this->banner_text_content;
+            }
+            if($this->coupon_code){
+                $data['coupon_code'] = $this->coupon_code;
+            }
+            if($this->status){
+                $data['status'] =  $this->status;
+            }
+            if($this->validity_period){
+                $data['validity_period'] =  $this->validity_period;
+            }
+            if($this->isnotified){
+                $data['is_notified'] = $this->isnotified;
+            }
+            // dd($data);
             // Update or Create a new user record in the database
             if(Redis::keys('Temp*')){  Redis::del(Redis::keys('Temp*')); }
             $banners = Banners::find($this->user_id) ?? Banners::create($data);
-
             if ($this->edit_mode) {
                 foreach ($data as $k => $v) {
                     $banners->$k = $v;
@@ -194,24 +277,27 @@ class Banner extends Component
         $this->edit_mode = true;
 
         $banners = Banners::find($id);
-
+        // dd($banners->banner_screen);
         $this->banner_screen = $banners->banner_screen;
-        $this->circle = $banners->circle;
+        $this->user_id = $banners->id;
+        $this->circle = explode(',', $banners->circle);
         $this->login_type = $banners->login_type;
         $this->brand = $banners->brand;
         $this->lob = $banners->lob;
         $this->plan = $banners->plan;
-        $this->prepaid_persona = $banners->prepaid_persona;
-        $this->prepaid_persona = $banners->prepaid_persona;
+        $this->prepaid_persona = explode(',', $banners->prepaid_persona);
+        $this->postpaid_persona = explode(',', $banners->postpaid_persona);
         $this->socid_include_exclude = $banners->socid_include_exclude;
         $this->socid = $banners->socid;
         $this->banner_title = $banners->banner_title;
         $this->analytics_tag = $banners->analytics_tag;
         $this->subtitle = $banners->subtitle;
         $this->country = $banners->country;
-        $this->red_hierarchy = $banners->red_hierarchy;
+        $this->red_hierarchy = explode(',',$banners->red_hierarchy);
+        $this->service_type = explode(',',$banners->service_type);
+        $this->app_version = explode(',',$banners->app_version);
         $this->mrp = $banners->mrp;
-        $this->link_type = $banners->link_type;
+        // $this->link_type = $banners->link_type;
         $this->tab_name = $banners->tab_name;
         $this->internal_link = $banners->internal_link;
         $this->external_link = $banners->external_link;
@@ -223,6 +309,11 @@ class Banner extends Component
         $this->banner_text_content = $banners->banner_text_content;
         $this->coupon_code = $banners->coupon_code;
         $this->validity_period = $banners->validity_period;
+        $this->banner_rank = $banners->banner_rank;
+        $this->status = $banners->status;
+        $this->isnotified = $banners->is_notified;
+        $this->start_date_time = $banners->start_date_time;
+        $this->end_date_time = $banners->end_date_time;
     }
     public function deleteBanner($id)
     {
@@ -232,10 +323,8 @@ class Banner extends Component
             $this->dispatch('error', 'banner cannot be deleted');
             return;
         }
-
         // Delete the user record with the specified ID
         Banners::destroy($id);
-
         // Emit a success event with a message
         $this->dispatch('success', 'Banner successfully deleted');
     }

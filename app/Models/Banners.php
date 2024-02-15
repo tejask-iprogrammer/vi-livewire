@@ -22,17 +22,50 @@ class Banners extends Authenticatable implements MustVerifyEmail
     protected $table = 'banners';
 
     protected $fillable = [
-        'banner_screen',
-        'circle',
-        'login_type',
-        'socid',
-        'socid_include_exclude',
-        'device_os',
-        'mrp',
+        // 'banner_screen',
+        // 'circle',
+        // 'login_type',
+        // 'socid',
+        // 'socid_include_exclude',
+        // 'device_os',
+        // 'mrp',
+        // "banner_title",
+        // "banner_name",
+        // "banner_rank",
+        // "banner_title",
+        "banner_screen",
+        "circle",
+        "login_type",
+        "brand",
+        "lob",
+        "plan",
+        "prepaid_persona",
+        "postpaid_persona",
+        "socid_include_exclude",
+        "socid",
         "banner_title",
-        "banner_name",
+        "analytics_tag",
+        "subtitle",
+        "country",
+        "red_hierarchy",
+        "mrp",
+        "tab_name",
+        "internal_link",
+        "external_link",
+        "campaign_id",
+        "cta_name",
+        "start_date_time",
+        "end_date_time",
+        "device_os",
+        "banner_text_content",
+        "coupon_code",
+        "validity_period",
+        "avatar",
+        "notified_banner",
+        "app_version",
         "banner_rank",
-        "banner_title",
+        "status",
+        "is_notified"
     ];
 
     /**
@@ -53,6 +86,7 @@ class Banners extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         // 'email_verified_at' => 'datetime',
         // 'last_login_at' => 'datetime',
+        // 'banner_screen'=>'array',
     ];
 
     // public function getProfilePhotoUrlAttribute()

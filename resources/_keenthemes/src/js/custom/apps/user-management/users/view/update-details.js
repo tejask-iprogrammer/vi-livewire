@@ -81,8 +81,6 @@ var KTUsersUpdateDetails = function () {
         // Submit button handler
         const submitButton = element.querySelector('[data-kt-users-modal-action="submit"]');
         submitButton.addEventListener('click', function (e) {
-        debugger;
-
             // Prevent default button action
             e.preventDefault();
 
