@@ -63,6 +63,8 @@
             document.addEventListener('livewire:init', function () {
                 Livewire.on('success', function () {
                     $('#kt_modal_add_banner').modal('hide');
+                    const form = element.querySelector('#kt_modal_add_banner_form');
+                    form.reset();
                     window.LaravelDataTables['users-table'].ajax.reload();
                 });
             });
@@ -78,7 +80,6 @@
             })
                $('.lobSelect').on('change',function(){
                     let selectedLob = $(this).val();
-                    // alert(selectedLob.toLowerCase());
                     if(selectedLob.toLowerCase() == "prepaid"){
                         $(".postpaidSelect").prop('disabled', true);
                         $(".socId").prop('disabled', true);
