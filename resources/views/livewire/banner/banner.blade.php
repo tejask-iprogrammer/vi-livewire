@@ -56,7 +56,7 @@
                                         <!--end::Label-->
                                         <!--begin::Input-->
                                         <select wire:model="circle" class="circle js-example-basic-multiple form-control" multiple="multiple">
-                                            <!-- <option value="" disabled selected>Choose Circle</option> -->
+                                        <!-- <option value="" disabled selected>Choose Circle</option> -->
                                             @foreach($circleList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
@@ -668,6 +668,9 @@
                         let data = $(this).val();
                         @this.set('app_version',data)
                 });
+                $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
+                    $(".js-example-basic-multiple").trigger("change");
+                })
 
             });
 </script>
