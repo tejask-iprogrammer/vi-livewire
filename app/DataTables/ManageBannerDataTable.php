@@ -61,8 +61,8 @@ class ManageBannerDataTable extends DataTable
                     
                     return $circle;
             })
-            ->editColumn('created_at', function (Banners $banner) {
-                return $banner->created_at->format('d M Y, h:i a');
+            ->editColumn('updated_at', function (Banners $banner) {
+                return $banner->updated_at->format('d M Y, h:i a');
             })
             ->addColumn('action', function (Banners $banner) {
                 return view('pages/apps.banner-management.managebanner.columns._actions', compact('banner'));
@@ -115,7 +115,7 @@ class ManageBannerDataTable extends DataTable
             Column::make('banner_screen')->title('Screen')->addClass('text-nowrap'),
             Column::make('device_os')->title('OS')->addClass('text-nowrap'),
             Column::make('banner_rank')->title('Rank')->addClass('text-nowrap'),
-            Column::make('created_at')->title('Joined Date')->addClass('text-nowrap'),
+            Column::make('updated_at')->title('Updated Date')->addClass('text-nowrap'),
             Column::make('status')->title('status'),
             Column::computed('action')
                 ->addClass('text-end text-nowrap')
