@@ -58,14 +58,14 @@
         {{ $dataTable->scripts() }}
         <script>
             document.getElementById('mySearchInput').addEventListener('keyup', function () {
-                window.LaravelDataTables['users-table'].search(this.value).draw();
+                window.LaravelDataTables['banner-table'].search(this.value).draw();
             });
             document.addEventListener('livewire:init', function () {
                 Livewire.on('success', function () {
                     $('#kt_modal_add_banner').modal('hide');
                     const form = element.querySelector('#kt_modal_add_banner_form');
                     form.reset();
-                    window.LaravelDataTables['users-table'].ajax.reload();
+                    window.LaravelDataTables['banner-table'].ajax.reload();
                 });
             });
             document.addEventListener('livewire:init', function () {
@@ -87,6 +87,7 @@
                         $(".planSelect").prop('disabled', false);
                         $(".postpaidSelect").addClass("postpaidSelectdisable");
                         $(".prepaidSelect").removeClass("prepaidSelectdisable");
+                        $('.socId').val('');
                     }else if(selectedLob.toLowerCase() == "postpaid"){
                         $(".prepaidSelect").prop('disabled', true);
                         $(".planSelect").prop('disabled', true);
@@ -101,6 +102,7 @@
                         $(".planSelect").prop('disabled', true);
                         $(".postpaidSelect").addClass("postpaidSelectdisable");
                         $(".prepaidSelect").addClass("prepaidSelectdisable");
+                        $('.socId').val('');
                     }else{
                         $(".prepaidSelect").prop('disabled', false);
                         $(".socId").prop('disabled', false);
@@ -108,6 +110,7 @@
                         $(".planSelect").prop('disabled', false);
                         $(".postpaidSelect").removeClass("postpaidSelectdisable");
                         $(".prepaidSelect").removeClass("prepaidSelectdisable");
+                        $('.socId').val('');
                     }
                 });
                 $('.linkType').on('change',function(){

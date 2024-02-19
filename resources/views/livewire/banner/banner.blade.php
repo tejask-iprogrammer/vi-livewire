@@ -593,7 +593,7 @@
                                     <label class="form-check-label" for="status">
                                         Active
                                     </label>
-                                    <input class="form-check-input" wire:model="status" value="2" type="radio" name="flexRadioDefault" id="status">
+                                    <input class="form-check-input" wire:model="status" value="0" type="radio" name="flexRadioDefault" id="status">
                                     <label class="form-check-label" for="status">
                                         Inactive
                                     </label>
