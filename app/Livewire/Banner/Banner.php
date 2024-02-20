@@ -69,7 +69,9 @@ class Banner extends Component
     protected $listeners = [
         'delete_banner' => 'deleteBanner',
         'update_banner' => 'updateBanner',
-        'postAdded' => "updatePost"
+        'group_delete' => "groupDelete",
+        'group_copy' => "groupCopy",
+        'group_status' =>"groupStatus"
     ];
 
     protected $rules = [
@@ -327,6 +329,60 @@ class Banner extends Component
         Banners::destroy($id);
         // Emit a success event with a message
         $this->dispatch('success', 'Banner successfully deleted');
+    }
+    public function groupDelete(array $idArray){
+        foreach ($idArray as $key => $bannerId) {
+            $bannerDetails = Banners::find($bannerId);
+            // $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
+            
+            // $this->cacheDelete(explode(',',$bannerDetails->circle),$bannerScreenDetails->screen_name);
+            
+            if (!empty($bannerDetails)) {
+                // $delete = ImageHelper::deleteS3File($bannerScreenDetails->banner_name);
+                $bannerDetails->delete();
+            }
+            // $resultStatus = true;
+        }
+        // $update = Banner::orderBy('id', 'DESC')->first();
+        // if(!empty($update)){
+        //     $update['updated_at'] = date("Y-m-d H:i:s");
+        //     $result = $update->save();
+        // }     
+        $this->dispatch('success', __('Banners Deleted'));
+    }
+
+    public function groupCopy(array $idArray){
+        foreach ($idArray as $key => $bannerId) {
+            $bannerDetails = Banners::find($bannerId);
+            
+            if (!empty($bannerDetails)) {
+                $bannerDetails['status'] = 0;
+                $bannerDetails['banner_name'] = '';
+                $bannerDetails['notified_banner'] = '';
+                $newBanner = $bannerDetails->replicate()->save();                            
+            }
+        }
+        $this->dispatch('success', __('Banners Copied'));
+    }
+    public function groupstatus(array $idArray){
+        foreach ($idArray["ids"] as $key => $bannerId) {
+            $bannerDetails = Banners::find($bannerId);
+            // $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
+          
+            // $this->cacheDelete(explode(',',$bannerDetails->circle),$bannerScreenDetails->screen_name);
+            
+            if (!empty($bannerDetails)) {
+                switch ($idArray["status"]) {
+                    case '1': $bannerDetails->status = 1;
+                        break;
+                    case '0': $bannerDetails->status = 0;
+                        break;
+                }
+                $bannerDetails->save();
+                $resultStatus = true;
+            }
+        }
+        $this->dispatch('success', __('Banners status Updated'));
     }
     public function hydrate()
     {

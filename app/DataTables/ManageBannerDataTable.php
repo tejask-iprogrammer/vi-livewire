@@ -20,33 +20,32 @@ class ManageBannerDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-
         $this->bannerscreenModel = new BannerScreen;
         $this->screenList = $this->bannerscreenModel->bannerScreenData();
-        // dd($screenList);
         return (new EloquentDataTable($query))
-            ->rawColumns(['banner_screen','status','circle'])
-            // ->editColumn('banner_screen', function (Banner $banner) {
-            //     return view('pages/apps.banner-management.managebanner.columns._user', compact('banner'));
-            // })
+            ->rawColumns(['banner_screen','status','circle','banner_check'])
+            ->addColumn('banner_check', function (Banners $banner) {
+                return sprintf('<input class = "form-check-input selectMultichk" name="multi_chk[]"  type="checkbox" value="'.$banner->id.'" id="chk_'.$banner->id.'" >');
+            })->escapeColumns([])    
+            ->addColumn('link', function (Banners $banner) {
+                $actionList = '-';
+                if($banner->internal_link != NULL){
+                    return sprintf ('<b>Internal Link</b> </br> '.$banner->internal_link);
+                }
+                if($banner->external_link != NULL){
+                    return sprintf ('<b>External Link</b> </br> '.$banner->external_link);
+                }
+            })
             ->editColumn('banner_screen', function (Banners $banner) {
                 $banner_screen = ($banner->banner_screen);
                 return  array_key_exists($banner_screen,$this->screenList)? $this->screenList[$banner_screen] : "-";
-
             })
             ->editColumn('status', function (Banners $banner) {
                 $status = ($banner->status);
-                    // return $status;
-                    // return sprintf('<div class="badge badge-light fw-bold">%s</div>', $user->last_login_at ? $user->last_login_at->diffForHumans() : $user->updated_at->diffForHumans());
-                    // return  ($banner->status ?  "Active"  :  "Inactve") ;
                     return sprintf($banner->status ? '<div class="badge bg-success text-wrap">Active</div>': '<div class="badge bg-danger text-wrap">Inactive</div>');
-                    // return sprintf('<div class="badge bg-success text-wrap">Active</div>');
-
             })
             ->editColumn('circle', function (Banners $banner) {
                 $circleList = ["0000" => 'All Circle',"0001" => 'Andhra Pradesh','0002' => 'Chennai','0003' => 'Delhi','0004' => 'Uttar Pradesh East','0005' => 'Gujarat','0006' => 'Haryana','0007' => 'Karnataka','0008' => 'Kolkata','0009' => 'Mumbai','0010' => 'Rajastan','0011' => 'West Bengal','0012' => 'Punjab','0013' => 'Uttar Pradesh West','0014' => 'Maharashtra','0015' => 'Tamil Nadu','0016' => 'Kerala','0017' => 'Orissa','0018' => 'Assam','0019' => 'North East','0020' => 'Bihar','0021' => 'Madhya Pradesh','0022' => 'Himachal Pradesh','0023' => 'Jammu And Kashmir'];
-                    //$circle = $circleList[$banner->circle];
-                    
                     $circle = 'NA';
                     if($banner->circle != NULL){
                         $circleArr = explode(',',$banner->circle);
@@ -58,7 +57,6 @@ class ManageBannerDataTable extends DataTable
                         }
                         $circle = implode(", ",$circleTextArr);
                     }
-                    
                     return $circle;
             })
             ->editColumn('updated_at', function (Banners $banner) {
@@ -88,9 +86,9 @@ class ManageBannerDataTable extends DataTable
             ->setTableId('banner-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('rt' . "<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-7'p>>",)
+            ->dom('rt' . "<'row'<'col-sm-4 col-md-5'l><'col-sm-4 col-md-7'p>>",)
             ->addTableClass('table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer text-gray-600 fw-semibold')
-            ->setTableHeadClass('text-start text-muted fw-bold fs-7 text-uppercase gs-0')
+            ->setTableHeadClass('text-start text-muted fw-bold fs-7 text-uppercase gs-0 tableHead')
             ->orderBy(2)
             ->drawCallback("function() {" . file_get_contents(resource_path('views/pages/apps/banner-management/managebanner/columns/_draw-scripts.js')) . "}");
     }
@@ -105,20 +103,22 @@ class ManageBannerDataTable extends DataTable
             // Column::make('role')->searchable(false),
             // Column::make('username')->title('username'),
             // Column::make('last_login_at')->title('Last Login'),
-            Column::make('banner_title')->title('Banner Title')->addClass('text-nowrap'),
+            Column::make('banner_check')->sortable(false),
+            Column::make('banner_title')->title('Banner Title')->addClass('text-nowrap bannerTitle'),
             Column::make('lob')->title('LOB')->addClass('text-nowrap'),
             Column::make('prepaid_persona')->title('Prepaid Persona')->addClass('text-nowrap'),
             Column::make('login_type')->title('Login Type')->addClass('text-nowrap'),
             Column::make('brand')->title('Brand')->addClass('text-nowrap'),
-            Column::make('circle')->title('circle'),
-            Column::make('app_version')->title('Versions'),
+            Column::make('circle')->title('circle')->addClass('text-wrap'),
+            Column::make('app_version')->title('Versions')->addClass('text-wrap'),
             Column::make('banner_screen')->title('Screen')->addClass('text-nowrap'),
             Column::make('device_os')->title('OS')->addClass('text-nowrap'),
             Column::make('banner_rank')->title('Rank')->addClass('text-nowrap'),
+            Column::make('link')->title('Link')->addClass('text-wrap')->sortable(false),
             Column::make('updated_at')->title('Updated Date')->addClass('text-nowrap'),
             Column::make('status')->title('status'),
             Column::computed('action')
-                ->addClass('text-end text-nowrap')
+                ->addClass('text-end')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

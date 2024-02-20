@@ -37,7 +37,6 @@ Livewire.on('success', (message) => {
 });
 
 $('.js-example-basic-multiple').on('change',function(){
-    alert();
     let data = $(this).val();
     // JavaScript code
     // this.Livewire.set('banner_screen',data)
