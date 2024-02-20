@@ -76,14 +76,14 @@
                     window.LaravelDataTables['banner-table'].ajax.reload();
                 });
              
-                $('#banner-table').on( 'draw.dt', function () {
-                    $("#banner-table").find('.bannerTitle').parent().first().addClass("ClassAdded");
-                    $('.ClassAdded th').each(function(i) {
-                        if ( i === 0 ) {
-                        $(this).html('<input type="checkbox" value="All" id="chkAll" class="form-check-input chkAll"  />');
-                        }
-                    });
-                } );
+                // $('#banner-table').on( 'draw.dt', function () {
+                //     $("#banner-table").find('.bannerTitle').parent().first().addClass("ClassAdded");
+                //     $('.ClassAdded th').each(function(i) {
+                //         if ( i === 0 ) {
+                //         $(this).html('<input type="checkbox" value="All" id="chkAll" class="form-check-input chkAll"  />');
+                //         }
+                //     });
+                // } );
                 $('body').on("click", ".chkAll", function (e) {
                     if($(".chkAll").prop('checked') == true){
                         $('.selectMultichk').attr('checked',true);
@@ -170,6 +170,7 @@
                     }
                 });
                  
+                // Group Action Start
 
                     $('body').on("click", ".table-group-action-delete", function (e) {
                         Swal.fire({
@@ -252,12 +253,12 @@
                                 "ids":get_selected_data,
                                 "status":status,
                             }
-                            console.log(mainArray);
                             if (result.isConfirmed) {
                                 Livewire.dispatch('group_status', [mainArray]);
                             }
                         });
                     });
+                // Group Action End
         </script>
     @endpush
 
