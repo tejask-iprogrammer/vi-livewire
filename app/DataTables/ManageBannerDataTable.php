@@ -98,17 +98,8 @@ class ManageBannerDataTable extends DataTable
      */
     public function getColumns(): array
     {
-        // $checkbox = '<div class="niceCheckbox">';
         $checkbox = '<input type="checkbox" value="All" id="chkAll" class="form-check-input chkAll"  />';
-        // $checkbox .= '<label for="toggle_check_all" class="custom-checkbox"></label>';
-        // $checkbox .= '<label for="toggle_check_all" class="checkbox-text-label"></label>';
-        // $checkbox .= '</div>';
         return [
-            // Column::make('user')->addClass('d-flex align-items-center')->name('name'),
-            // Column::make('role')->searchable(false),
-            // Column::make('username')->title('username'),
-            // Column::make('last_login_at')->title('Last Login'),
-            // Column::make('banner_check')->sortable(false),
             Column::make('banner_check')->title($checkbox)->width(20)->orderable(false)->searchable(false),
             Column::make('banner_title')->title('Banner Title')->addClass('text-nowrap bannerTitle'),
             Column::make('lob')->title('LOB')->addClass('text-nowrap'),
