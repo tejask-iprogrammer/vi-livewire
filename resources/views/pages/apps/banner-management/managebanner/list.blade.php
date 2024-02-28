@@ -14,7 +14,7 @@
             <!--begin::Card title-->
             <div class="card-title">
                 <!--begin::Search-->
-                <div class="d-flex align-items-center position-relative my-1">
+                <div class="d-flex align-items-center position-relative my-1 d-none">
                     {!! getIcon('magnifier', 'fs-3 position-absolute ms-5') !!}
                     <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Search Banner" id="mySearchInput"/>
                 </div>
@@ -55,7 +55,9 @@
         <div class="card-body py-4">
             <!--begin::Table-->
             <div class="table-responsive">
-                {{ $dataTable->table() }}
+                <!-- {{ $dataTable->table() }} -->
+                <livewire:banner.banner-filter></livewire:banner.banner-filter>
+
             </div>
             <!--end::Table-->
         </div>
@@ -69,12 +71,12 @@
                 window.LaravelDataTables['banner-table'].search(this.value).draw();
             });
             document.addEventListener('livewire:init', function () {
-                Livewire.on('success', function () {
+                // Livewire.on('success', function () {
                     $('#kt_modal_add_banner').modal('hide');
                     const form = element.querySelector('#kt_modal_add_banner_form');
                     form.reset();
                     window.LaravelDataTables['banner-table'].ajax.reload();
-                });
+                // });
              
                 // $('#banner-table').on( 'draw.dt', function () {
                 //     $("#banner-table").find('.bannerTitle').parent().first().addClass("ClassAdded");
@@ -85,11 +87,12 @@
                 //     });
                 // } );
                 $('body').on("click", ".chkAll", function (e) {
+                    debugger;
                     if($(".chkAll").prop('checked') == true){
-                        $('.selectMultichk').attr('checked',true);
+                        $('input:checkbox').attr('checked',true);
                         // document.getElementsByClassName("selectMultichk").checked = true;
                     }else{
-                        $('.selectMultichk').attr('checked',false);
+                        $('input:checkbox').attr('checked',false);
                         // document.getElementsByClassName("selectMultichk").checked = false;
                     }
                 });

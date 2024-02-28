@@ -99,21 +99,22 @@ class ManageBannerDataTable extends DataTable
     public function getColumns(): array
     {
         $checkbox = '<input type="checkbox" value="All" id="chkAll" class="form-check-input chkAll"  />';
+        $inputThing ='<input type="text" class="form-control" wire:model="searchColumnsName"/>';
         return [
             Column::make('banner_check')->title($checkbox)->width(20)->orderable(false)->searchable(false),
-            Column::make('banner_title')->title('Banner Title')->addClass('text-nowrap bannerTitle'),
-            Column::make('lob')->title('LOB')->addClass('text-nowrap'),
-            Column::make('prepaid_persona')->title('Prepaid Persona')->addClass('text-nowrap'),
-            Column::make('login_type')->title('Login Type')->addClass('text-nowrap'),
-            Column::make('brand')->title('Brand')->addClass('text-nowrap'),
-            Column::make('circle')->title('circle')->addClass('text-wrap'),
-            Column::make('app_version')->title('Versions')->addClass('text-wrap'),
-            Column::make('banner_screen')->title('Screen')->addClass('text-nowrap'),
-            Column::make('device_os')->title('OS')->addClass('text-nowrap'),
-            Column::make('banner_rank')->title('Rank')->addClass('text-nowrap'),
-            Column::make('link')->title('Link')->addClass('text-wrap')->sortable(false),
+            Column::make('banner_title')->title('Banner Title'.$inputThing)->addClass('text-nowrap bannerTitle')->sortable(false),
+            Column::make('lob')->title('LOB'.$inputThing)->addClass('text-nowrap')->sortable(false),
+            Column::make('prepaid_persona')->title('Prepaid Persona'.$inputThing)->addClass('text-nowrap')->sortable(false),
+            Column::make('login_type')->title('Login Type'.$inputThing)->addClass('text-nowrap')->sortable(false),
+            Column::make('brand')->title('Brand'.$inputThing)->addClass('text-nowrap')->sortable(false),
+            Column::make('circle')->title('circle'.$inputThing)->addClass('text-wrap')->sortable(false),
+            Column::make('app_version')->title('Versions'.$inputThing)->addClass('text-wrap')->sortable(false),
+            Column::make('banner_screen')->title('Screen'.$inputThing)->addClass('text-nowrap')->sortable(false),
+            Column::make('device_os')->title('OS'.$inputThing)->addClass('text-nowrap')->sortable(false),
+            Column::make('banner_rank')->title('Rank'.$inputThing)->addClass('text-nowrap')->sortable(false),
+            Column::make('link')->title('Link'.$inputThing)->addClass('text-wrap')->sortable(false),
             Column::make('updated_at')->title('Updated Date')->addClass('text-nowrap'),
-            Column::make('status')->title('status'),
+            Column::make('status')->title('status'.$inputThing),
             Column::computed('action')
                 ->addClass('text-end')
                 ->exportable(false)

@@ -46,13 +46,4 @@ $('.js-example-basic-multiple').on('change',function(){
     this.Livewire.emit('postAdded');
 
 
-
-
-    // Livewire.on('success', function () {
-    //     console.log(data);
-    //     $wire.set('banner_screen',data);
-    //     this.Livewire.set('banner_screen',data)
-    //     //console.log('Hello');
-        // });
-
 });
