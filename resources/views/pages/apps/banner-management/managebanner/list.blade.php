@@ -55,7 +55,6 @@
         <div class="card-body py-4">
             <!--begin::Table-->
             <div class="table-responsive">
-                <!-- {{ $dataTable->table() }} -->
                 <livewire:banner.banner-filter></livewire:banner.banner-filter>
 
             </div>
@@ -65,29 +64,8 @@
     </div>
 
     @push('scripts')
-        {{ $dataTable->scripts() }}
         <script>
-            document.getElementById('mySearchInput').addEventListener('keyup', function () {
-                window.LaravelDataTables['banner-table'].search(this.value).draw();
-            });
-            document.addEventListener('livewire:init', function () {
-                // Livewire.on('success', function () {
-                    $('#kt_modal_add_banner').modal('hide');
-                    const form = element.querySelector('#kt_modal_add_banner_form');
-                    form.reset();
-                    window.LaravelDataTables['banner-table'].ajax.reload();
-                // });
-             
-                // $('#banner-table').on( 'draw.dt', function () {
-                //     $("#banner-table").find('.bannerTitle').parent().first().addClass("ClassAdded");
-                //     $('.ClassAdded th').each(function(i) {
-                //         if ( i === 0 ) {
-                //         $(this).html('<input type="checkbox" value="All" id="chkAll" class="form-check-input chkAll"  />');
-                //         }
-                //     });
-                // } );
                 $('body').on("click", ".chkAll", function (e) {
-                    debugger;
                     if($(".chkAll").prop('checked') == true){
                         $('input:checkbox').attr('checked',true);
                         // document.getElementsByClassName("selectMultichk").checked = true;
@@ -96,6 +74,8 @@
                         // document.getElementsByClassName("selectMultichk").checked = false;
                     }
                 });
+               
+
                 $('body').on("click", ".selectMultichk", function (e) {
                     var allCheked = $('body').find('input[name="multi_chk[]"]:checked').length;
                     var checkCount = $('body').find('input[name="multi_chk[]"]').length;
@@ -108,6 +88,28 @@
 
                     }
                 });
+
+            document.getElementById('mySearchInput').addEventListener('keyup', function () {
+                window.LaravelDataTables['banner-table'].search(this.value).draw();
+            });
+            document.addEventListener('livewire:init', function () {
+                Livewire.on('success', function () {
+                    $('#kt_modal_add_banner').modal('hide');
+                    location.reload();
+                    // const form = element.querySelector('#kt_modal_add_banner_form');
+                    // form.reset();
+                    // window.LaravelDataTables['banner-table'].ajax.reload();
+                });
+             
+                // $('#banner-table').on( 'draw.dt', function () {
+                //     $("#banner-table").find('.bannerTitle').parent().first().addClass("ClassAdded");
+                //     $('.ClassAdded th').each(function(i) {
+                //         if ( i === 0 ) {
+                //         $(this).html('<input type="checkbox" value="All" id="chkAll" class="form-check-input chkAll"  />');
+                //         }
+                //     });
+                // } );
+                
             //    $('.bannerAdd').on('click',function(){
             //     // const form = element.querySelector('#kt_modal_add_banner_form');
             //         // form.reset();
@@ -218,6 +220,7 @@
                             }
                         }).then((result) => {
                             var get_selected_data = new Array();
+                            console.log(get_selected_data);
                             $("input[name='multi_chk[]']").each(function (index, obj) {
                             if(this.checked)
                             {
@@ -225,6 +228,8 @@
                             }
                             });
                             if (result.isConfirmed) {
+                                console.log(get_selected_data);
+                                
                                 Livewire.dispatch('group_copy', [get_selected_data]);
                             }
                         });

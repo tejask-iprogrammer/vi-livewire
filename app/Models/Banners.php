@@ -96,4 +96,8 @@ class Banners extends Authenticatable implements MustVerifyEmail
     // {
     //     return $this->addresses?->first();
     // }
+
+    public function getBannerName(){
+        return $this->belongsTo(BannerScreen::class,'banner_screen','id');
+    }
 }

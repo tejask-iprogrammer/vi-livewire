@@ -56,8 +56,8 @@ class Banner extends Component
     public $notified_banner;
     public $app_version;
     public $banner_rank;
-    public $status;
-    public $isnotified;
+    public $status='1';
+    public $isnotified='1';
     public $edit_mode = false;
     public $saved_avatar;
     public $banner_name;
@@ -137,9 +137,8 @@ class Banner extends Component
     public function submit(){
         // Validate the form input data
         $this->validate();
-        DB::transaction(function () {
-           
 
+        DB::transaction(function () {
             // if ($this->avatar) {
             //     $data['profile_photo_path'] = $this->avatar->store('avatars', 'public');
             // } else {
@@ -222,12 +221,14 @@ class Banner extends Component
             if($this->tab_name){
                 $data['tab_name'] = $this->tab_name;
             }
+
             if($this->internal_link){
                 $data['internal_link'] = $this->internal_link;
             }
             if($this->external_link){
                 $data['external_link'] = $this->external_link;
             }
+            
             if($this->campaign_id){
                 $data['campaign_id'] = $this->campaign_id;
             }
@@ -248,6 +249,7 @@ class Banner extends Component
             }
             // dd($data);
             // Update or Create a new user record in the database
+
             if(Redis::keys('Temp*')){  Redis::del(Redis::keys('Temp*')); }
             $banners = Banners::find($this->user_id) ?? Banners::create($data);
             if ($this->edit_mode) {
@@ -268,6 +270,8 @@ class Banner extends Component
 
                 // Emit a success event with a message
                 $this->dispatch('success', __('Manage Banner Created'));
+                
+                // $this->dispatchBrowserEvent("CloseAddBannerModal");
             }
         });
         // Reset the form fields after successful submission
@@ -351,22 +355,22 @@ class Banner extends Component
         $this->dispatch('success', __('Banners Deleted'));
     }
 
-    public function groupCopy(array $idArray){
-        foreach ($idArray as $key => $bannerId) {
-            $bannerDetails = Banners::find($bannerId);
-            
+    public function groupCopy(array $idArray11){
+
+        foreach ($idArray11 as $value) {
+            $bannerDetails = Banners::find($value);
             if (!empty($bannerDetails)) {
                 $bannerDetails['status'] = 0;
                 $bannerDetails['banner_name'] = '';
                 $bannerDetails['notified_banner'] = '';
-                $newBanner = $bannerDetails->replicate()->save();                            
+                $newBanner = $bannerDetails->replicate()->save();                        
             }
         }
         $this->dispatch('success', __('Banners Copied'));
     }
     public function groupstatus(array $idArray){
-        foreach ($idArray["ids"] as $key => $bannerId) {
-            $bannerDetails = Banners::find($bannerId);
+        foreach ($idArray["ids"] as $key => $value) {
+            $bannerDetails = Banners::find($value);
             // $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
           
             // $this->cacheDelete(explode(',',$bannerDetails->circle),$bannerScreenDetails->screen_name);
@@ -382,6 +386,7 @@ class Banner extends Component
                 $resultStatus = true;
             }
         }
+        // $this->dispatchBrowserEvent("CloseAddBannerModal");
         $this->dispatch('success', __('Banners status Updated'));
     }
     public function hydrate()

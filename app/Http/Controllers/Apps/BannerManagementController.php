@@ -13,7 +13,7 @@ class BannerManagementController extends Controller
      */
     public function index(ManageBannerDataTable $dataTable)
     {
-        return $dataTable->render('pages/apps.banner-management.managebanner.list');
+        return view('pages/apps.banner-management.managebanner.list');
     }
 
     /**

@@ -16,6 +16,8 @@
                 <h2>
                     @if($edit_mode) Edit Banner @else Add Banner @endif
                 </h2>
+                <div>
+    </div>
                 <!--end::Modal title-->
                 <!--begin::Close-->
                 <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal" aria-label="Close">
@@ -591,11 +593,11 @@
                             <div class="row">
                                 <div class="col mt-4">
                                     <label class="required fw-semibold fs-6 mb-2">Status</label>
-                                    <input class="form-check-input" wire:model="status" value="1" type="radio" name="flexRadioDefault" id="status" checked>
+                                    <input class="form-check-input" wire:model.live="status" value="1" type="radio" >
                                     <label class="form-check-label" for="status">
                                         Active
                                     </label>
-                                    <input class="form-check-input" wire:model="status" value="0" type="radio" name="flexRadioDefault" id="status">
+                                    <input class="form-check-input" wire:model.live="status" value="0" type="radio">
                                     <label class="form-check-label" for="status">
                                         Inactive
                                     </label>
@@ -604,11 +606,11 @@
                                 </div>
                                 <div class="col mt-4">
                                     <label class="required fw-semibold fs-6 mb-2">is Notified</label>
-                                    <input class="form-check-input" type="radio" wire:model="isnotified" value="1" name="isnotified" id="isnotified" checked>
+                                    <input class="form-check-input" type="radio" wire:model="isnotified" value="1" >
                                     <label class="form-check-label" for="isnotified">
                                         Active
                                     </label>
-                                    <input class="form-check-input" type="radio" wire:model="isnotified" value="0" name="isnotified" id="isnotified">
+                                    <input class="form-check-input" type="radio" wire:model="isnotified" value="0" >
                                     <label class="form-check-label" for="isnotified">
                                         Inactive
                                     </label>
@@ -676,5 +678,10 @@
                 })
 
             });
+
+            window.addEventListener("CloseAddBannerModal",function(){
+                debugger;
+                $("kt_modal_add_banner").modal("hide");
+            })
 </script>
 @endpush

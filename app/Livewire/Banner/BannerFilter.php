@@ -23,15 +23,20 @@ class BannerFilter extends Component
     public $os;
     public $rank;
     public $status;
-    
+    public $Byperpage=10;
+    public $checkselect=[];
     public function render()
     {
+        // dd($this->Byperpage);
         $this->bannerscreenModel = new BannerScreen;
         $this->tablistModel = new Tab;
         $this->appversionModel = new AppVersion;
         $this->screenList = $this->bannerscreenModel->bannerScreenData();
 
-        $query = Banners::query();
+        $query = Banners::orderBy("updated_at",'desc');
+        // $usersCount = Banners::orderBy("updated_at",'desc');
+        $totalCount = $query->count();
+
         $lobList = ['Prepaid' => 'Prepaid', 'Postpaid' => 'Postpaid', 'Both' => 'Both'];
         $postpaidPersonaList = ['All' => 'All', 'COCP' => 'COCP', 'IOIP' => 'IOIP', 'COIP' => 'COIP', 'Individual' => 'Individual'];
         $brandList = ['Idea' => 'Idea', 'Vodafone' => 'Vodafone', 'Brandx' => 'Brandx'];
@@ -42,9 +47,23 @@ class BannerFilter extends Component
         $screenList = $this->bannerscreenModel->bannerScreenData();
         $osList = ["android" => 'android','ios' => 'ios', 'Both' => 'Both'];
         $rankList = ['1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10','11'=>'11','12'=>'12','13'=>'13','14'=>'14','15'=>'15','16'=>'16','17'=>'17','18'=>'18','19'=>'19','20'=>'20'];
+        
+        foreach ($query as $fetchStatus) {
+            if($fetchStatus->circle != NULL){
+                $circleList = ["0000" => 'All Circle',"0001" => 'Andhra Pradesh','0002' => 'Chennai','0003' => 'Delhi','0004' => 'Uttar Pradesh East','0005' => 'Gujarat','0006' => 'Haryana','0007' => 'Karnataka','0008' => 'Kolkata','0009' => 'Mumbai','0010' => 'Rajastan','0011' => 'West Bengal','0012' => 'Punjab','0013' => 'Uttar Pradesh West','0014' => 'Maharashtra','0015' => 'Tamil Nadu','0016' => 'Kerala','0017' => 'Orissa','0018' => 'Assam','0019' => 'North East','0020' => 'Bihar','0021' => 'Madhya Pradesh','0022' => 'Himachal Pradesh','0023' => 'Jammu And Kashmir'];
+                $circleArr = explode(',',$fetchStatus->circle);
+                $circleTextArr = [];
+                foreach ($circleArr as $key => $value) {
+                    if (array_key_exists($value, $circleList)) {
+                        $circleTextArr[$key] = $circleList[$value];
+                    }
+                }
+                $fetchStatus->circle = implode(", ",$circleTextArr);
+            }
+        }
 
         $query->when($this->banner_title != "", function($q){
-            return $q->where('banner_title', 'like', '%'.$this->banner_title.'%');
+            return $q->where('banner_title', 'like', $this->banner_title);
         });
         $query->when($this->lob != "", function($q){
             return $q->where('lob', $this->lob);
@@ -82,29 +101,11 @@ class BannerFilter extends Component
         $query->when($this->status != "", function($q){
             return $q->where('status', $this->status);
         });
-        foreach ($query as $fetchStatus) {
-            if($fetchStatus->circle != NULL){
-                dd($fetchStatus->circle);
-                $circleList = ["0000" => 'All Circle',"0001" => 'Andhra Pradesh','0002' => 'Chennai','0003' => 'Delhi','0004' => 'Uttar Pradesh East','0005' => 'Gujarat','0006' => 'Haryana','0007' => 'Karnataka','0008' => 'Kolkata','0009' => 'Mumbai','0010' => 'Rajastan','0011' => 'West Bengal','0012' => 'Punjab','0013' => 'Uttar Pradesh West','0014' => 'Maharashtra','0015' => 'Tamil Nadu','0016' => 'Kerala','0017' => 'Orissa','0018' => 'Assam','0019' => 'North East','0020' => 'Bihar','0021' => 'Madhya Pradesh','0022' => 'Himachal Pradesh','0023' => 'Jammu And Kashmir'];
-                $circleArr = explode(',',$fetchStatus->circle);
-                foreach ($circleArr as $key => $value) {
-                    if (array_key_exists($value, $circleList)) {
-                        $fetchStatus->circle = $circleList[$value];
-                    }
-                }
-            }
-        }
-        foreach ($query as $fetchScreen) {
-            $banner_screen = ($fetchScreen->banner_screen);
-            // if(array_key_exists($banner_screen,$this->screenList)? $this->screenList[$banner_screen] : "-";){
-            if(array_key_exists($banner_screen,$this->screenList)){
-                $fetchScreen->banner_screen = $this->screenList[$banner_screen];
-            }  
-        }
-         $page=10;
+        
+        //  $page=10;
 
-        $banners = $query->paginate($page);
+        $banners = $query->paginate($this->Byperpage);
         addJavascriptFile('assets/js/custom/temp.js');
-        return view('livewire.banner.banner-filter',compact('banners','lobList','postpaidPersonaList','brandList','loginTypeList','circleList','appVersionList','screenList','osList','rankList'));
+        return view('livewire.banner.banner-filter',compact('banners','lobList','postpaidPersonaList','brandList','loginTypeList','circleList','appVersionList','screenList','osList','rankList','totalCount'));
     }
 }
