@@ -334,8 +334,8 @@ class Banner extends Component
         // Emit a success event with a message
         $this->dispatch('success', 'Banner successfully deleted');
     }
-    public function groupDelete(array $idArray){
-        foreach ($idArray as $key => $bannerId) {
+    public function groupDelete(array $deleteArray){
+        foreach ($deleteArray["ids"] as $key => $bannerId) {
             $bannerDetails = Banners::find($bannerId);
             // $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
             
@@ -355,28 +355,30 @@ class Banner extends Component
         $this->dispatch('success', __('Banners Deleted'));
     }
 
-    public function groupCopy(array $idArray11){
-
-        foreach ($idArray11 as $value) {
+    public function groupCopy(array $copyArray){
+        // dd($copyArray['ids']);
+        foreach ($copyArray['ids'] as $value) {
             $bannerDetails = Banners::find($value);
+         
             if (!empty($bannerDetails)) {
                 $bannerDetails['status'] = 0;
                 $bannerDetails['banner_name'] = '';
                 $bannerDetails['notified_banner'] = '';
                 $newBanner = $bannerDetails->replicate()->save();                        
             }
+           
         }
         $this->dispatch('success', __('Banners Copied'));
     }
-    public function groupstatus(array $idArray){
-        foreach ($idArray["ids"] as $key => $value) {
+    public function groupstatus(array $statusArray){
+        foreach ($statusArray["ids"] as $key => $value) {
             $bannerDetails = Banners::find($value);
             // $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
           
             // $this->cacheDelete(explode(',',$bannerDetails->circle),$bannerScreenDetails->screen_name);
             
             if (!empty($bannerDetails)) {
-                switch ($idArray["status"]) {
+                switch ($statusArray["status"]) {
                     case '1': $bannerDetails->status = 1;
                         break;
                     case '0': $bannerDetails->status = 0;

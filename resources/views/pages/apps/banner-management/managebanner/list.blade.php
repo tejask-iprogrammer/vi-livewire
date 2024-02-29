@@ -43,13 +43,13 @@
         </div>
         <!--end::Card header-->
         <div class="table-actions-wrapper">
-            <button class="btn btn-sm red table-group-action-delete btn btn-primary"><i class="fa fa-trash"></i> Delete</button>
+            <button class="btn btn-sm red table-group-action-delete  deleteData btn btn-primary"><i class="fa fa-trash"></i> Delete</button>
             <select class="form-control changeStatus">
                 <option value="" selected>change Status</option>
                 <option value="1">Active</option>
                 <option value="0">Inactive</option>
             </select>
-            <button class="btn btn-sm yellow table-group-action-copy btn btn-primary"><i class="fa fa-copy"></i> Copy</button>
+            <button class="btn btn-sm yellow table-group-action-copy CopyData btn btn-primary"><i class="fa fa-copy"></i> Copy</button>
         </div>
         <!--begin::Card body-->
         <div class="card-body py-4">
@@ -177,7 +177,7 @@
                  
                 // Group Action Start
 
-                    $('body').on("click", ".table-group-action-delete", function (e) {
+                    $('body').on("click", ".deleteData", function (e) {
                         Swal.fire({
                             text: 'Are you sure?',
                             icon: 'warning',
@@ -190,23 +190,26 @@
                                 cancelButton: 'btn btn-secondary',
                             }
                         }).then((result) => {
-                            var get_selected_data = new Array();
+                            var get_selected_data_delete = new Array();
+                            var mainArraydelete = new Array();
                             $("input[name='multi_chk[]']").each(function (index, obj) {
                             if(this.checked)
                             {
-                                    get_selected_data.push($(this).val());
+                                get_selected_data_delete.push($(this).val());
                             }
                             });
-                            
+                            mainArraydelete={
+                                "ids":get_selected_data_delete,
+                            }
                             if (result.isConfirmed) {
-                                if(get_selected_data.length >0){
-                                    Livewire.dispatch('group_delete', [get_selected_data]);
+                                if(get_selected_data_delete.length >0){
+                                    Livewire.dispatch('group_delete', [mainArraydelete]);
                                 }else{}
                             }
                         });
                     });
 
-                    $('body').on("click", ".table-group-action-copy", function (e) {
+                    $('body').on("click", ".CopyData", function (e) {
                         Swal.fire({
                             text: 'Are you sure to copy the row same as it is ?',
                             icon: 'warning',
@@ -219,18 +222,20 @@
                                 cancelButton: 'btn btn-secondary',
                             }
                         }).then((result) => {
-                            var get_selected_data = new Array();
-                            console.log(get_selected_data);
+                            var get_selected_data_copy = new Array();
+                            var mainArrayCopy = new Array();
+                            console.log(get_selected_data_copy);
                             $("input[name='multi_chk[]']").each(function (index, obj) {
                             if(this.checked)
                             {
-                                    get_selected_data.push($(this).val());
+                                get_selected_data_copy.push($(this).val());
                             }
                             });
+                            mainArrayCopy={
+                                "ids":get_selected_data_copy,
+                            }
                             if (result.isConfirmed) {
-                                console.log(get_selected_data);
-                                
-                                Livewire.dispatch('group_copy', [get_selected_data]);
+                                Livewire.dispatch('group_copy', [mainArrayCopy]);
                             }
                         });
                     });
@@ -249,19 +254,20 @@
                             }
                         }).then((result) => {
                             var status = $(this).val();
-                            var get_selected_data = new Array();
+                            var get_selected_data_status = new Array();
                             var mainArray = new Array();
                             $("input[name='multi_chk[]']").each(function (index, obj) {
                             if(this.checked)
                             {
-                                    get_selected_data.push($(this).val());
+                                get_selected_data_status.push($(this).val());
                             }
                             });
                             mainArray={
-                                "ids":get_selected_data,
+                                "ids":get_selected_data_status,
                                 "status":status,
                             }
                             if (result.isConfirmed) {
+
                                 Livewire.dispatch('group_status', [mainArray]);
                             }
                         });
