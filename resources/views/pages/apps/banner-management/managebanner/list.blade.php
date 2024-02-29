@@ -42,15 +42,7 @@
             <!--end::Card toolbar-->
         </div>
         <!--end::Card header-->
-        <div class="table-actions-wrapper">
-            <button class="btn btn-sm red table-group-action-delete  deleteData btn btn-primary"><i class="fa fa-trash"></i> Delete</button>
-            <select class="form-control changeStatus">
-                <option value="" selected>change Status</option>
-                <option value="1">Active</option>
-                <option value="0">Inactive</option>
-            </select>
-            <button class="btn btn-sm yellow table-group-action-copy CopyData btn btn-primary"><i class="fa fa-copy"></i> Copy</button>
-        </div>
+        
         <!--begin::Card body-->
         <div class="card-body py-4">
             <!--begin::Table-->
@@ -64,14 +56,12 @@
     </div>
 
     @push('scripts')
-        <script>
+        <script type="text/javascript">
                 $('body').on("click", ".chkAll", function (e) {
                     if($(".chkAll").prop('checked') == true){
                         $('input:checkbox').attr('checked',true);
-                        // document.getElementsByClassName("selectMultichk").checked = true;
                     }else{
                         $('input:checkbox').attr('checked',false);
-                        // document.getElementsByClassName("selectMultichk").checked = false;
                     }
                 });
                
@@ -80,10 +70,8 @@
                     var allCheked = $('body').find('input[name="multi_chk[]"]:checked').length;
                     var checkCount = $('body').find('input[name="multi_chk[]"]').length;
                     if(allCheked == checkCount){
-                        // $('.chkAll').attr('checked',true);
                         document.getElementById("chkAll").checked = true;
                     }else{
-                        // $('.chkAll').attr('checked',false);
                         document.getElementById("chkAll").checked = false;
 
                     }
@@ -95,36 +83,7 @@
             document.addEventListener('livewire:init', function () {
                 Livewire.on('success', function () {
                     $('#kt_modal_add_banner').modal('hide');
-                    location.reload();
-                    // const form = element.querySelector('#kt_modal_add_banner_form');
-                    // form.reset();
-                    // window.LaravelDataTables['banner-table'].ajax.reload();
                 });
-             
-                // $('#banner-table').on( 'draw.dt', function () {
-                //     $("#banner-table").find('.bannerTitle').parent().first().addClass("ClassAdded");
-                //     $('.ClassAdded th').each(function(i) {
-                //         if ( i === 0 ) {
-                //         $(this).html('<input type="checkbox" value="All" id="chkAll" class="form-check-input chkAll"  />');
-                //         }
-                //     });
-                // } );
-                
-            //    $('.bannerAdd').on('click',function(){
-            //     // const form = element.querySelector('#kt_modal_add_banner_form');
-            //         // form.reset();
-            //             $("#kt_modal_add_banner_form")
-            //                 .find("input,textarea,select")
-            //                 .val('')
-            //                 .end()
-            //                 .find("input[type=checkbox], input[type=radio]")
-            //                 .prop("checked", "")
-            //                 .end();
-            //         window.LaravelDataTables['banner-table'].ajax.reload();
-
-            //     });
-
-
             });
             document.addEventListener('livewire:init', function () {
                 $('.js-example-basic-multiple').select2();
@@ -175,104 +134,6 @@
                     }
                 });
                  
-                // Group Action Start
-
-                    $('body').on("click", ".deleteData", function (e) {
-                        Swal.fire({
-                            text: 'Are you sure?',
-                            icon: 'warning',
-                            buttonsStyling: false,
-                            showCancelButton: true,
-                            confirmButtonText: 'Yes',
-                            cancelButtonText: 'No',
-                            customClass: {
-                                confirmButton: 'btn btn-danger',
-                                cancelButton: 'btn btn-secondary',
-                            }
-                        }).then((result) => {
-                            var get_selected_data_delete = new Array();
-                            var mainArraydelete = new Array();
-                            $("input[name='multi_chk[]']").each(function (index, obj) {
-                            if(this.checked)
-                            {
-                                get_selected_data_delete.push($(this).val());
-                            }
-                            });
-                            mainArraydelete={
-                                "ids":get_selected_data_delete,
-                            }
-                            if (result.isConfirmed) {
-                                if(get_selected_data_delete.length >0){
-                                    Livewire.dispatch('group_delete', [mainArraydelete]);
-                                }else{}
-                            }
-                        });
-                    });
-
-                    $('body').on("click", ".CopyData", function (e) {
-                        Swal.fire({
-                            text: 'Are you sure to copy the row same as it is ?',
-                            icon: 'warning',
-                            buttonsStyling: false,
-                            showCancelButton: true,
-                            confirmButtonText: 'Yes',
-                            cancelButtonText: 'No',
-                            customClass: {
-                                confirmButton: 'btn btn-danger',
-                                cancelButton: 'btn btn-secondary',
-                            }
-                        }).then((result) => {
-                            var get_selected_data_copy = new Array();
-                            var mainArrayCopy = new Array();
-                            console.log(get_selected_data_copy);
-                            $("input[name='multi_chk[]']").each(function (index, obj) {
-                            if(this.checked)
-                            {
-                                get_selected_data_copy.push($(this).val());
-                            }
-                            });
-                            mainArrayCopy={
-                                "ids":get_selected_data_copy,
-                            }
-                            if (result.isConfirmed) {
-                                Livewire.dispatch('group_copy', [mainArrayCopy]);
-                            }
-                        });
-                    });
-
-                    $('body').on("click", ".changeStatus", function (e) {
-                        Swal.fire({
-                            text: 'Are you sure to update the status?',
-                            icon: 'warning',
-                            buttonsStyling: false,
-                            showCancelButton: true,
-                            confirmButtonText: 'Yes',
-                            cancelButtonText: 'No',
-                            customClass: {
-                                confirmButton: 'btn btn-danger',
-                                cancelButton: 'btn btn-secondary',
-                            }
-                        }).then((result) => {
-                            var status = $(this).val();
-                            var get_selected_data_status = new Array();
-                            var mainArray = new Array();
-                            $("input[name='multi_chk[]']").each(function (index, obj) {
-                            if(this.checked)
-                            {
-                                get_selected_data_status.push($(this).val());
-                            }
-                            });
-                            mainArray={
-                                "ids":get_selected_data_status,
-                                "status":status,
-                            }
-                            if (result.isConfirmed) {
-
-                                Livewire.dispatch('group_status', [mainArray]);
-                            }
-                        });
-                    });
-                // Group Action End
         </script>
     @endpush
 

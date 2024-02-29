@@ -678,10 +678,5 @@
                 })
 
             });
-
-            window.addEventListener("CloseAddBannerModal",function(){
-                debugger;
-                $("kt_modal_add_banner").modal("hide");
-            })
 </script>
 @endpush

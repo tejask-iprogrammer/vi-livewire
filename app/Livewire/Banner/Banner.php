@@ -69,9 +69,9 @@ class Banner extends Component
     protected $listeners = [
         'delete_banner' => 'deleteBanner',
         'update_banner' => 'updateBanner',
-        'group_delete' => "groupDelete",
-        'group_copy' => "groupCopy",
-        'group_status' =>"groupStatus"
+        // 'group_delete' => "groupDelete",
+        // 'group_copy' => "groupCopy",
+        // 'group_status' =>"groupStatus"
     ];
 
     protected $rules = [
@@ -335,61 +335,63 @@ class Banner extends Component
         // Emit a success event with a message
         $this->dispatch('success', 'Banner successfully deleted');
     }
-    public function groupDelete(array $deleteArray){
-        foreach ($deleteArray["ids"] as $key => $bannerId) {
-            $bannerDetails = Banners::find($bannerId);
-            // $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
+    // public function groupDelete(array $deleteArray){
+    //     foreach ($deleteArray["ids"] as $key => $bannerId) {
+    //         $bannerDetails = Banners::find($bannerId);
+    //         // $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
             
-            // $this->cacheDelete(explode(',',$bannerDetails->circle),$bannerScreenDetails->screen_name);
+    //         // $this->cacheDelete(explode(',',$bannerDetails->circle),$bannerScreenDetails->screen_name);
             
-            if (!empty($bannerDetails)) {
-                // $delete = ImageHelper::deleteS3File($bannerScreenDetails->banner_name);
-                $bannerDetails->delete();
-            }
-            // $resultStatus = true;
-        }
-        // $update = Banner::orderBy('id', 'DESC')->first();
-        // if(!empty($update)){
-        //     $update['updated_at'] = date("Y-m-d H:i:s");
-        //     $result = $update->save();
-        // }     
-        $this->dispatch('success', __('Banners Deleted'));
-    }
+    //         if (!empty($bannerDetails)) {
+    //             // $delete = ImageHelper::deleteS3File($bannerScreenDetails->banner_name);
+    //             $bannerDetails->delete();
+    //         }
+    //         // $resultStatus = true;
+    //     }
+    //     // $update = Banner::orderBy('id', 'DESC')->first();
+    //     // if(!empty($update)){
+    //     //     $update['updated_at'] = date("Y-m-d H:i:s");
+    //     //     $result = $update->save();
+    //     // }     
+    //     $this->dispatch('success', __('Banners Deleted'));
+    // }
 
-    public function groupCopy(array $copyArray){
-        foreach ($copyArray['ids'] as $key => $value) {
-            $bannerDetails = Banners::find($value);
-            if (!empty($bannerDetails)) {
-                $bannerDetails['status'] = 0;
-                $bannerDetails['banner_name'] = '';
-                $bannerDetails['notified_banner'] = '';
-                $newBanner = $bannerDetails->replicate()->save();                        
-            }
+    // public function groupCopy(array $copyArray){
+    //     foreach ($copyArray as $key => $value) {
+    //         $bannerDetails = Banners::find($value);
+    //         if (!empty($bannerDetails)) {
+    //             $bannerDetails['status'] = 0;
+    //             $bannerDetails['banner_name'] = '';
+    //             $bannerDetails['notified_banner'] = '';
+    //             $newBanner = $bannerDetails->replicate()->save();                        
+    //         }
            
-        }
-        $this->dispatch('success', __('Banners Copied'));
-    }
-    public function groupstatus(array $statusArray){
-        foreach ($statusArray["ids"] as $key => $value) {
-            $bannerDetails = Banners::find($value);
-            // $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
+    //     }
+    //     $this->dispatch('success', __('Banners Copied'));
+    //     // return;
+    // }
+    // public function groupstatus(array $statusArray){
+    //     foreach ($statusArray["ids"] as $key => $value) {
+    //         $bannerDetails = Banners::find($value);
+    //         // $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
           
-            // $this->cacheDelete(explode(',',$bannerDetails->circle),$bannerScreenDetails->screen_name);
+    //         // $this->cacheDelete(explode(',',$bannerDetails->circle),$bannerScreenDetails->screen_name);
             
-            if (!empty($bannerDetails)) {
-                switch ($statusArray["status"]) {
-                    case '1': $bannerDetails->status = 1;
-                        break;
-                    case '0': $bannerDetails->status = 0;
-                        break;
-                }
-                $bannerDetails->save();
-                $resultStatus = true;
-            }
-        }
-        // $this->dispatchBrowserEvent("CloseAddBannerModal");
-        $this->dispatch('success', __('Banners status Updated'));
-    }
+    //         if (!empty($bannerDetails)) {
+    //             switch ($statusArray["status"]) {
+    //                 case '1': $bannerDetails->status = 1;
+    //                     break;
+    //                 case '0': $bannerDetails->status = 0;
+    //                     break;
+    //             }
+    //             $bannerDetails->save();
+    //             $resultStatus = true;
+    //         }
+    //     }
+    //     // $this->dispatchBrowserEvent("CloseAddBannerModal");
+    //     $this->dispatch('success', __('Banners status Updated'));
+    // }
+    
     public function hydrate()
     {
         $this->resetErrorBag();
