@@ -593,11 +593,11 @@
                             <div class="row">
                                 <div class="col mt-4">
                                     <label class="required fw-semibold fs-6 mb-2">Status</label>
-                                    <input class="form-check-input" wire:model.live="status" value="1" type="radio" >
+                                    <input class="form-check-input" wire:model="status" value="1" type="radio" >
                                     <label class="form-check-label" for="status">
                                         Active
                                     </label>
-                                    <input class="form-check-input" wire:model.live="status" value="0" type="radio">
+                                    <input class="form-check-input" wire:model="status" value="0" type="radio">
                                     <label class="form-check-label" for="status">
                                         Inactive
                                     </label>

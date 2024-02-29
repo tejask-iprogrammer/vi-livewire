@@ -147,12 +147,12 @@
                         $(".prepaidSelect").addClass("prepaidSelectdisable");
                         $(".postpaidSelect").removeClass("postpaidSelectdisable");
                     }else if(selectedLob.toLowerCase() == "both"){
-                        $(".prepaidSelect").prop('disabled', true);
-                        $(".socId").prop('disabled', true);
-                        $(".postpaidSelect").prop('disabled', true);
-                        $(".planSelect").prop('disabled', true);
-                        $(".postpaidSelect").addClass("postpaidSelectdisable");
-                        $(".prepaidSelect").addClass("prepaidSelectdisable");
+                        $(".prepaidSelect").prop('disabled', false);
+                        $(".socId").prop('disabled', false);
+                        $(".postpaidSelect").prop('disabled', false);
+                        $(".planSelect").prop('disabled', false);
+                        $(".postpaidSelect").removeClass("postpaidSelectdisable");
+                        $(".prepaidSelect").removeClass("prepaidSelectdisable");
                         $('.socId').val('');
                     }else{
                         $(".prepaidSelect").prop('disabled', false);

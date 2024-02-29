@@ -56,7 +56,7 @@ class Banner extends Component
     public $notified_banner;
     public $app_version;
     public $banner_rank;
-    public $status='1';
+    public $status="1";
     public $isnotified='1';
     public $edit_mode = false;
     public $saved_avatar;
@@ -238,13 +238,14 @@ class Banner extends Component
             if($this->coupon_code){
                 $data['coupon_code'] = $this->coupon_code;
             }
-            if($this->status){
-                $data['status'] =  $this->status;
+            if($this->status !=""){
+                $data['status'] = $this->status;
             }
+
             if($this->validity_period){
                 $data['validity_period'] =  $this->validity_period;
             }
-            if($this->isnotified){
+            if($this->isnotified != ""){
                 $data['is_notified'] = $this->isnotified;
             }
             // dd($data);
@@ -356,10 +357,8 @@ class Banner extends Component
     }
 
     public function groupCopy(array $copyArray){
-        // dd($copyArray['ids']);
-        foreach ($copyArray['ids'] as $value) {
+        foreach ($copyArray['ids'] as $key => $value) {
             $bannerDetails = Banners::find($value);
-         
             if (!empty($bannerDetails)) {
                 $bannerDetails['status'] = 0;
                 $bannerDetails['banner_name'] = '';

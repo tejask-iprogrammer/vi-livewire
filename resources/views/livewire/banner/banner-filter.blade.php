@@ -195,9 +195,10 @@
 
         </tbody>
         </table>
-        <div>
+        <div class ="row align-items-center justify-content-between">
             <div class="col-md-2">
-                <label for="">Per Page</label>
+                <div class="d-flex align-items-center justify-content-center">
+                    <label class="perpageclass" for="">Per Page</label>
                     <select wire:model.live="Byperpage" class="form-control" >
                         <option value="10">10</option>
                         <option value="50">50</option>
@@ -205,10 +206,11 @@
                         <option value="500">500</option>
                         <option value="{{$totalCount}}">All</option>
                     </select>
-            </div>
-            <div class="col-md-2">
-                <span class="separator">|</span><b>Total {{$totalCount}} record(s) found</b>
+                </div>
                 
+            </div>
+            <div class="col-md-6 text-end">
+                <b>Total {{$totalCount}} record(s) found</b>
             </div>
         </div>
        

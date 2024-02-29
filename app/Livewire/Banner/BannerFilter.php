@@ -55,21 +55,21 @@ class BannerFilter extends Component
             return $q->whereIn('lob',["Both", $this->lob]);
         });
         $query->when($this->postpaid_persona != "", function($q){
-            return $q->where('postpaid_persona', $this->postpaid_persona);
+            return $q->whereIn('postpaid_persona', ["All",$this->postpaid_persona]);
         });
         $query->when($this->brand != "", function($q){
-            return $q->where('brand', $this->brand);
+            return $q->whereIn('brand', ["Brandx",$this->brand]);
         });
         $query->when($this->loginType != "", function($q){
-            return $q->where('login_type', $this->loginType);
+            return $q->whereIn('login_type',["Both",$this->loginType]);
         });
 
         $query->when($this->circle != "", function($q){
-            return $q->where('circle', $this->circle);
+            return $q->whereIn('circle', ["0000",$this->circle]);
         });
 
         $query->when($this->appversion != "", function($q){
-            return $q->where('app_version', $this->appversion);
+            return $q->where('app_version', ["All Versions",$this->appversion]);
         });
 
         $query->when($this->screen != "", function($q){
@@ -77,7 +77,7 @@ class BannerFilter extends Component
         });
 
         $query->when($this->os != "", function($q){
-            return $q->where('device_os', $this->os);
+            return $q->whereIn('device_os', ['Both',$this->os]);
         });
 
         $query->when($this->rank != "", function($q){
