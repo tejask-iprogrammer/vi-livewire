@@ -8,6 +8,9 @@ use App\Models\BannerScreen;
 use App\Models\Tab;
 use App\Models\AppVersion;
 use App\Models\Banners;
+use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Auth;
+
 class BannerFilter extends Component
 {
     use WithPagination;
@@ -30,6 +33,7 @@ class BannerFilter extends Component
         'group_delete' => "groupDelete",
         'group_copy' => "groupCopy",
         'group_status' =>"groupStatus",
+        "deleteRow"=>"deleteRowData",
     ];
     public function render()
     {
@@ -168,6 +172,19 @@ class BannerFilter extends Component
             }
         }
         $this->dispatch('success', __('Banners status Updated'));
+    }
+
+    function deleteRowData($deleteDataID){
+        if(Redis::keys('Temp*')){  Redis::del(Redis::keys('Temp*')); }
+        // Prevent deletion of current user
+        if ($deleteDataID == Auth::id()) {
+            $this->dispatch('error', 'banner cannot be deleted');
+            return;
+        }
+        // Delete the user record with the specified ID
+        Banners::destroy($deleteDataID);
+        // Emit a success event with a message
+        $this->dispatch('success', 'Banner successfully deleted');
     }
     
 }
