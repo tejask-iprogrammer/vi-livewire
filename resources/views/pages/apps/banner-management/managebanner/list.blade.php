@@ -95,6 +95,7 @@
                         $(".socId").prop('disabled', true);
                         $(".prepaidSelect").prop('disabled', false);
                         $(".planSelect").prop('disabled', false);
+                        $(".socIDincludeexclude").prop('disabled', true);
                         $(".postpaidSelect").addClass("postpaidSelectdisable");
                         $(".prepaidSelect").removeClass("prepaidSelectdisable");
                         $('.socId').val('');
@@ -105,6 +106,7 @@
                         $(".socId").prop('disabled', false);
                         $(".prepaidSelect").addClass("prepaidSelectdisable");
                         $(".postpaidSelect").removeClass("postpaidSelectdisable");
+                        $(".socIDincludeexclude").prop('disabled', false);
                     }else if(selectedLob.toLowerCase() == "both"){
                         $(".prepaidSelect").prop('disabled', false);
                         $(".socId").prop('disabled', false);
@@ -113,11 +115,13 @@
                         $(".postpaidSelect").removeClass("postpaidSelectdisable");
                         $(".prepaidSelect").removeClass("prepaidSelectdisable");
                         $('.socId').val('');
+                        $(".socIDincludeexclude").prop('disabled', false);
                     }else{
                         $(".prepaidSelect").prop('disabled', false);
                         $(".socId").prop('disabled', false);
                         $(".postpaidSelect").prop('disabled', false);
                         $(".planSelect").prop('disabled', false);
+                        $(".socIDincludeexclude").prop('disabled', false);
                         $(".postpaidSelect").removeClass("postpaidSelectdisable");
                         $(".prepaidSelect").removeClass("prepaidSelectdisable");
                         $('.socId').val('');

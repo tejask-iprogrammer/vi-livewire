@@ -110,7 +110,7 @@
                             <div class="row">
                                 <div class="col mt-4">
                                     <!--begin::Label-->
-                                    <label class="fw-semibold fs-6 mb-2">Select LOB</label>
+                                    <label class="required fw-semibold fs-6 mb-2">Select LOB</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <select wire:model="lob" class="form-control lobSelect">
@@ -122,7 +122,7 @@
                                     <!--end::Input-->
                                     <!--begin::Hint-->
                                         <!--end::Hint-->
-                                    @error('required')
+                                    @error('lob')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
@@ -191,8 +191,8 @@
                                     <label class="fw-semibold fs-6 mb-2">Select SocId Include or Exclude</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="socid_include_exclude" class="form-control ">
-                                        <option value="" selected>Select Prepaid Persona</option>
+                                    <select wire:model="socid_include_exclude" class="form-control socIDincludeexclude">
+                                        <option value="" selected>Select SocId Include or Exclude</option>
                                         @foreach($socidIncludeExcludeList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach

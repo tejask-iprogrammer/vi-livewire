@@ -32,7 +32,7 @@ class Banner extends Component
     public $plan;
     public $prepaid_persona;
     public $postpaid_persona;
-    public $socid_include_exclude;
+    public $socid_include_exclude="";
     public $socid;
     public $banner_title;
     public $analytics_tag;
@@ -148,7 +148,9 @@ class Banner extends Component
             // if (!$this->edit_mode) {
             //     $data['password'] = Hash::make($this->password);
             // }
-            // dd($this->lob);
+            if($this->socid_include_exclude == 0){
+                $this->socid_include_exclude = "";
+            }
             if($this->lob == "Both"){
                  $this->validate([
                     'prepaid_persona' => 'required',

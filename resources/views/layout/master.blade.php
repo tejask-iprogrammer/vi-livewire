@@ -79,6 +79,9 @@
     document.addEventListener('livewire:init', () => {
         Livewire.on('success', (message) => {
             toastr.success(message);
+            setTimeout(function(){
+            window.location.reload();
+            }, 1000);
         });
         Livewire.on('error', (message) => {
             toastr.error(message);
