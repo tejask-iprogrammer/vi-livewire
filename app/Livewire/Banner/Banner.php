@@ -148,7 +148,35 @@ class Banner extends Component
             // if (!$this->edit_mode) {
             //     $data['password'] = Hash::make($this->password);
             // }
-
+            // dd($this->lob);
+            if($this->lob == "Both"){
+                 $this->validate([
+                    'prepaid_persona' => 'required',
+                    'plan' => 'required',
+                    'socid' => 'required',
+                    'socid_include_exclude' => 'required',
+                    'postpaid_persona' => 'required',
+                ]);
+            }
+            if($this->lob == "Prepaid"){
+                $this->validate([
+                   'prepaid_persona' => 'required',
+                   'plan' => 'required',
+                //    'socid' => 'required',
+                //    'socid_include_exclude' => 'required',
+                //    'postpaid_persona' => 'required',
+               ]);
+           }
+           if($this->lob == "Postpaid"){
+            $this->validate([
+            //    'prepaid_persona' => 'required',
+            //    'plan' => 'required',
+               'socid' => 'required',
+               'socid_include_exclude' => 'required',
+               'postpaid_persona' => 'required',
+           ]);
+       }
+            
             $data['start_date_time'] = $this->start_date_time;
             $data['end_date_time'] = $this->end_date_time;
             
