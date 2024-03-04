@@ -39,7 +39,7 @@
                 </td>
                 <td><span class="wordBreak">
                         <select class="form-control" wire:model.live="lob">
-                        <option value="">-- choose lob --</option>
+                        <option value="">Select....</option>
                             @foreach($lobList as $key=>$value)
                                 <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
@@ -49,7 +49,7 @@
                 <td>
                     <span class="wordBreak">
                         <select class="form-control" wire:model.live="postpaid_persona">
-                        <option value="">-- choose postpaid persona --</option>
+                        <option value="">Select....</option>
                             @foreach($postpaidPersonaList as $key=>$value)
                                 <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
@@ -59,7 +59,7 @@
                 <td>
                     <span class="wordBreak">
                         <select wire:model.live="loginType" class="form-control">
-                            <option value="" selected>Select login Type</option>
+                            <option value="" selected>Select....</option>
                             @foreach($loginTypeList as $key=>$value)
                             <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
@@ -69,7 +69,7 @@
                 <td>
                     <span class="wordBreak">
                         <select wire:model.live="brand" class="form-control">
-                            <option value="" selected>Select Brand</option>
+                            <option value="" selected>Select....</option>
                             @foreach($brandList as $key=>$value)
                             <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
@@ -79,7 +79,7 @@
                 <td>
                     <span class="wordBreak">
                         <select wire:model.live="circle" class="form-control">
-                            <option value="" selected>Select circle</option>
+                            <option value="" selected>Select....</option>
                             @foreach($circleList as $key=>$value)
                             <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
@@ -89,7 +89,7 @@
                 <td>
                     <span class="wordBreak">
                         <select wire:model.live="appversion" class="form-control">
-                            <option value="" selected>Select app version</option>
+                            <option value="" selected>Select....</option>
                             @foreach($appVersionList as $key=>$value)
                             <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
@@ -100,7 +100,7 @@
                 <td>
                     <span class="wordBreak">
                         <select wire:model.live="screen" class="form-control">
-                            <option value="" selected>Select Screen</option>
+                            <option value="" selected>Select....</option>
                             @foreach($screenList as $key=>$value)
                             <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
@@ -111,7 +111,7 @@
                 <td>
                     <span class="wordBreak">
                         <select wire:model.live="os" class="form-control">
-                            <option value="" selected>Select OS</option>
+                            <option value="" selected>Select....</option>
                             @foreach($osList as $key=>$value)
                             <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
@@ -122,7 +122,7 @@
                 <td>
                     <span class="wordBreak">
                         <select wire:model.live="rank" class="form-control">
-                            <option value="" selected>Select Rank</option>
+                            <option value="" selected>Select....</option>
                             @foreach($rankList as $key=>$value)
                             <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
@@ -134,7 +134,7 @@
                 <td>
                     <span class="wordBreak">
                         <select wire:model.live="status" class="form-control">
-                            <option value="" selected>Select status</option>
+                            <option value="" selected>Select....</option>
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>
                         </select>
