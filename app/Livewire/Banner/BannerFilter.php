@@ -119,6 +119,10 @@ class BannerFilter extends Component
         return view('livewire.banner.banner-filter',compact('banners','lobList','postpaidPersonaList','brandList','loginTypeList','circleList','appVersionList','screenList','osList','rankList','totalCount'));
     }
     function groupCopy($copyArray){
+        if(!(count($copyArray['ids']))){
+            $this->dispatch('error', 'Please select minimun one record');
+            return;
+        }
         foreach ($copyArray['ids'] as $key => $value) {
             $bannerDetails = Banners::find($value);
             if (!empty($bannerDetails)) {
@@ -131,6 +135,10 @@ class BannerFilter extends Component
         $this->dispatch('success', __('Banners Copied'));
     }
     public function groupDelete(array $deleteArray){
+        if(!(count($deleteArray['ids']))){
+            $this->dispatch('error', 'Please select minimun one record');
+            return;
+        }
         foreach ($deleteArray["ids"] as $key => $bannerId) {
             $bannerDetails = Banners::find($bannerId);
             // $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
@@ -152,6 +160,10 @@ class BannerFilter extends Component
     }
 
     public function groupstatus(array $statusArray){
+        if(!(count($statusArray['ids']))){
+            $this->dispatch('error', 'Please select minimun one record');
+            return;
+        }
         foreach ($statusArray["ids"] as $key => $value) {
             $bannerDetails = Banners::find($value);
             // $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);

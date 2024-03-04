@@ -307,9 +307,7 @@
                                 "ids":get_selected_data_delete,
                             }
                             if (result.isConfirmed) {
-                                if(get_selected_data_delete.length >0){
                                     Livewire.dispatch('group_delete', [mainArraydelete]);
-                                }else{}
                             }
                         });
                     });
