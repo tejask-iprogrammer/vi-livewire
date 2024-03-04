@@ -18,6 +18,8 @@ use App\Models\BannerScreen;
 use App\Models\Tab;
 use App\Models\AppVersion;
 use App\Models\Banners;
+use \Carbon\Carbon;
+
 
 class Banner extends Component
 {
@@ -206,8 +208,13 @@ class Banner extends Component
             if($this->banner_title){
                 $data['banner_title'] = $this->banner_title;
             }
+
+            // $image=new Image();
+            // dd($this->banner_name);
+            $imageName = carbon::now()->timestamp.'.'.$this->banner_name->extension();
+            $tempdata = $this->banner_name->storeAs('astro',$imageName,'s3');
             if($this->banner_name){
-                $data['banner_name'] = $this->banner_name;
+                $data['banner_name'] = $tempdata;
             }
             if($this->banner_rank){
                 $data['banner_rank'] = $this->banner_rank;
@@ -280,7 +287,6 @@ class Banner extends Component
             }
             // dd($data);
             // Update or Create a new user record in the database
-
             if(Redis::keys('Temp*')){  Redis::del(Redis::keys('Temp*')); }
             $banners = Banners::find($this->user_id) ?? Banners::create($data);
             if ($this->edit_mode) {
@@ -351,6 +357,7 @@ class Banner extends Component
         $this->isnotified = $banners->is_notified;
         $this->start_date_time = $banners->start_date_time;
         $this->end_date_time = $banners->end_date_time;
+        $this->banner_name = $banners->banner_name;
     }
     public function deleteBanner($id)
     {

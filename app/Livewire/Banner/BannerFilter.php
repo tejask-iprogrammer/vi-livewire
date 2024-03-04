@@ -45,7 +45,6 @@ class BannerFilter extends Component
         
         $query = Banners::orderBy("updated_at",'desc');
         // $usersCount = Banners::orderBy("updated_at",'desc');
-        $totalCount = $query->count();
 
         $lobList = ['Prepaid' => 'Prepaid', 'Postpaid' => 'Postpaid', 'Both' => 'Both'];
         $postpaidPersonaList = ['All' => 'All', 'COCP' => 'COCP', 'IOIP' => 'IOIP', 'COIP' => 'COIP', 'Individual' => 'Individual'];
@@ -97,9 +96,8 @@ class BannerFilter extends Component
         $query->when($this->status != "", function($q){
             return $q->where('status', $this->status);
         });
+        $totalCount = $query->count();
         
-        //  $page=10;
-
         $banners = $query->paginate($this->Byperpage);
         foreach ($banners as $fetchCircle) {
             if($fetchCircle->circle != NULL){

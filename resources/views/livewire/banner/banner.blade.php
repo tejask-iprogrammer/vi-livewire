@@ -475,10 +475,10 @@
                                         </style>
                                         <!--end::Image placeholder-->
                                         <!--begin::Image input-->
-                                        <div class="image-input image-input-outline image-input-placeholder {{ $avatar || $saved_avatar ? '' : 'image-input-empty' }}" data-kt-image-input="true">
+                                        <div wire:ignore class="image-input image-input-outline image-input-placeholder {{ $banner_name || $saved_avatar ? '' : 'image-input-empty' }}" data-kt-image-input="true">
                                             <!--begin::Preview existing avatar-->
-                                            @if($avatar)
-                                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $avatar ? $avatar->temporaryUrl() : '' }});"></div>
+                                            @if($banner_name)
+                                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset('uploads/image_uploads')}}/{{$banner_name }});"></div>
                                             @else
                                                 <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $saved_avatar }});"></div>
                                             @endif
@@ -502,7 +502,7 @@
                                             <!--begin::Hint-->
                                             <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
                                             <!--end::Hint-->
-                                            @error('avatar')
+                                            @error('banner_name')
                                             <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
@@ -676,7 +676,11 @@
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
                     $(".js-example-basic-multiple").trigger("change");
                 })
-
+                $('#kt_modal_add_banner').on('hidden.bs.modal', function (e) {
+                    $("#kt_modal_add_banner_form")[0].reset();
+                    let data = false;
+                    @this.set('edit_mode',data)
+                })
             });
 </script>
 @endpush

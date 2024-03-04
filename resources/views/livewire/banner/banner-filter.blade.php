@@ -220,7 +220,7 @@
                 </div>
                 
             </div>
-            <div class="col-md-6 text-end">
+            <div class="col-md-6 tempCSS">
                 <b>Total {{$totalCount}} record(s) found</b>
             </div>
         </div>
