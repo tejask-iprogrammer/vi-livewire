@@ -704,8 +704,11 @@
                         $('.postpaidSelect').val(null).trigger('change');
                         $('.prepaidSelect').val(null).trigger('change');
                         $(".planSelect option:selected").prop("selected", false);
-                        let data = "";
-                        @this.set('plan',data);
+                        @this.set('socid',"");
+                        @this.set('prepaid_persona',"");
+                        @this.set('plan',"");
+                        @this.set('socid_include_exclude',"");
+                        @this.set('postpaid_persona',"");
                     }else if(selectedLob.toLowerCase() == "postpaid"){
                         $(".prepaidSelect").prop('disabled', true);
                         $(".planSelect").prop('disabled', true);
@@ -717,8 +720,11 @@
                         $('.prepaidSelect').val(null).trigger('change');
                         $('.postpaidSelect').val(null).trigger('change');
                         $(".planSelect option:selected").prop("selected", false);
-                        let data = "";
-                        @this.set('plan',data);
+                        @this.set('socid',"");
+                        @this.set('prepaid_persona',"");
+                        @this.set('plan',"");
+                        @this.set('socid_include_exclude',"");
+                        @this.set('postpaid_persona',"");
                     }else if(selectedLob.toLowerCase() == "both"){
                         $(".prepaidSelect").prop('disabled', false);
                         $(".socId").prop('disabled', false);
@@ -731,8 +737,11 @@
                         $(".planSelect option:selected").prop("selected", false);
                         $('.postpaidSelect').val(null).trigger('change');
                         $('.prepaidSelect').val(null).trigger('change');
-                        let data = "";
-                        @this.set('plan',data);
+                        @this.set('socid',"");
+                        @this.set('prepaid_persona',"");
+                        @this.set('plan',"");
+                        @this.set('socid_include_exclude',"");
+                        @this.set('postpaid_persona',"");
                     }else{
                         $(".prepaidSelect").prop('disabled', false);
                         $(".socId").prop('disabled', false);
@@ -745,8 +754,11 @@
                         $(".planSelect option:selected").prop("selected", false);
                         $('.postpaidSelect').val(null).trigger('change');
                         $('.prepaidSelect').val(null).trigger('change');
-                        let data = "";
-                        @this.set('plan',data);
+                        @this.set('socid',"");
+                        @this.set('prepaid_persona',"");
+                        @this.set('plan',"");
+                        @this.set('socid_include_exclude',"");
+                        @this.set('postpaid_persona',"");
                     }
                 });
             });

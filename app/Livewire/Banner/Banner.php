@@ -178,8 +178,8 @@ class Banner extends Component
                'socid' => 'required',
                'socid_include_exclude' => 'required',
                'postpaid_persona' => 'required',
-           ]);
-       }
+             ]);
+            }
             
             $data['start_date_time'] = $this->start_date_time;
             $data['end_date_time'] = $this->end_date_time;
@@ -195,6 +195,8 @@ class Banner extends Component
             }
             if($this->socid){
                 $data['socid'] = $this->socid;
+            }else{
+                $data['socid'] = "";
             }
             if($this->socid_include_exclude){
                 $data['socid_include_exclude'] = $this->socid_include_exclude;
@@ -221,9 +223,13 @@ class Banner extends Component
             }
             if($this->prepaid_persona){
                 $data['prepaid_persona'] = implode(',', $this->prepaid_persona);
+            }else{
+                $data['prepaid_persona'] = "";
             }
             if($this->postpaid_persona){
                 $data['postpaid_persona'] = implode(',', $this->postpaid_persona);
+            }else{
+                $data['postpaid_persona'] = "";
             }
             if($this->red_hierarchy){
                 $data['red_hierarchy'] = implode(',', $this->red_hierarchy);
