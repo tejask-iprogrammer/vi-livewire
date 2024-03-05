@@ -59,13 +59,11 @@
         <script type="text/javascript">
                 $('body').on("click", ".chkAll", function (e) {
                     if($(".chkAll").prop('checked') == true){
-                        $('input:checkbox').attr('checked',true);
+                        $('input:checkbox').prop('checked',true);
                     }else{
-                        $('input:checkbox').attr('checked',false);
+                        $('input:checkbox').prop('checked',false);
                     }
                 });
-               
-
                 $('body').on("click", ".selectMultichk", function (e) {
                     var allCheked = $('body').find('input[name="multi_chk[]"]:checked').length;
                     var checkCount = $('body').find('input[name="multi_chk[]"]').length;
@@ -73,7 +71,6 @@
                         document.getElementById("chkAll").checked = true;
                     }else{
                         document.getElementById("chkAll").checked = false;
-
                     }
                 });
 
