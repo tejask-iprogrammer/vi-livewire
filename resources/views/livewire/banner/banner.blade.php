@@ -131,7 +131,7 @@
                                     <label class="fw-semibold fs-6 mb-2">Plan</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="plan" class="form-control planSelect">
+                                    <select wire:model.live="plan" class="form-control planSelect">
                                         <option value="" selected>Select Plan</option>
                                         @foreach($planList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
@@ -677,10 +677,78 @@
                     $(".js-example-basic-multiple").trigger("change");
                 })
                 $('#kt_modal_add_banner').on('hidden.bs.modal', function (e) {
+                        $(".prepaidSelect").prop('disabled', false);
+                        $(".socId").prop('disabled', false);
+                        $(".postpaidSelect").prop('disabled', false);
+                        $(".planSelect").prop('disabled', false);
+                        $(".socIDincludeexclude").prop('disabled', false);
+                        $(".postpaidSelect").removeClass("postpaidSelectdisable");
+                        $(".prepaidSelect").removeClass("prepaidSelectdisable");
+                        $('.js-example-basic-multiple').val(null).trigger('change');
+                        
                     $("#kt_modal_add_banner_form")[0].reset();
                     let data = false;
                     @this.set('edit_mode',data)
                 })
+                $('.lobSelect').on('change',function(){
+                    let selectedLob = $(this).val();
+                    if(selectedLob.toLowerCase() == "prepaid"){
+                        $(".postpaidSelect").prop('disabled', true);
+                        $(".socId").prop('disabled', true);
+                        $(".prepaidSelect").prop('disabled', false);
+                        $(".planSelect").prop('disabled', false);
+                        $(".socIDincludeexclude").prop('disabled', true);
+                        $(".postpaidSelect").addClass("postpaidSelectdisable");
+                        $(".prepaidSelect").removeClass("prepaidSelectdisable");
+                        $('.socId').val('');
+                        $('.postpaidSelect').val(null).trigger('change');
+                        $('.prepaidSelect').val(null).trigger('change');
+                        $(".planSelect option:selected").prop("selected", false);
+                        let data = "";
+                        @this.set('plan',data);
+                    }else if(selectedLob.toLowerCase() == "postpaid"){
+                        $(".prepaidSelect").prop('disabled', true);
+                        $(".planSelect").prop('disabled', true);
+                        $(".postpaidSelect").prop('disabled', false);
+                        $(".socId").prop('disabled', false);
+                        $(".prepaidSelect").addClass("prepaidSelectdisable");
+                        $(".postpaidSelect").removeClass("postpaidSelectdisable");
+                        $(".socIDincludeexclude").prop('disabled', false);
+                        $('.prepaidSelect').val(null).trigger('change');
+                        $('.postpaidSelect').val(null).trigger('change');
+                        $(".planSelect option:selected").prop("selected", false);
+                        let data = "";
+                        @this.set('plan',data);
+                    }else if(selectedLob.toLowerCase() == "both"){
+                        $(".prepaidSelect").prop('disabled', false);
+                        $(".socId").prop('disabled', false);
+                        $(".postpaidSelect").prop('disabled', false);
+                        $(".planSelect").prop('disabled', false);
+                        $(".postpaidSelect").removeClass("postpaidSelectdisable");
+                        $(".prepaidSelect").removeClass("prepaidSelectdisable");
+                        $('.socId').val('');
+                        $(".socIDincludeexclude").prop('disabled', false);
+                        $(".planSelect option:selected").prop("selected", false);
+                        $('.postpaidSelect').val(null).trigger('change');
+                        $('.prepaidSelect').val(null).trigger('change');
+                        let data = "";
+                        @this.set('plan',data);
+                    }else{
+                        $(".prepaidSelect").prop('disabled', false);
+                        $(".socId").prop('disabled', false);
+                        $(".postpaidSelect").prop('disabled', false);
+                        $(".planSelect").prop('disabled', false);
+                        $(".socIDincludeexclude").prop('disabled', false);
+                        $(".postpaidSelect").removeClass("postpaidSelectdisable");
+                        $(".prepaidSelect").removeClass("prepaidSelectdisable");
+                        $('.socId').val('');
+                        $(".planSelect option:selected").prop("selected", false);
+                        $('.postpaidSelect').val(null).trigger('change');
+                        $('.prepaidSelect').val(null).trigger('change');
+                        let data = "";
+                        @this.set('plan',data);
+                    }
+                });
             });
 </script>
 @endpush

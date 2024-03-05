@@ -85,45 +85,7 @@
             document.addEventListener('livewire:init', function () {
                 $('.js-example-basic-multiple').select2();
             })
-               $('.lobSelect').on('change',function(){
-                    let selectedLob = $(this).val();
-                    if(selectedLob.toLowerCase() == "prepaid"){
-                        $(".postpaidSelect").prop('disabled', true);
-                        $(".socId").prop('disabled', true);
-                        $(".prepaidSelect").prop('disabled', false);
-                        $(".planSelect").prop('disabled', false);
-                        $(".socIDincludeexclude").prop('disabled', true);
-                        $(".postpaidSelect").addClass("postpaidSelectdisable");
-                        $(".prepaidSelect").removeClass("prepaidSelectdisable");
-                        $('.socId').val('');
-                    }else if(selectedLob.toLowerCase() == "postpaid"){
-                        $(".prepaidSelect").prop('disabled', true);
-                        $(".planSelect").prop('disabled', true);
-                        $(".postpaidSelect").prop('disabled', false);
-                        $(".socId").prop('disabled', false);
-                        $(".prepaidSelect").addClass("prepaidSelectdisable");
-                        $(".postpaidSelect").removeClass("postpaidSelectdisable");
-                        $(".socIDincludeexclude").prop('disabled', false);
-                    }else if(selectedLob.toLowerCase() == "both"){
-                        $(".prepaidSelect").prop('disabled', false);
-                        $(".socId").prop('disabled', false);
-                        $(".postpaidSelect").prop('disabled', false);
-                        $(".planSelect").prop('disabled', false);
-                        $(".postpaidSelect").removeClass("postpaidSelectdisable");
-                        $(".prepaidSelect").removeClass("prepaidSelectdisable");
-                        $('.socId').val('');
-                        $(".socIDincludeexclude").prop('disabled', false);
-                    }else{
-                        $(".prepaidSelect").prop('disabled', false);
-                        $(".socId").prop('disabled', false);
-                        $(".postpaidSelect").prop('disabled', false);
-                        $(".planSelect").prop('disabled', false);
-                        $(".socIDincludeexclude").prop('disabled', false);
-                        $(".postpaidSelect").removeClass("postpaidSelectdisable");
-                        $(".prepaidSelect").removeClass("prepaidSelectdisable");
-                        $('.socId').val('');
-                    }
-                });
+               
                 $('.linkType').on('change',function(){
                     let selectedLink= $(this).val();
                     if(selectedLink.toLowerCase() == "1"){
