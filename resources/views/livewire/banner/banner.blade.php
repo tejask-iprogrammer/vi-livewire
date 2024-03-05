@@ -554,22 +554,20 @@
                             </div>
 
                             <div class="row">
-                                <div class="col mt-4" wire:ignore>
+                                <div class="col mt-4">
                                     <div wire:ignore>
-                                    <!--begin::Label-->
-                                    <label class="required fw-semibold fs-6 mb-2">App Version</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <select wire:model="app_version" class="appVersion js-example-basic-multiple form-control" multiple="multiple">
-                                        <!-- <option value="" selected>Select Version</option> -->
-                                        @foreach($appVersionList as $key=>$value)
-                                        <option value="{{ $key }}">{{ $value }}</option>
-                                        @endforeach
-                                    </select>
-                                    <!--end::Input-->
-                                    <!--begin::Hint-->
-                                        <!--end::Hint-->
-                                </div>
+                                        <!--begin::Label-->
+                                        <label class="required fw-semibold fs-6 mb-2">App Version</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <select wire:model="app_version" class="appVersion js-example-basic-multiple form-control" multiple="multiple">
+                                            <!-- <option value="" selected>Select Version</option> -->
+                                            @foreach($appVersionList as $key=>$value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
+                                        <!--end::Input-->
+                                    </div>
                                     @error('app_version')
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
