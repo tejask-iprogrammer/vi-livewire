@@ -28,6 +28,10 @@ class AppServiceProvider extends ServiceProvider
         // Update defaultStringLength
         Builder::defaultStringLength(191);
 
+        \Livewire\Livewire::setUpdateRoute(function ($handle) {
+            return \Illuminate\Support\Facades\Route::post('/cms/livewire/update', $handle);
+        });
+
         KTBootstrap::init();
     }
 }
