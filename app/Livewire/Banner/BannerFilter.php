@@ -115,7 +115,7 @@ class BannerFilter extends Component
                     }
             }
         }
-        addJavascriptFile('assets/js/custom/temp.js');
+        addJavascriptFile('assets/js/custom/manageBanner.js');
         return view('livewire.banner.banner-filter',compact('banners','lobList','postpaidPersonaList','brandList','loginTypeList','circleList','appVersionList','screenList','osList','rankList','totalCount'));
     }
     function groupCopy($copyArray){
