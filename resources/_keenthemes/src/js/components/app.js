@@ -1,6 +1,6 @@
 "use strict";
 // import { Livewire } from '/../../../vendor/livewire/livewire/dist/livewire.esm'
-import { Livewire } from '../../../../../public/vendor/livewire/livewire/dist/livewire.esm'
+import { Livewire } from '../../../../../public/vendor/livewire/dist/livewire.esm'
  
 Livewire.start()
 // Class definition
