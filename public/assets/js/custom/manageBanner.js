@@ -30,8 +30,8 @@ document.querySelectorAll('[data-kt-action="update_row"]').forEach(function (ele
 });
 
 // Listen for 'success' event emitted by Livewire
-Livewire.on('success', (message) => {
-    // Reload the banner-table datatable
-    // LaravelDataTables['banner-table'].ajax.reload();
-});
+// Livewire.on('success', (message) => {
+//     // Reload the banner-table datatable
+//     // LaravelDataTables['banner-table'].ajax.reload();
+// });
 // Initialize KTMenu
