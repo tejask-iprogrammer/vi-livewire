@@ -59,7 +59,7 @@
                                         <label class="required fw-semibold fs-6 mb-2">Circle</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="circle" class="circle js-example-basic-multiple form-control" multiple="multiple">
+                                        <select wire:model="circle" x-init="console.log('I\'m being initialized!')" class="circle js-example-basic-multiple form-control" multiple="multiple">
                                         <!-- <option value="" disabled selected>Choose Circle</option> -->
                                             @foreach($circleList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -672,9 +672,7 @@
                         @this.set('app_version',data)
                 });
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
-                    alert();
                     setTimeout(function() {
-                        $('.js-example-basic-multiple').select2();
                     $(".js-example-basic-multiple").trigger("change");
                 },100);
                 })
