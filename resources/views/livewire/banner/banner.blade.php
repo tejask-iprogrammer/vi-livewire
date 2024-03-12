@@ -672,7 +672,9 @@
                         @this.set('app_version',data)
                 });
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
+                    setTimeout(function() {
                     $(".js-example-basic-multiple").trigger("change");
+                    },100);
                 })
                 $('#kt_modal_add_banner').on('hidden.bs.modal', function (e) {
                         $(".prepaidSelect").prop('disabled', false);
