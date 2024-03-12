@@ -643,11 +643,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 @push('scripts')
 <script type="text/javascript">
-    document.addEventListener('livewire:load', function () {
-        alert()
-            // Your JS here.
-            $('.js-example-basic-multiple').select2();
-        })
             document.addEventListener('livewire:init', function () {
                 // $('.js-example-basic-multiple').select2();
                 $('.circle.js-example-basic-multiple').on('change',function(){
@@ -677,7 +672,9 @@
                         @this.set('app_version',data)
                 });
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
+                    alert();
                     setTimeout(function() {
+                        $('.js-example-basic-multiple').select2();
                     $(".js-example-basic-multiple").trigger("change");
                 },100);
                 })
