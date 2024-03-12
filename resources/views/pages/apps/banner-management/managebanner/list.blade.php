@@ -57,8 +57,10 @@
 
     @push('scripts')
         <script type="text/javascript">
-            alert("helo from jenkin");
-                $('body').on("click", ".chkAll", function (e) {
+            window.addEventListener('load', function() {
+                    console.log('All assets loaded')
+                });
+                    $('body').on("click", ".chkAll", function (e) {
                     if($(".chkAll").prop('checked') == true){
                         $('input:checkbox').prop('checked',true);
                     }else{
