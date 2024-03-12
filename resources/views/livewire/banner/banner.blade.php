@@ -59,7 +59,7 @@
                                         <label class="required fw-semibold fs-6 mb-2">Circle</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="circle" x-init="$('.js-example-basic-multiple').select2();" class="circle js-example-basic-multiple form-control" multiple="multiple">
+                                        <select wire:model="circle" x-init="console.log('I\'m being initialized!')" class="circle js-example-basic-multiple form-control" multiple="multiple">
                                         <!-- <option value="" disabled selected>Choose Circle</option> -->
                                             @foreach($circleList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -643,17 +643,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 @push('scripts')
 <script type="text/javascript">
-    (function() {
-              var proxied = jQuery.fn.is;
-              jQuery.fn.is= function() {
-                //do your things here
-                return proxied.apply(this, arguments);//call the default is here
-                $('.circle.js-example-basic-multiple').on('change',function(){
-                        let data = $(this).val();
-                        @this.set('circle',data)
-                });
-              };
-            })();
             document.addEventListener('livewire:init', function () {
                 // $('.js-example-basic-multiple').select2();
                 $('.circle.js-example-basic-multiple').on('change',function(){

@@ -291,9 +291,9 @@ class Banner extends Component
             if($this->isnotified != ""){
                 $data['is_notified'] = $this->isnotified;
             }
-            echo "<pre>";
-            print_r($data);
-            dd();
+            // echo "<pre>";
+            // print_r($data);
+            // dd();
             // Update or Create a new user record in the database
             if(Redis::keys('Temp*')){  Redis::del(Redis::keys('Temp*')); }
             $banners = Banners::find($this->user_id) ?? Banners::create($data);
