@@ -59,7 +59,7 @@
                                         <label class="required fw-semibold fs-6 mb-2">Circle</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="circle" x-init="$('.js-example-basic-multiple').select2();" class="circle js-example-basic-multiple form-control" multiple="multiple">
+                                        <select wire:model="circle" class="circle js-example-basic-multiple form-control" multiple="multiple">
                                         <!-- <option value="" disabled selected>Choose Circle</option> -->
                                             @foreach($circleList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -644,15 +644,7 @@
 @push('scripts')
 <script type="text/javascript">
             document.addEventListener('livewire:init', function () {
-                $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
-                    setTimeout(function() {
-                    $(".js-example-basic-multiple").trigger("change");
-                    },100);
-                })
-            });
-
                 // $('.js-example-basic-multiple').select2();
-                $( document ).ready(function() {
                 $('.circle.js-example-basic-multiple').on('change',function(){
                         let data = $(this).val();
                         @this.set('circle',data)
@@ -682,7 +674,7 @@
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
                     setTimeout(function() {
                     $(".js-example-basic-multiple").trigger("change");
-                    },100);
+                },100);
                 })
                 $('#kt_modal_add_banner').on('hidden.bs.modal', function (e) {
                         $(".prepaidSelect").prop('disabled', false);
