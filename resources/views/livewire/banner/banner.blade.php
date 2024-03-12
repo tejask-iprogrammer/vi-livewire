@@ -643,7 +643,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 @push('scripts')
 <script type="text/javascript">
-            document.addEventListener('livewire:init', function () {
+            // document.addEventListener('livewire:init', function () {
                 // $('.js-example-basic-multiple').select2();
                 $('.circle.js-example-basic-multiple').on('change',function(){
                         let data = $(this).val();
@@ -761,6 +761,6 @@
                         @this.set('postpaid_persona',"");
                     }
                 });
-            });
+            // });
 </script>
 @endpush
