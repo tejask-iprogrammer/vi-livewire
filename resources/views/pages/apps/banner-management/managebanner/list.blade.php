@@ -57,6 +57,7 @@
 
     @push('scripts')
         <script type="text/javascript">
+            alert("helo from jenkin");
                 $('body').on("click", ".chkAll", function (e) {
                     if($(".chkAll").prop('checked') == true){
                         $('input:checkbox').prop('checked',true);
