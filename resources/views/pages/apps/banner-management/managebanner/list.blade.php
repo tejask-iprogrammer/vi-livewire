@@ -83,7 +83,7 @@
                 });
             });
             document.addEventListener('livewire:init', function () {
-                $('.js-example-basic-multiple').select2();
+                // $('.js-example-basic-multiple').select2();
             })
                
                 $('.linkType').on('change',function(){
