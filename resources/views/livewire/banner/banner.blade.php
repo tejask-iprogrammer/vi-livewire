@@ -647,13 +647,13 @@
     $(document).ready(function() {
         $('.select2').select2();
     });
-    $(document).on('change','.multiid',function(){
-    alert('Change Happened');
-});
+//     $(document).on('change','.multiid',function(){
+//     alert('Change Happened');
+// });
             document.addEventListener('livewire:init', function () {
                 // $('.js-example-basic-multiple').select2();
-                $('.select2').on('change',function(){
-                    alert("Inner ");
+                $(document).on('change','.multiid',function(){
+                    alert("Inner click");
                         let data = $(this).val();
                         @this.set('circle',data)
                 });
