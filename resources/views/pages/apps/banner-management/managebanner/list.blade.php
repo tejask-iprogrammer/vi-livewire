@@ -85,7 +85,6 @@
             document.addEventListener('livewire:init', function () {
                 // $('.js-example-basic-multiple').select2();
             })
-               
                 $('.linkType').on('change',function(){
                     let selectedLink= $(this).val();
                     if(selectedLink.toLowerCase() == "1"){
@@ -96,7 +95,6 @@
                         $(".externalLink").prop('disabled', false);
                     }
                 });
-                 
         </script>
     @endpush
 

@@ -690,7 +690,8 @@
                     let data = false;
                     @this.set('edit_mode',data)
                 })
-                $('.lobSelect').on('change',function(){
+                // $('.lobSelect').on('change',function(){
+                $(document).on('change','.lobSelect',function(){
                     let selectedLob = $(this).val();
                     if(selectedLob.toLowerCase() == "prepaid"){
                         $(".postpaidSelect").prop('disabled', true);
@@ -761,6 +762,7 @@
                         @this.set('postpaid_persona',"");
                     }
                 });
+                
             });
 </script>
 @endpush
