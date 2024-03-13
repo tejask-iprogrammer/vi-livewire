@@ -213,11 +213,11 @@ class Banner extends Component
 
             // $image=new Image();
             // dd($this->banner_name);
-            $imageName = carbon::now()->timestamp.'.'.$this->banner_name->extension();
-            $tempdata = $this->banner_name->storeAs('astro',$imageName,'s3');
-            echo "<pre>";
-            print_r($tempdata);
-            die();
+            // $imageName = carbon::now()->timestamp.'.'.$this->banner_name->extension();
+            // $tempdata = $this->banner_name->storeAs('astro',$imageName,'s3');
+            // echo "<pre>";
+            // print_r($tempdata);
+            // die();
             // if($this->banner_name){
             //     $data['banner_name'] = $tempdata;
             // }
