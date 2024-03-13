@@ -59,8 +59,8 @@
                                         <label class="required fw-semibold fs-6 mb-2">Circle</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select class="form-select circle"  wire:model="circle" id="multiple-select-custom-field" data-placeholder="Choose anything" multiple>
-                                            <!-- <option value="" disabled selected>Choose Circle</option> -->
+                                        <select wire:model="circle" class="circle js-example-basic-multiple form-control" multiple="multiple">
+                                        <!-- <option value="" disabled selected>Choose Circle</option> -->
                                             @foreach($circleList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
@@ -649,8 +649,7 @@ $( '#multiple-select-custom-field' ).select2( {
     tags: true
 } );
             document.addEventListener('livewire:init', function () {
-                // $('.js-example-basic-multiple').select2();
-
+                $('.js-example-basic-multiple').select2();
                 $('.circle.js-example-basic-multiple').on('change',function(){
                         let data = $(this).val();
                         @this.set('circle',data)
@@ -679,8 +678,7 @@ $( '#multiple-select-custom-field' ).select2( {
                 });
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
                     setTimeout(function() {
-                    // $(".js-example-basic-multiple").trigger("change");
-                    $( '#multiple-select-custom-field' ).trigger("change");
+                    $(".js-example-basic-multiple").trigger("change");
                 },100);
                 })
                 $('#kt_modal_add_banner').on('hidden.bs.modal', function (e) {
