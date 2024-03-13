@@ -59,7 +59,7 @@
                                         <label class="required fw-semibold fs-6 mb-2">Circle</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select class="select2 form-control" multiple>
+                                        <select wire:model="circle" class="select2 form-control" multiple>
                                         <!-- <option value="" disabled selected>Choose Circle</option> -->
                                             @foreach($circleList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -676,7 +676,7 @@
                         @this.set('app_version',data)
                 });
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
-                    $(".select2").select2();
+                    // $(".select2").select2();
                 })
                 $('#kt_modal_add_banner').on('hidden.bs.modal', function (e) {
                         $(".prepaidSelect").prop('disabled', false);
