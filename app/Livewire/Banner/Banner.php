@@ -271,8 +271,13 @@ class Banner extends Component
             if($this->internal_link){
                 $data['internal_link'] = $this->internal_link;
             }
+            else{
+                $data['internal_link'] = "";
+            }
             if($this->external_link){
                 $data['external_link'] = $this->external_link;
+            }else{
+                $data['external_link'] = "";
             }
             
             if($this->campaign_id){
