@@ -45,11 +45,12 @@ return [
             'css' => [
                 'assets/plugins/global/plugins.bundle.css',
                 'assets/css/style.bundle.css',
+                'assets/css/select2.min.css',
             ],
             'js' => [
                 'assets/plugins/global/plugins.bundle.js',
                 'assets/js/scripts.bundle.js',
-                'assets/js/widgets.bundle.js',
+                'assets/js/select2.min.js',
             ],
         ],
     ],
