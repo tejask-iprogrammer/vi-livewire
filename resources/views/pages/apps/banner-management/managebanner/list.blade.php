@@ -58,8 +58,7 @@
     @push('scripts')
         <script type="text/javascript">
             window.addEventListener('load', function() {
-                    console.log('All assets loaded')
-                    // $('.js-example-basic-multiple').select2();
+                    $('.js-example-basic-multiple').select2();
                 });
                     $('body').on("click", ".chkAll", function (e) {
                     if($(".chkAll").prop('checked') == true){
