@@ -111,7 +111,7 @@
                 });
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
                     setTimeout(function() {
-                    $(".js-example-basic-multiple").trigger("change");
+                        $('.select2').select2();
                 },100);
                 })
                 $('#kt_modal_add_banner').on('hidden.bs.modal', function (e) {
