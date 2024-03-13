@@ -58,7 +58,7 @@
     @push('scripts')
         <script type="text/javascript">
             window.addEventListener('load', function() {
-                    $('.js-example-basic-multiple').select2();
+                    // $('.js-example-basic-multiple').select2();
                 });
                     $('body').on("click", ".chkAll", function (e) {
                     if($(".chkAll").prop('checked') == true){
@@ -86,7 +86,7 @@
                 });
             });
             document.addEventListener('livewire:init', function () {
-                $('.js-example-basic-multiple').select2();
+                // $('.js-example-basic-multiple').select2();
             })
                
                 $('.linkType').on('change',function(){
