@@ -59,7 +59,7 @@
                                         <label class="required fw-semibold fs-6 mb-2">Circle</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="circle" class="circle js-example-basic-multiple form-control" id= "circleID" multiple="multiple">
+                                        <select wire:model="circle" class="circle select2 form-control" name="state" multiple>
                                         <!-- <option value="" disabled selected>Choose Circle</option> -->
                                             @foreach($circleList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -641,11 +641,15 @@
     <!--end::Modal dialog-->
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 @push('scripts')
 <script type="text/javascript">
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
             document.addEventListener('livewire:init', function () {
-                $('.js-example-basic-multiple').select2();
-                $('.circle.js-example-basic-multiple').on('change',function(){
+                // $('.js-example-basic-multiple').select2();
+                $('.circle.select2').on('change',function(){
                         let data = $(this).val();
                         @this.set('circle',data)
                 });
@@ -672,7 +676,7 @@
                         @this.set('app_version',data)
                 });
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
-                    $(".js-example-basic-multiple").trigger("change");
+                    $(".select2").trigger("change");
                 })
                 $('#kt_modal_add_banner').on('hidden.bs.modal', function (e) {
                         $(".prepaidSelect").prop('disabled', false);
@@ -682,7 +686,7 @@
                         $(".socIDincludeexclude").prop('disabled', false);
                         $(".postpaidSelect").removeClass("postpaidSelectdisable");
                         $(".prepaidSelect").removeClass("prepaidSelectdisable");
-                        $('.js-example-basic-multiple').val(null).trigger('change');
+                        // $('.js-example-basic-multiple').val(null).trigger('change');
                         
                     $("#kt_modal_add_banner_form")[0].reset();
                     let data = false;
