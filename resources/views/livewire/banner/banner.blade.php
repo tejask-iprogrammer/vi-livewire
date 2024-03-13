@@ -59,7 +59,7 @@
                                         <label class="required fw-semibold fs-6 mb-2">Circle</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="circle" class="circle select2 form-control" name="state" multiple>
+                                        <select class="select2 form-control" multiple>
                                         <!-- <option value="" disabled selected>Choose Circle</option> -->
                                             @foreach($circleList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -641,7 +641,7 @@
     <!--end::Modal dialog-->
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<!-- <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
 @push('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
