@@ -59,7 +59,7 @@
                                         <label class="required fw-semibold fs-6 mb-2">Circle</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="circle" class="multiid select2 form-control" multiple>
+                                        <select wire:model="circle" class="circle select2 form-control" multiple>
                                         <!-- <option value="" disabled selected>Choose Circle</option> -->
                                             @foreach($circleList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -152,7 +152,7 @@
                                         <!--end::Label-->
                                         <!--begin::Input-->
                                         <!-- <select wire:model="prepaid_persona" class="form-control"> -->
-                                        <select wire:model="prepaid_persona" class="prepaidPersona js-example-basic-multiple form-control prepaidSelect" multiple="multiple">
+                                        <select wire:model="prepaid_persona" class="prepaidPersona select2 form-control prepaidSelect" multiple="multiple">
                                             <!-- <option value="" selected>Select Prepaid Persona</option> -->
                                             @foreach($prepaidPersonaList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -647,17 +647,14 @@
     $(document).ready(function() {
         $('.select2').select2();
     });
-//     $(document).on('change','.multiid',function(){
-//     alert('Change Happened');
-// });
             document.addEventListener('livewire:init', function () {
                 // $('.js-example-basic-multiple').select2();
-                $(document).on('change','.multiid',function(){
+                $(document).on('change','.circle.select2',function(){
                     alert("Inner click");
                         let data = $(this).val();
                         @this.set('circle',data)
                 });
-                $('.prepaidPersona.js-example-basic-multiple').on('change',function(){
+                $(document).on('change','.prepaidPersona.js-example-basic-multiple',function(){
                         let data = $(this).val();
                         @this.set('prepaid_persona',data)
                 });
