@@ -644,9 +644,10 @@
 <!-- <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
 @push('scripts')
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.select2').select2();
-    });
+            $(document).ready(function() {
+                alert();
+                $('.select2').select2();
+            });
             document.addEventListener('livewire:init', function () {
                 // $('.select2').select2();
                 $(document).on('change','.circle.select2',function(){
