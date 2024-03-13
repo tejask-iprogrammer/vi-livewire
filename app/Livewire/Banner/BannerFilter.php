@@ -78,7 +78,7 @@ class BannerFilter extends Component
         });
 
         $query->when($this->appversion != "", function($q){
-            return $q->where('app_version', ["All Versions",$this->appversion]);
+            return $q->whereIn('app_version', ["All Versions",$this->appversion]);
         });
 
         $query->when($this->screen != "", function($q){
