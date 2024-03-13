@@ -59,8 +59,8 @@
                                         <label class="required fw-semibold fs-6 mb-2">Circle</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="circle" class="circle js-example-basic-multiple form-control" multiple="multiple">
-                                        <!-- <option value="" disabled selected>Choose Circle</option> -->
+                                        <select class="form-select circle"  wire:model="circle" id="multiple-select-custom-field" data-placeholder="Choose anything" multiple>
+                                            <!-- <option value="" disabled selected>Choose Circle</option> -->
                                             @foreach($circleList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
@@ -643,10 +643,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 @push('scripts')
 <script type="text/javascript">
-                $('.js-example-basic-multiple').select2({allowClear: true});
-
+$( '#multiple-select-custom-field' ).select2( {
+    theme: "bootstrap-5",
+    closeOnSelect: false,
+    tags: true
+} );
             document.addEventListener('livewire:init', function () {
-                $('.js-example-basic-multiple').select2({allowClear: true});
+                // $('.js-example-basic-multiple').select2();
 
                 $('.circle.js-example-basic-multiple').on('change',function(){
                         let data = $(this).val();
@@ -676,7 +679,8 @@
                 });
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
                     setTimeout(function() {
-                    $(".js-example-basic-multiple").trigger("change");
+                    // $(".js-example-basic-multiple").trigger("change");
+                    $( '#multiple-select-custom-field' ).trigger("change");
                 },100);
                 })
                 $('#kt_modal_add_banner').on('hidden.bs.modal', function (e) {
