@@ -39,13 +39,21 @@
                              
                                 <div class="col mt-4">
                                     <div wire:ignore>
-                                        <select class="select2" name="state" multiple>
+                                        <label class="required fw-semibold fs-6 mb-2">Circle</label>
+                                        <!-- <select class="select2" name="state" multiple>
                                             <option value="AL">Alabama</option>
                                             <option value="WY">Wyoming</option>
                                             <option value="WY">Wyoming</option>
                                             <option value="WY">Wyoming</option>
                                             <option value="WY">Wyoming</option>
                                             <option value="WY">Wyoming</option>
+                                        </select> -->
+
+                                        <select class="select2 form-control" name="state" multiple>
+                                        <!-- <option value="" disabled selected>Choose Circle</option> -->
+                                            @foreach($circleList as $key=>$value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
                                         </select>
                                         <!-- Select2 will insert its DOM here. -->
                                     </div>
