@@ -645,7 +645,6 @@
 @push('scripts')
 <script type="text/javascript">
             $(document).ready(function() {
-                alert();
                 $('.select2').select2();
             });
             document.addEventListener('livewire:init', function () {
