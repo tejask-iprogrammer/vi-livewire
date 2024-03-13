@@ -215,9 +215,12 @@ class Banner extends Component
             // dd($this->banner_name);
             $imageName = carbon::now()->timestamp.'.'.$this->banner_name->extension();
             $tempdata = $this->banner_name->storeAs('astro',$imageName,'s3');
-            if($this->banner_name){
-                $data['banner_name'] = $tempdata;
-            }
+            echo "<pre>";
+            print_r($tempdata);
+            die();
+            // if($this->banner_name){
+            //     $data['banner_name'] = $tempdata;
+            // }
             if($this->banner_rank){
                 $data['banner_rank'] = $this->banner_rank;
             }
