@@ -357,7 +357,7 @@ class Banner extends Component
         if($banners->internal_link){
             $this->link_type = "1";
         }else if($banners->external_link){
-            $this->link_type = "0";
+            $this->link_type = "2";
         }
         else{
             $this->link_type = "";            
