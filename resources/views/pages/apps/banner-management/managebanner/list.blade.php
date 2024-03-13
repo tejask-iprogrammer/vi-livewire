@@ -85,13 +85,16 @@
             document.addEventListener('livewire:init', function () {
                 // $('.js-example-basic-multiple').select2();
             })
-                $('.linkType').on('change',function(){
+                $(document).on('change','.linkType',function(){
                     let selectedLink= $(this).val();
                     if(selectedLink.toLowerCase() == "1"){
                         $(".internalLink").prop('disabled', false);
                         $(".externalLink").prop('disabled', true);
                     }else if(selectedLink.toLowerCase() == "2"){
                         $(".internalLink").prop('disabled', true);
+                        $(".externalLink").prop('disabled', false);
+                    }else{
+                        $(".internalLink").prop('disabled', false);
                         $(".externalLink").prop('disabled', false);
                     }
                 });
