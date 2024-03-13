@@ -349,7 +349,14 @@ class Banner extends Component
         $this->service_type = explode(',',$banners->service_type);
         $this->app_version = explode(',',$banners->app_version);
         $this->mrp = $banners->mrp;
-        // $this->link_type = $banners->link_type;
+        if($banners->internal_link){
+            $this->link_type = "1";
+        }else if($banners->external_link){
+            $this->link_type = "0";
+        }
+        else{
+            $this->link_type = "";            
+        }
         $this->tab_name = $banners->tab_name;
         $this->internal_link = $banners->internal_link;
         $this->external_link = $banners->external_link;

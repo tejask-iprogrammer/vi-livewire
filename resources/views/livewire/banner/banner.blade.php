@@ -332,7 +332,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col mt-4">
+                                <div class="col mt-4"wire:ignore>
                                         <label class="fw-semibold fs-6 mb-2">Internal Link</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
@@ -341,7 +341,7 @@
                                         @error('internal_link')
                                         <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
-                                <div class="col mt-4">
+                                <div class="col mt-4" wire:ignore>
                                         <label class="fw-semibold fs-6 mb-2">External Link</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
@@ -684,6 +684,8 @@
                         $(".socIDincludeexclude").prop('disabled', false);
                         $(".postpaidSelect").removeClass("postpaidSelectdisable");
                         $(".prepaidSelect").removeClass("prepaidSelectdisable");
+                        $(".internalLink").prop('disabled', false);
+                        $(".externalLink").prop('disabled', false);
                         // $('.select2').val(null).trigger('change');
                         
                     $("#kt_modal_add_banner_form")[0].reset();
@@ -762,7 +764,25 @@
                         @this.set('postpaid_persona',"");
                     }
                 });
-                
             });
+            $(document).on('change','.linkType',function(){
+                    let selectedLink= $(this).val();
+                    if(selectedLink.toLowerCase() == "1"){
+                        $(".internalLink").prop('disabled', false);
+                        $(".externalLink").prop('disabled', true);
+                        @this.set('external_link',"");
+                        @this.set('internal_link',"");
+                    }else if(selectedLink.toLowerCase() == "2"){
+                        $(".internalLink").prop('disabled', true);
+                        $(".externalLink").prop('disabled', false);
+                        @this.set('external_link',"");
+                        @this.set('internal_link',"");
+                    }else{
+                        $(".internalLink").prop('disabled', false);
+                        $(".externalLink").prop('disabled', false);
+                        @this.set('external_link',"");
+                        @this.set('internal_link',"");
+                    }
+                });
 </script>
 @endpush
