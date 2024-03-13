@@ -649,7 +649,8 @@
     });
             document.addEventListener('livewire:init', function () {
                 // $('.js-example-basic-multiple').select2();
-                $('.circle.select2').on('change',function(){
+                $('.select2').on('change',function(){
+                    alert();
                         let data = $(this).val();
                         @this.set('circle',data)
                 });
