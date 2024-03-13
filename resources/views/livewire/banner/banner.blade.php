@@ -650,7 +650,6 @@
             document.addEventListener('livewire:init', function () {
                 // $('.select2').select2();
                 $(document).on('change','.circle.select2',function(){
-                    alert("Inner click");
                         let data = $(this).val();
                         @this.set('circle',data)
                 });
@@ -659,21 +658,17 @@
                         @this.set('prepaid_persona',data)
                 });
                 $(document).on('change','.postpaidPersona.select2',function(){
-                // $('.postpaidPersona.select2').on('change',function(){
                         let data = $(this).val();
                         @this.set('postpaid_persona',data)
                 });
                 $(document).on('change','.redHierarchy.select2',function(){
-                // $('.redHierarchy.select2').on('change',function(){
                         let data = $(this).val();
                         @this.set('red_hierarchy',data)
                 });
                 $(document).on('change','.serviceType.select2',function(){
-                // $('.serviceType.select2').on('change',function(){
                         let data = $(this).val();
                         @this.set('service_type',data)
                 });
-                // $('.appVersion.select2').on('change',function(){
                 $(document).on('change','.appVersion.select2',function(){
                         let data = $(this).val();
                         @this.set('app_version',data)
