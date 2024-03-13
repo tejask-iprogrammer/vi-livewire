@@ -171,7 +171,7 @@
                                         <label class="fw-semibold fs-6 mb-2">Postpaid Persona</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="postpaid_persona" class="postpaidPersona js-example-basic-multiple form-control postpaidSelect" multiple="multiple">
+                                        <select wire:model="postpaid_persona" class="postpaidPersona select2 form-control postpaidSelect" multiple="multiple">
                                             <!-- <option value="" selected>Select Postpaid Persona</option> -->
                                             @foreach($postpaidPersonaList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -271,7 +271,7 @@
                                     <label class="required fw-semibold fs-6 mb-2">Red Hierarchy</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="red_hierarchy" class="redHierarchy js-example-basic-multiple form-control" multiple="multiple">
+                                    <select wire:model="red_hierarchy" class="redHierarchy select2 form-control" multiple="multiple">
                                         <!-- <option value="" selected>Select</option> -->
                                         @foreach($redHierarchyList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
@@ -401,7 +401,7 @@
                                         <label class="fw-semibold fs-6 mb-2">Service Type</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="service_type" class="serviceType js-example-basic-multiple form-control" multiple="multiple">
+                                        <select wire:model="service_type" class="serviceType select2 form-control" multiple="multiple">
                                             <!-- <option value="" selected>Select Service Type</option> -->
                                             @foreach($serviceTypeList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -560,7 +560,7 @@
                                         <label class="required fw-semibold fs-6 mb-2">App Version</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="app_version" class="appVersion js-example-basic-multiple form-control" multiple="multiple">
+                                        <select wire:model="app_version" class="appVersion select2 form-control" multiple="multiple">
                                             <!-- <option value="" selected>Select Version</option> -->
                                             @foreach($appVersionList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -648,31 +648,33 @@
         $('.select2').select2();
     });
             document.addEventListener('livewire:init', function () {
-                // $('.js-example-basic-multiple').select2();
+                // $('.select2').select2();
                 $(document).on('change','.circle.select2',function(){
                     alert("Inner click");
                         let data = $(this).val();
                         @this.set('circle',data)
                 });
-                $(document).on('change','.prepaidPersona.js-example-basic-multiple',function(){
+                $(document).on('change','.prepaidPersona.select2',function(){
                         let data = $(this).val();
                         @this.set('prepaid_persona',data)
                 });
-
-                $('.postpaidPersona.js-example-basic-multiple').on('change',function(){
+                $(document).on('change','.postpaidPersona.select2',function(){
+                // $('.postpaidPersona.select2').on('change',function(){
                         let data = $(this).val();
                         @this.set('postpaid_persona',data)
                 });
-
-                $('.redHierarchy.js-example-basic-multiple').on('change',function(){
+                $(document).on('change','.redHierarchy.select2',function(){
+                // $('.redHierarchy.select2').on('change',function(){
                         let data = $(this).val();
                         @this.set('red_hierarchy',data)
                 });
-                $('.serviceType.js-example-basic-multiple').on('change',function(){
+                $(document).on('change','.serviceType.select2',function(){
+                // $('.serviceType.select2').on('change',function(){
                         let data = $(this).val();
                         @this.set('service_type',data)
                 });
-                $('.appVersion.js-example-basic-multiple').on('change',function(){
+                // $('.appVersion.select2').on('change',function(){
+                $(document).on('change','.appVersion.select2',function(){
                         let data = $(this).val();
                         @this.set('app_version',data)
                 });
@@ -687,7 +689,7 @@
                         $(".socIDincludeexclude").prop('disabled', false);
                         $(".postpaidSelect").removeClass("postpaidSelectdisable");
                         $(".prepaidSelect").removeClass("prepaidSelectdisable");
-                        // $('.js-example-basic-multiple').val(null).trigger('change');
+                        // $('.select2').val(null).trigger('change');
                         
                     $("#kt_modal_add_banner_form")[0].reset();
                     let data = false;
