@@ -644,18 +644,22 @@
 <!-- <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
 @push('scripts')
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.select2').select2();
-
-        $('.select2').on('change',function(){
-                    alert();
+    $('.select2').on('change',function(){
+                    alert("outer");
                         let data = $(this).val();
                         @this.set('circle',data)
                 });
+    $(document).ready(function() {
+        $('.select2').select2();
     });
             document.addEventListener('livewire:init', function () {
+                alert("from init");
                 // $('.js-example-basic-multiple').select2();
-                
+                $('.select2').on('change',function(){
+                    alert("Inner ");
+                        let data = $(this).val();
+                        @this.set('circle',data)
+                });
                 $('.prepaidPersona.js-example-basic-multiple').on('change',function(){
                         let data = $(this).val();
                         @this.set('prepaid_persona',data)
