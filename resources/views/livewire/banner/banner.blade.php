@@ -646,14 +646,16 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('.select2').select2();
-    });
-            document.addEventListener('livewire:init', function () {
-                // $('.js-example-basic-multiple').select2();
-                $('.select2').on('change',function(){
+
+        $('.select2').on('change',function(){
                     alert();
                         let data = $(this).val();
                         @this.set('circle',data)
                 });
+    });
+            document.addEventListener('livewire:init', function () {
+                // $('.js-example-basic-multiple').select2();
+                
                 $('.prepaidPersona.js-example-basic-multiple').on('change',function(){
                         let data = $(this).val();
                         @this.set('prepaid_persona',data)
