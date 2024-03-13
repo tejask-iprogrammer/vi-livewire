@@ -59,7 +59,7 @@
                                         <label class="required fw-semibold fs-6 mb-2">Circle</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select wire:model="circle" class="select2 form-control" multiple>
+                                        <select wire:model="circle" class="select2 form-control" id="multiid" multiple>
                                         <!-- <option value="" disabled selected>Choose Circle</option> -->
                                             @foreach($circleList as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -652,6 +652,9 @@
     $(document).ready(function() {
         $('.select2').select2();
     });
+    $(document).on('change','#multiid',function(){
+    alert('Change Happened');
+});
             document.addEventListener('livewire:init', function () {
                 alert("from init");
                 // $('.js-example-basic-multiple').select2();
