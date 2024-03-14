@@ -563,6 +563,8 @@
         this.uploadBag.first(name).progressCallback(e);
       });
       request.addEventListener("load", () => {
+        console.log("hello");
+        console.log(formData);
         if ((request.status + "")[0] === "2") {
           let paths = retrievePaths(request.response && JSON.parse(request.response));
           this.component.$wire.call("_finishUpload", name, paths, this.uploadBag.first(name).multiple);
