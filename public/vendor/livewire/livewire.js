@@ -551,7 +551,6 @@
       });
     }
     makeRequest(name, formData, method, url, headers, retrievePaths) {
-      debugger;
       let request = new XMLHttpRequest();
       request.open(method, url);
       Object.entries(headers).forEach(([key, value]) => {
