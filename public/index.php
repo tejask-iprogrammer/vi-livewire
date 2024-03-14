@@ -43,7 +43,6 @@ require __DIR__.'/../vendor/autoload.php';
 | to this client's browser, allowing them to enjoy our application.
 |
 */
-header("Access-Control-Allow-Origin: https://cms-test.viapplogs.net");
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
