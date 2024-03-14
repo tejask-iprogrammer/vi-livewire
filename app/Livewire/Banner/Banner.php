@@ -213,7 +213,7 @@ class Banner extends Component
 
             // $image=new Image();
             $imageName = carbon::now()->timestamp.'.'.$this->banner_name->extension();
-            $tempdata = $this->banner_name->storeAs('astro',$imageName,'s3');
+            $tempdata = $this->banner_name->storePubliclyAs('astro',$imageName,'s3');
            
             if($this->banner_name){
                 $data['banner_name'] = $tempdata;
