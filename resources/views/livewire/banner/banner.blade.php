@@ -479,11 +479,6 @@
                                             <!--begin::Preview existing avatar-->
                                            
                                             @if(isset($banner_name))
-                                            <?php
-                                                echo "<pre>";
-                                                print_r($banner_name);
-                                                die();
-                                            ?>
                                                 <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset('https://viapprewamp.viapplogs.net')}}/{{$banner_name }});"></div>
                                                 <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $banner_name ? $banner_name->temporaryUrl() : '' }});"></div>
 
