@@ -375,7 +375,8 @@ class Banner extends Component
         $this->isnotified = $banners->is_notified;
         $this->start_date_time = $banners->start_date_time;
         $this->end_date_time = $banners->end_date_time;
-        $this->banner_name = $banners->banner_name;
+        // $this->banner_name = $banners->banner_name;
+        $this->saved_avatar = $banners->banner_name;
     }
     public function deleteBanner($id)
     {
