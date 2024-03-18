@@ -507,6 +507,7 @@
                                             @if($banner_name){
                                                 <img src = "{{$banner_name->temporaryUrl()}}" alt="">  
                                             }
+                                            @endif
                                 </div>
                                 <div class="col mt-4">
                                         <!--begin::Label-->
