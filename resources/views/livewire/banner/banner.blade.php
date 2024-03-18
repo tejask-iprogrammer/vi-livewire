@@ -477,6 +477,7 @@
                                         <!--begin::Image input-->
                                         <div wire:ignore class="image-input image-input-outline image-input-placeholder {{ $banner_name || $saved_avatar ? '' : 'image-input-empty' }}" data-kt-image-input="true">
                                             <!--begin::Preview existing avatar-->
+                                            dd($banner_name);
                                             
                                             @if($banner_name)
                                             dd($banner_name);
