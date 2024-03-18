@@ -302,7 +302,7 @@ class Banner extends Component
             $banners = Banners::find($this->user_id) ?? Banners::create($data);
             if ($this->edit_mode) {
                 foreach ($data as $k => $v) {
-                    $banners->$k = $v; 
+                    $banners->$k = $v;
                 }
                 $banners->save();
             }
