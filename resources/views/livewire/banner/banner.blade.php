@@ -479,7 +479,7 @@
                                             <!--begin::Preview existing avatar-->
                                             @if($banner_name)
                                            
-                                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset($banner_name->temporaryUrl() ? $banner_name->temporaryUrl() : 'https://viapprewamp.viapplogs.net')}}/{{$banner_name }});"></div>
+                                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ 'https://viapprewamp.viapplogs.net')}}/{{$banner_name }});"></div>
                                             @else
                                            
                                                 <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $saved_avatar }});"></div>
