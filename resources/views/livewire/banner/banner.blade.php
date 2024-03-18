@@ -475,11 +475,13 @@
                                         </style>
                                         <!--end::Image placeholder-->
                                         <!--begin::Image input-->
-                                        <div wire:ignore class="image-input image-input-outline image-input-placeholder {{ $banner_name || $saved_avatar ? '' : 'image-input-empty' }}" data-kt-image-input="true">
+                                        <div class="image-input image-input-outline image-input-placeholder {{ $banner_name || $saved_avatar ? '' : 'image-input-empty' }}" data-kt-image-input="true">
                                             <!--begin::Preview existing avatar-->
                                             @if($banner_name)
-                                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset('https://viapprewamp.viapplogs.net')}}/{{$banner_name }});"></div>
+                                           
+                                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset($banner_name->temporaryUrl() ? $banner_name->temporaryUrl() : 'https://viapprewamp.viapplogs.net')}}/{{$banner_name }});"></div>
                                             @else
+                                           
                                                 <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $saved_avatar }});"></div>
                                             @endif
                                             <!--end::Preview existing avatar-->
@@ -504,10 +506,6 @@
                                             <!--end::Hint-->
                                             @error('banner_name')
                                             <span class="text-danger">{{ $message }}</span> @enderror
-                                            @if(isset($banner_name)){
-                                                <img src = "{{$banner_name->temporaryUrl()}}" alt="">  
-                                            }
-                                            @endif
                                 </div>
                                 <div class="col mt-4">
                                         <!--begin::Label-->
