@@ -504,7 +504,7 @@
                                             <!--end::Hint-->
                                             @error('banner_name')
                                             <span class="text-danger">{{ $message }}</span> @enderror
-                                            @if($banner_name){
+                                            @if(isset($banner_name)){
                                                 <img src = "{{$banner_name->temporaryUrl()}}" alt="">  
                                             }
                                             @endif
