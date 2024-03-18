@@ -477,12 +477,14 @@
                                         <!--begin::Image input-->
                                         <div wire:ignore class="image-input image-input-outline image-input-placeholder {{ $banner_name || $saved_avatar ? '' : 'image-input-empty' }}" data-kt-image-input="true">
                                             <!--begin::Preview existing avatar-->
+                                            
                                             @if($banner_name)
+                                            dd($banner_name);
                                                 <!-- <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset('https://viapprewamp.viapplogs.net')}}/{{$banner_name }});"></div> -->
                                                 <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $banner_name ? $banner_name->temporaryUrl() : '' }});"></div>
 
                                             @else
-                                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $banner_name ? $banner_name->temporaryUrl(): ''  }});"></div>
+                                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $banner_name ? $banner_name->temporaryUrl() : ''  }});"></div>
                                             @endif
                                             <!--end::Preview existing avatar-->
                                             <!--begin::Label-->
