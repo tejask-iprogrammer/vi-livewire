@@ -482,7 +482,7 @@
                                                 <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $banner_name ? $banner_name->temporaryUrl() : '' }});"></div>
 
                                             @else
-                                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $banner_name?:$banner_name->temporaryUrl(): ''  }});"></div>
+                                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $banner_name ? $banner_name->temporaryUrl(): ''  }});"></div>
                                             @endif
                                             <!--end::Preview existing avatar-->
                                             <!--begin::Label-->
