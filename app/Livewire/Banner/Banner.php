@@ -106,6 +106,7 @@ class Banner extends Component
         'banner_rank.required' => 'Banner Rank  cannot be empty.',
         'status.required' => 'Please select status.',
         'isnotified.required' => 'Please select is notified.',
+        'banner_name.required' => 'Please select is notified.',
     ];
     public function __construct()
     {
@@ -212,14 +213,16 @@ class Banner extends Component
             }
 
             // $image=new Image();
+            if($this->banner_name){
+
             $image_path = public_path('uploads/livewire-tmp/'.$this->banner_name->getFilename());
             $imageName = carbon::now()->timestamp.'.'.$this->banner_name->extension();
             $tempdata = $this->banner_name->storeAs('astro',$imageName,'s3');
            
-            if($this->banner_name){
                 $data['banner_name'] = $tempdata;
-            }
             unlink($image_path);
+        }
+
             if($this->banner_rank){
                 $data['banner_rank'] = $this->banner_rank;
             }

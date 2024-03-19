@@ -461,7 +461,7 @@
                             <div class="row">
                                 <div class="col mt-4">
                                         <!--begin::Label-->
-                                        <label class="d-block fw-semibold fs-6 mb-5">Banner Image</label>
+                                        <label class="required d-block fw-semibold fs-6 mb-5">Banner Image</label>
                                         <!--end::Label-->
                                         <!--begin::Image placeholder-->
                                         <style>
@@ -674,8 +674,6 @@
                         @this.set('app_version',data)
                 });
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
-                    alert("from modal open");
-
                     $(".select2").select2();
                 })
                 $('#kt_modal_add_banner').on('hidden.bs.modal', function (e) {
