@@ -85,9 +85,6 @@
             document.addEventListener('livewire:init', function () {
                 // $('.js-example-basic-multiple').select2();
             })
-            $(document).on('change','.bannerAdd',function(){
-                $(".select2").select2();
-            })
                 
         </script>
     @endpush

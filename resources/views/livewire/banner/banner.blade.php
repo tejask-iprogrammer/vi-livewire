@@ -645,6 +645,7 @@
 @push('scripts')
 <script type="text/javascript">
             $(document).ready(function() {
+                alert("from ereadt");
                 $('.select2').select2();
             });
             document.addEventListener('livewire:init', function () {
@@ -652,6 +653,7 @@
                 $(document).on('change','.circle.select2',function(e){
                         let data = $(this).val();
                         @this.set('circle',data);
+                        $('.circle.select2').select2();
                 });
                 $(document).on('change','.prepaidPersona.select2',function(){
                         let data = $(this).val();
