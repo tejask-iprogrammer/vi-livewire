@@ -302,7 +302,7 @@ class Banner extends Component
             // Update or Create a new user record in the database
             if(Redis::keys('Temp*')){  Redis::del(Redis::keys('Temp*')); }
             $banners = Banners::find($this->user_id) ?? Banners::create($data);
-            $bannersImage = Banners::find($this->user_id);
+            $previous_image = Banners::find($this->user_id);
             if ($this->edit_mode) {
                 foreach ($data as $k => $v) {
                     $banners->$k = $v;
@@ -315,7 +315,7 @@ class Banner extends Component
 
                 // Emit a success event with a message
                 $data = [];
-                $data['banner_name'] = $bannersImage->banner_name;
+                $data['banner_name'] = $previous_image->banner_name;
                 DB::table('banner_history')->insert($data);
                 $this->dispatch('success', __('Manage Banner updated'));
             } else {
