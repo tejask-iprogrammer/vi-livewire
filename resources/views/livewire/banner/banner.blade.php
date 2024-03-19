@@ -54,7 +54,7 @@
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4" >
-                                    <div wire:ignore>
+                                    <div>
                                         <!--begin::Label-->
                                         <label class="required fw-semibold fs-6 mb-2">Circle</label>
                                         <!--end::Label-->
@@ -651,7 +651,6 @@
                 // $('.select2').select2();
                 $(document).on('change','.circle.select2',function(){
                     alert();
-                        $('.select2').select2();
                         let data = $(this).val();
                         @this.set('circle',data)
                 });
