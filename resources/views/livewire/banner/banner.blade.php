@@ -54,7 +54,7 @@
                                     <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4" >
-                                    <div>
+                                    <div wire:ignore>
                                         <!--begin::Label-->
                                         <label class="required fw-semibold fs-6 mb-2">Circle</label>
                                         <!--end::Label-->
@@ -650,7 +650,6 @@
             document.addEventListener('livewire:init', function () {
                 // $('.select2').select2();
                 $(document).on('change','.circle.select2',function(){
-                    alert();
                         let data = $(this).val();
                         @this.set('circle',data)
                 });
@@ -675,6 +674,8 @@
                         @this.set('app_version',data)
                 });
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
+                    alert("from modal open");
+
                     $(".select2").select2();
                 })
                 $('#kt_modal_add_banner').on('hidden.bs.modal', function (e) {
