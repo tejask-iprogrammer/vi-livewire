@@ -93,7 +93,7 @@
 			<!--end:Menu item-->
 
 			<!-- manage banner Start -->
-			<div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ request()->routeIs('banner-management.*') ? 'here show' : '' }}">
+			<div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ request()->routeIs('banner-management.managebanner.*') ? 'here show' : '' }}">
 				<!--begin:Menu link-->
 				<span class="menu-link">
 					<span class="menu-icon">{!! getIcon('abstract-28', 'fs-2') !!}</span>

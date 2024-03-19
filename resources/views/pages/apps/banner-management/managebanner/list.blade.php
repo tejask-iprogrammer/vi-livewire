@@ -5,7 +5,7 @@
     @endsection
 
     @section('breadcrumbs')
-        {{ Breadcrumbs::render('user-management.users.index') }}
+        {{ Breadcrumbs::render('banner-management.managebanner.index') }}
     @endsection
 
     <div class="card">

@@ -27,6 +27,11 @@ Breadcrumbs::for('user-management.users.index', function (BreadcrumbTrail $trail
     $trail->parent('user-management.index');
     $trail->push('Users', route('user-management.users.index'));
 });
+Breadcrumbs::for('banner-management.managebanner.index', function (BreadcrumbTrail $trail) {
+    // dd($trail->parent("banner-management.managebanner.index"));
+    $trail->parent('dashboard');
+    $trail->push('Manage Banner', route('banner-management.managebanner.index'));
+});
 
 // Home > Dashboard > User Management > Users > [User]
 Breadcrumbs::for('user-management.users.show', function (BreadcrumbTrail $trail, User $user) {
