@@ -90,7 +90,7 @@ class Banner extends Component
         'banner_rank'=> 'required',
         'status'=>'required',
         'isnotified' => 'required',
-        'banner_name' => 'required',
+        // 'banner_name' => 'required',
        
     ];
     protected $messages = [
@@ -107,7 +107,7 @@ class Banner extends Component
         'banner_rank.required' => 'Banner Rank  cannot be empty.',
         'status.required' => 'Please select status.',
         'isnotified.required' => 'Please select is notified.',
-        'banner_name.required' => 'Please select banner image.',
+        // 'banner_name.required' => 'Please select banner image.',
     ];
     public function __construct()
     {
@@ -214,13 +214,12 @@ class Banner extends Component
             }
 
             // $image=new Image();
-            if($this->banner_name){
+            if(isset($this->banner_name)){
 
             $image_path = public_path('uploads/livewire-tmp/'.$this->banner_name->getFilename());
             $imageName = carbon::now()->timestamp.'.'.$this->banner_name->extension();
             $tempdata = $this->banner_name->storeAs('astro',$imageName,'s3');
-           
-                $data['banner_name'] = $tempdata;
+            $data['banner_name'] = $tempdata;
             unlink($image_path);
         }
 
@@ -304,7 +303,10 @@ class Banner extends Component
             }
             // dd($data);
             // Update or Create a new user record in the database
-            if(Redis::keys('Temp*')){  Redis::del(Redis::keys('Temp*')); }
+            // if(Redis::keys('Temp*')){  Redis::del(Redis::keys('Temp*')); }
+            $screen_name = BannerScreen::find($this->banner_screen);
+            if(Redis::keys('checkBanner_*') != null){  Redis::del(Redis::keys('checkBanner_*')); }
+            if(Redis::keys($screen_name->type.'_*') != null){  Redis::del(Redis::keys($screen_name->type.'_*')); }
             $banners = Banners::find($this->user_id) ?? Banners::create($data);
             $previous_image = Banners::find($this->user_id);
             if ($this->edit_mode) {
@@ -318,9 +320,12 @@ class Banner extends Component
                 // Assign selected role for user
 
                 // Emit a success event with a message
-                $data = [];
-                $data['banner_name'] = $previous_image->banner_name;
-                DB::table('banner_history')->insert($data);
+                
+                if(isset($this->banner_name)){
+                    $data = [];
+                    $data['banner_name'] = $previous_image->banner_name;
+                     DB::table('banner_history')->insert($data);
+                }
                 $this->dispatch('success', __('Manage Banner updated'));
             } else {
                 // Assign selected role for user
