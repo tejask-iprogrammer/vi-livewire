@@ -68,6 +68,7 @@ class Banner extends Component
     public $bannerscreenModel;
     public $tablistModel;
     public $appVersionModel;
+    public $hiddenCircleArray;
     protected $listeners = [
         'delete_banner' => 'deleteBanner',
         'update_banner' => 'updateBanner',
@@ -107,7 +108,8 @@ class Banner extends Component
         'banner_rank.required' => 'Banner Rank  cannot be empty.',
         'status.required' => 'Please select status.',
         'isnotified.required' => 'Please select is notified.',
-        // 'banner_name.required' => 'Please select banner image.',
+        'banner_name.required' => 'Please select banner image.',
+        'saved_avatar.required' => 'Please select banner image.',
     ];
     public function __construct()
     {
@@ -168,19 +170,24 @@ class Banner extends Component
                 $this->validate([
                    'prepaid_persona' => 'required',
                    'plan' => 'required',
-                //    'socid' => 'required',
-                //    'socid_include_exclude' => 'required',
-                //    'postpaid_persona' => 'required',
                ]);
            }
            if($this->lob == "Postpaid"){
             $this->validate([
-            //    'prepaid_persona' => 'required',
-            //    'plan' => 'required',
                'socid' => 'required',
                'socid_include_exclude' => 'required',
                'postpaid_persona' => 'required',
              ]);
+            }
+            if($this->banner_name == "" && !($this->edit_mode)){
+                $this->validate([
+                   'saved_avatar' => 'required',
+                 ]);
+            }
+            if(($this->saved_avatar == "" && $this->banner_name == "") && ($this->edit_mode)){
+                $this->validate([
+                   'saved_avatar' => 'required',
+                 ]);
             }
             
             $data['start_date_time'] = $this->start_date_time;
@@ -215,13 +222,12 @@ class Banner extends Component
 
             // $image=new Image();
             if(isset($this->banner_name)){
-
-            $image_path = public_path('uploads/livewire-tmp/'.$this->banner_name->getFilename());
-            $imageName = carbon::now()->timestamp.'.'.$this->banner_name->extension();
-            $tempdata = $this->banner_name->storeAs('astro',$imageName,'s3');
-            $data['banner_name'] = $tempdata;
-            unlink($image_path);
-        }
+                $image_path = public_path('uploads/livewire-tmp/'.$this->banner_name->getFilename());
+                $imageName = carbon::now()->timestamp.'.'.$this->banner_name->extension();
+                $tempdata = $this->banner_name->storeAs('astro',$imageName,'s3');
+                $data['banner_name'] = $tempdata;
+                unlink($image_path);
+            }
 
             if($this->banner_rank){
                 $data['banner_rank'] = $this->banner_rank;
@@ -305,23 +311,39 @@ class Banner extends Component
             // Update or Create a new user record in the database
             // if(Redis::keys('Temp*')){  Redis::del(Redis::keys('Temp*')); }
             $screen_name = BannerScreen::find($this->banner_screen);
-            if(Redis::keys('checkBanner_*') != null){  Redis::del(Redis::keys('checkBanner_*')); }
-            if(Redis::keys($screen_name->type.'_*') != null){  Redis::del(Redis::keys($screen_name->type.'_*')); }
+            // if(Redis::keys('checkBanner_*') != null){  Redis::del(Redis::keys('checkBanner_*')); }
+            // if(Redis::keys($screen_name->type.'_*') != null){  Redis::del(Redis::keys($screen_name->type.'_*')); }
             $banners = Banners::find($this->user_id) ?? Banners::create($data);
             $previous_image = Banners::find($this->user_id);
+
             if ($this->edit_mode) {
+                $filteredArray = array_unique(array_filter($this->circle));
+                $circleList = implode(',', $filteredArray);
+
+                // $hiddenCircleArraytemp = explode(',', $this->hiddenCircleArray);
+                $cacheCircle = array_unique(array_merge($filteredArray,explode(",", $this->hiddenCircleArray)));
+                $this->cacheDelete($cacheCircle,$screen_name->type);
+             }else{
+                $filteredArray = array_unique(array_filter($this->circle));
+                unset($this->hiddenCircleArray);
+                $this->cacheDelete($filteredArray,$screen_name->type);
+            }
+
+            // if ($this->edit_mode) {
                 foreach ($data as $k => $v) {
                     $banners->$k = $v;
                 }
                 $banners->save();
-            }
+            // }else{
+
+            // }
       
             if ($this->edit_mode) {
                 // Assign selected role for user
 
                 // Emit a success event with a message
                 
-                if(isset($this->banner_name)){
+                if(isset($previous_image->banner_name)){
                     $data = [];
                     $data['banner_name'] = $previous_image->banner_name;
                      DB::table('banner_history')->insert($data);
@@ -340,7 +362,22 @@ class Banner extends Component
         // Reset the form fields after successful submission
         $this->reset();
     }
-
+public function cacheDelete($cacheCircle = [],$screen_name){
+   
+        if(!empty($cacheCircle)){
+            if(in_array('0000',$cacheCircle)){
+                if(Redis::keys('checkBanner_*') != null){  Redis::del(Redis::keys('checkBanner_*')); }
+                if(Redis::keys($screen_name.'_*') != null){  Redis::del(Redis::keys($screen_name.'_*')); }
+            }else{
+                foreach($cacheCircle as $circles){
+                    //if(!empty($bannerDetails)){
+                        if(Redis::keys('checkBanner_'.$circles.'_'.'*') != null){  Redis::del(Redis::keys('checkBanner_'.$circles.'_'.'*')); }
+                       if(Redis::keys($screen_name."_".$circles.'_*') != null){  Redis::del(Redis::keys($screen_name."_".$circles.'_*')); }
+                    //}
+                }
+            }   
+        }
+    }
     public function updateBanner($id)
     {
         $this->edit_mode = true;
@@ -350,6 +387,8 @@ class Banner extends Component
         $this->banner_screen = $banners->banner_screen;
         $this->user_id = $banners->id;
         $this->circle = explode(',', $banners->circle);
+        $this->hiddenCircleArray = $banners->circle;
+        // dd($this->hiddenCircleArray);
         $this->login_type = $banners->login_type;
         $this->brand = $banners->brand;
         $this->lob = $banners->lob;

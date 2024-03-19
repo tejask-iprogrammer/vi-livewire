@@ -65,6 +65,9 @@
                                             <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
                                         </select>
+
+                                         <input type="hidden" wire:model="hiddenCircleArray"class="form-control" name="hiddenCircle" value="{{ $hiddenCircleArray }}"/>
+                                        
                                         <!--end::Input-->
                                     </div>
                                     @error('circle')
@@ -534,7 +537,7 @@
                                                 {!! getIcon('pencil','fs-7') !!}
                                                 <!--begin::Inputs-->
                                                 <input type="file" wire:model="notified_banner" name="avatar" accept=".png, .jpg, .jpeg"/>
-                                                <input type="hidden" name="avatar_remove"/>
+                                                <input type="hidden"name="avatar_remove"/>
                                                 <!--end::Inputs-->
                                             </label>
                                             <!--end::Label-->

@@ -64,7 +64,9 @@ class BannerFilter extends Component
             return $q->whereIn('lob',["Both", $this->lob]);
         });
         $query->when($this->postpaid_persona != "", function($q){
-            return $q->whereIn('postpaid_persona', ["All",$this->postpaid_persona]);
+            // return $q->whereIn('postpaid_persona', ["All",$this->postpaid_persona]);
+            return $q->whereRaw('FIND_IN_SET("'.$this->postpaid_persona.'", postpaid_persona) OR FIND_IN_SET("All", postpaid_persona)');
+
         });
         $query->when($this->brand != "", function($q){
             return $q->whereIn('brand', ["Brandx",$this->brand]);
@@ -74,11 +76,15 @@ class BannerFilter extends Component
         });
 
         $query->when($this->circle != "", function($q){
-            return $q->whereIn('circle', ["0000",$this->circle]);
+            // return $q->whereIn('circle', ["0000",$this->circle]);
+            // return $q->whereRaw('FIND_IN_SET(?, circle)', [$this->circle]);
+            return $q->whereRaw('FIND_IN_SET("'.$this->circle.'", circle) OR FIND_IN_SET("0000", circle)');
         });
 
         $query->when($this->appversion != "", function($q){
-            return $q->whereIn('app_version', ["All Versions",$this->appversion]);
+            // return $q->whereIn('app_version', ["All Versions",$this->appversion]);
+            // return $q->whereRaw('FIND_IN_SET(?, app_version)', [$this->appversion]);
+            return $q->whereRaw('FIND_IN_SET("'.$this->appversion.'", app_version) OR FIND_IN_SET("All Versions", app_version)');
         });
 
         $query->when($this->screen != "", function($q){
