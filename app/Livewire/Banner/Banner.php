@@ -90,6 +90,7 @@ class Banner extends Component
         'banner_rank'=> 'required',
         'status'=>'required',
         'isnotified' => 'required',
+        'banner_name' => 'required',
        
     ];
     protected $messages = [
@@ -106,7 +107,7 @@ class Banner extends Component
         'banner_rank.required' => 'Banner Rank  cannot be empty.',
         'status.required' => 'Please select status.',
         'isnotified.required' => 'Please select is notified.',
-        'banner_name.required' => 'Please select is notified.',
+        'banner_name.required' => 'Please select banner image.',
     ];
     public function __construct()
     {
