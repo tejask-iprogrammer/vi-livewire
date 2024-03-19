@@ -646,13 +646,16 @@
 <script type="text/javascript">
             $(document).ready(function() {
                 $('.select2').select2();
+
+                $(document).on('change','.circle.select2',function(){
+                        let data = $(this).val();
+                        @this.set('circle',data);
+                        $('.select2').select2();
+                });
             });
             document.addEventListener('livewire:init', function () {
                 // $('.select2').select2();
-                $(document).on('change','.circle.select2',function(){
-                        let data = $(this).val();
-                        @this.set('circle',data)
-                });
+                
                 $(document).on('change','.prepaidPersona.select2',function(){
                         let data = $(this).val();
                         @this.set('prepaid_persona',data)
@@ -674,8 +677,6 @@
                         @this.set('app_version',data)
                 });
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
-                    alert("from modal open");
-
                     $(".select2").select2();
                 })
                 $('#kt_modal_add_banner').on('hidden.bs.modal', function (e) {
