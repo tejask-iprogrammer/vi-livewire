@@ -645,13 +645,8 @@
 @push('scripts')
 <script type="text/javascript">
             $(document).ready(function() {
-                // alert("from ereadt");
-                // $('.select2').select2();
-
-                $('.select2').select2({
-                dropdownParent: $('#kt_modal_add_banner')
+                $('.select2').select2();
             });
-                    });
             document.addEventListener('livewire:init', function () {
                 // $('.select2').select2();
                 $(document).on('change','.circle.select2',function(e){
