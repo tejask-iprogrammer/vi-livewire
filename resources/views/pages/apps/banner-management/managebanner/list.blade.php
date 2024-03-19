@@ -1,7 +1,7 @@
 <x-default-layout>
 
     @section('title')
-        Users
+        Manage Banners
     @endsection
 
     @section('breadcrumbs')
@@ -58,7 +58,9 @@
     @push('scripts')
         <script type="text/javascript">
             $(document).ready(function() {
-                $('.select2').select2();
+                // $('.select2').select2();
+                $("select2").trigger('change');
+
             });
                 $('body').on("click", ".chkAll", function (e) {
                     if($(".chkAll").prop('checked') == true){
