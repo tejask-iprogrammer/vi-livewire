@@ -502,7 +502,7 @@
                                             <!--begin::Hint-->
                                             <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
                                             <!--end::Hint-->
-                                            @error('banner_name')
+                                            @error('saved_avatar')
                                             <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col mt-4">
@@ -645,14 +645,13 @@
 @push('scripts')
 <script type="text/javascript">
             $(document).ready(function() {
-                $('.select2').select2();
+                $('.circle').select2();
             });
             document.addEventListener('livewire:init', function () {
                 // $('.select2').select2();
                 $(document).on('change','.circle.select2',function(e){
                         let data = $(this).val();
                         @this.set('circle',data);
-                        $('.circle.select2').select2();
                 });
                 $(document).on('change','.prepaidPersona.select2',function(){
                         let data = $(this).val();
