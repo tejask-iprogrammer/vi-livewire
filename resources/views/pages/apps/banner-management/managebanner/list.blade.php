@@ -57,11 +57,6 @@
 
     @push('scripts')
         <script type="text/javascript">
-            $(document).ready(function() {
-                // $('.select2').select2();
-                $("select2").trigger('change');
-
-            });
                 $('body').on("click", ".chkAll", function (e) {
                     if($(".chkAll").prop('checked') == true){
                         $('input:checkbox').prop('checked',true);
