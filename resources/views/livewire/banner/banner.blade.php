@@ -650,6 +650,7 @@
             document.addEventListener('livewire:init', function () {
                 // $('.select2').select2();
                 $(document).on('change','.circle.select2',function(){
+                        $('.select2').select2();
                         let data = $(this).val();
                         @this.set('circle',data)
                 });
