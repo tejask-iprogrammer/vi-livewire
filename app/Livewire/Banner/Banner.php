@@ -212,12 +212,14 @@ class Banner extends Component
             }
 
             // $image=new Image();
+            $image_path = public_path('uploads/livewire-tmp/'.$this->banner_name->getFilename());
             $imageName = carbon::now()->timestamp.'.'.$this->banner_name->extension();
             $tempdata = $this->banner_name->storeAs('astro',$imageName,'s3');
            
             if($this->banner_name){
                 $data['banner_name'] = $tempdata;
             }
+            unlink($image_path);
             if($this->banner_rank){
                 $data['banner_rank'] = $this->banner_rank;
             }
@@ -300,6 +302,7 @@ class Banner extends Component
             // Update or Create a new user record in the database
             if(Redis::keys('Temp*')){  Redis::del(Redis::keys('Temp*')); }
             $banners = Banners::find($this->user_id) ?? Banners::create($data);
+            $bannersImage = Banners::find($this->user_id);
             if ($this->edit_mode) {
                 foreach ($data as $k => $v) {
                     $banners->$k = $v;
@@ -311,6 +314,9 @@ class Banner extends Component
                 // Assign selected role for user
 
                 // Emit a success event with a message
+                $data = [];
+                $data['banner_name'] = $bannersImage->banner_name;
+                DB::table('banner_history')->insert($data);
                 $this->dispatch('success', __('Manage Banner updated'));
             } else {
                 // Assign selected role for user
