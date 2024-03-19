@@ -648,12 +648,10 @@
                 $('.select2').select2();
             });
             document.addEventListener('livewire:init', function () {
-                $('.select2').select2();
-                // $(document).on('change','.circle.select2',function(){
-                    $(".circle.select2").change(function(){
+                // $('.select2').select2();
+                $(document).on('change','.circle.select2',function(){
                         let data = $(this).val();
-                        @this.set('circle',data);
-                        $('.select2').select2();
+                        @this.set('circle',data)
                 });
                 $(document).on('change','.prepaidPersona.select2',function(){
                         let data = $(this).val();
