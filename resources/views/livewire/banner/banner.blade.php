@@ -649,7 +649,8 @@
             });
             document.addEventListener('livewire:init', function () {
                 $('.select2').select2();
-                $(document).on('change','.circle.select2',function(){
+                // $(document).on('change','.circle.select2',function(){
+                    $(".circle.select2").change(function(){
                         let data = $(this).val();
                         @this.set('circle',data);
                         $('.select2').select2();
