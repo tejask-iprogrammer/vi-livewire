@@ -69,6 +69,8 @@ class Banner extends Component
     public $tablistModel;
     public $appVersionModel;
     public $hiddenCircleArray;
+    public $banner_name_notified;
+    public $saved_avatar_notified;
     protected $listeners = [
         'delete_banner' => 'deleteBanner',
         'update_banner' => 'updateBanner',
@@ -226,6 +228,14 @@ class Banner extends Component
                 $imageName = carbon::now()->timestamp.'.'.$this->banner_name->extension();
                 $tempdata = $this->banner_name->storeAs('astro',$imageName,'s3');
                 $data['banner_name'] = $tempdata;
+                unlink($image_path);
+            }
+
+            if(isset($this->banner_name_notified)){
+                $image_path = public_path('uploads/livewire-tmp/'.$this->banner_name_notified->getFilename());
+                $imageName = carbon::now()->timestamp.'.'.$this->banner_name_notified->extension();
+                $tempdata = $this->banner_name_notified->storeAs('astro',$imageName,'s3');
+                $data['notified_banner'] = $tempdata;
                 unlink($image_path);
             }
 
@@ -431,6 +441,7 @@ public function cacheDelete($cacheCircle = [],$screen_name){
         $this->end_date_time = $banners->end_date_time;
         // $this->banner_name = $banners->banner_name;
         $this->saved_avatar = $banners->banner_name;
+        $this->saved_avatar_notified = $banners->notified_banner;
     }
     public function deleteBanner($id)
     {

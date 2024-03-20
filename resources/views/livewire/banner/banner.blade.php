@@ -524,20 +524,20 @@
                                         </style>
                                         <!--end::Image placeholder-->
                                         <!--begin::Image input-->
-                                        <div class="image-input image-input-outline image-input-placeholder {{ $avatar || $saved_avatar ? '' : 'image-input-empty' }}" data-kt-image-input="true">
+                                        <div class="image-input image-input-outline image-input-placeholder {{ $banner_name_notified || $saved_avatar_notified ? '' : 'image-input-empty' }}" data-kt-image-input="true">
                                             <!--begin::Preview existing avatar-->
-                                            @if($avatar)
-                                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $avatar ? $avatar->temporaryUrl() : '' }});"></div>
+                                            @if($banner_name_notified)
+                                            <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $banner_name_notified ? $banner_name_notified->temporaryUrl() : '' }});"></div>                                           
                                             @else
-                                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $saved_avatar }});"></div>
+                                              <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset('https://viapprewamp.viapplogs.net')}}/{{$saved_avatar_notified }});"></div>
                                             @endif
                                             <!--end::Preview existing avatar-->
                                             <!--begin::Label-->
                                             <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                                 {!! getIcon('pencil','fs-7') !!}
                                                 <!--begin::Inputs-->
-                                                <input type="file" wire:model="notified_banner" name="avatar" accept=".png, .jpg, .jpeg"/>
-                                                <input type="hidden"name="avatar_remove"/>
+                                                <input type="file" wire:model="banner_name_notified" name="avatar" accept=".png, .jpg, .jpeg"/>
+                                                <input type="hidden"name="avatar_remove_notified"/>
                                                 <!--end::Inputs-->
                                             </label>
                                             <!--end::Label-->
@@ -551,7 +551,7 @@
                                             <!--begin::Hint-->
                                             <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
                                             <!--end::Hint-->
-                                            @error('avatar')
+                                            @error('saved_avatar_notified')
                                             <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
