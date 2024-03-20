@@ -1,6 +1,6 @@
 <div class="modal fade" id="kt_modal_add_banner" tabindex="-1" aria-hidden="true" wire:ignore.self>
     <!--begin::Modal dialog-->
-    <div class="modal-dialog modal-dialog-centered mw-1000px">
+    <div class="modal-dialog modal-dialog-centered mw-10000px">
     <div>
         @if (session()->has('message'))
             <div class="alert alert-success">
@@ -657,43 +657,42 @@
                         @this.set('circle',data);
                         setTimeout(function(){
                             $('.select2').select2();
-                        }, 100);
+                        }, 1000);
                 });
                 $(document).on('change','.prepaidPersona.select2',function(){
                         let data = $(this).val();
                         @this.set('prepaid_persona',data)
                         setTimeout(function(){
                             $('.select2').select2();
-                        }, 100);
-                        
+                        }, 1000);
                 });
                 $(document).on('change','.postpaidPersona.select2',function(){
                         let data = $(this).val();
                         @this.set('postpaid_persona',data)
                         setTimeout(function(){
                             $('.select2').select2();
-                        }, 100);
+                        }, 1000);
                 });
                 $(document).on('change','.redHierarchy.select2',function(){
                         let data = $(this).val();
                         @this.set('red_hierarchy',data)
                         setTimeout(function(){
                             $('.select2').select2();
-                        }, 100);
+                        }, 1000);
                 });
                 $(document).on('change','.serviceType.select2',function(){
                         let data = $(this).val();
                         @this.set('service_type',data)
                         setTimeout(function(){
                             $('.select2').select2();
-                        }, 100);
+                        }, 1000);
                 });
                 $(document).on('change','.appVersion.select2',function(){
                         let data = $(this).val();
                         @this.set('app_version',data)
                         setTimeout(function(){
                             $('.select2').select2();
-                        }, 100);
+                        }, 1000);
                 });
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
                     $(".select2").select2();
