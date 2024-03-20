@@ -3,7 +3,7 @@
 <div class="table-actions-wrapper">
             <button class="btn btn-sm red table-group-action-delete  deleteData btn btn-primary"><i class="fa fa-trash"></i> Delete</button>
             <select class="form-control changeStatus">
-                <option value="" selected>change Status</option>
+                <option value="" selected>Change Status</option>
                 <option value="1">Active</option>
                 <option value="0">Inactive</option>
             </select>
@@ -14,20 +14,20 @@
         <thead>
             <tr>
                 <th><input type="checkbox" value="All" id="chkAll" class="form-check-input chkAll"  /></th>
-                <th><span class="wordBreak">Banner Title<span></th>
-                <th><span class="wordBreak">lob<span><span></th>
-                <th><span class="wordBreak">Postpaid Persona<span></th>
-                <th><span class="wordBreak">Login Type<span></th>
-                <th><span class="wordBreak">Brand<span></th>
-                <th><span class="wordBreak">circle<span></th>
-                <th><span class="wordBreak">App Version<span></th>
-                <th><span class="wordBreak">Screen<span></th>
-                <th><span class="wordBreak">OS<span></th>
-                <th><span class="wordBreak">Rank<span></th>
-                <th><span class="wordBreak">Link<span></th>
-                <th><span class="wordBreak">status<span></th>
-                <th><span class="wordBreak">Updated At<span></th>
-                <th><span class="wordBreak">options<span></th>
+                <th><span class="wordBreak fw-bold">Banner Title<span></th>
+                <th><span class="wordBreak fw-bold">Lob<span><span></th>
+                <th><span class="wordBreak fw-bold">Postpaid Persona<span></th>
+                <th><span class="wordBreak fw-bold">Login Type<span></th>
+                <th><span class="wordBreak fw-bold">Brand<span></th>
+                <th><span class="wordBreak fw-bold">Circle<span></th>
+                <th><span class="wordBreak fw-bold">App Version<span></th>
+                <th><span class="wordBreak fw-bold">Screen<span></th>
+                <th><span class="wordBreak fw-bold">OS<span></th>
+                <th><span class="wordBreak fw-bold">Rank<span></th>
+                <th><span class="wordBreak fw-bold">Link<span></th>
+                <th><span class="wordBreak fw-bold">Status<span></th>
+                <th><span class="wordBreak fw-bold">Updated At<span></th>
+                <th><span class="wordBreak fw-bold">Options<span></th>
             </tr>
             <tr>
             <td>
