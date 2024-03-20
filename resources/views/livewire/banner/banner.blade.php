@@ -658,7 +658,7 @@
                         callSelect2();
                         setTimeout(function(){
                             $('.select2').select2();
-                        }, 100);
+                        }, 1000);
                 });
                 $(document).on('change','.prepaidPersona.select2',function(){
                         let data = $(this).val();
