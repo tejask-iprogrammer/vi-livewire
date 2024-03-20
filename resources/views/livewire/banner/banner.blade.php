@@ -656,9 +656,8 @@
                         let data = $(this).val();
                         @this.set('circle',data);
                         setTimeout(function(){
-                            $('.circle.select2').select2();
-
-            }, 1000);
+                            $('.select2').select2();
+                    }, 100);
                 });
                 $(document).on('change','.prepaidPersona.select2',function(){
                         let data = $(this).val();
