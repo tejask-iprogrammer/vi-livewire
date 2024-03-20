@@ -652,10 +652,10 @@
             });
             document.addEventListener('livewire:init', function () {
                 // $('.select2').select2();
-                $(document).on('change','.circle.select2',function(e){
+                $(document).on('change','.circle',function(e){
                         let data = $(this).val();
                         @this.set('circle',data);
-                        $('.circle.select2').select2();
+                        // $('.circle.select2').select2();
                 });
                 $(document).on('change','.prepaidPersona.select2',function(){
                         let data = $(this).val();
@@ -693,6 +693,8 @@
                         // $('.select2').val(null).trigger('change');
                         
                     $("#kt_modal_add_banner_form")[0].reset();
+                    @this.set('saved_avatar',"");
+                    @this.set('banner_name',"")
                     let data = false;
                     @this.set('edit_mode',data)
                 })
