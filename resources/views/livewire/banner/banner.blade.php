@@ -650,45 +650,53 @@
             $(document).ready(function() {
                 $(".select2").select2();
             });
-            function callSelect2(){
-                setTimeout(function(){
-                    $('.select2').select2();
-                }, 100);
-            }
             document.addEventListener('livewire:init', function () {
                 // $('.select2').select2();
                 $(document).on('change','.circle.select2',function(e){
                         let data = $(this).val();
                         @this.set('circle',data);
                         callSelect2();
+                        setTimeout(function(){
+                            $('.select2').select2();
+                        }, 100);
                 });
                 $(document).on('change','.prepaidPersona.select2',function(){
                         let data = $(this).val();
-                        @this.set('prepaid_persona',data);
-                        callSelect2();
+                        @this.set('prepaid_persona',data)
+                        setTimeout(function(){
+                            $('.select2').select2();
+                        }, 100);
                 });
                 $(document).on('change','.postpaidPersona.select2',function(){
                         let data = $(this).val();
-                        @this.set('postpaid_persona',data);
-                        callSelect2();
+                        @this.set('postpaid_persona',data)
+                        setTimeout(function(){
+                            $('.select2').select2();
+                        }, 100);
                 });
                 $(document).on('change','.redHierarchy.select2',function(){
                         let data = $(this).val();
-                        @this.set('red_hierarchy',data);
-                        callSelect2();
+                        @this.set('red_hierarchy',data)
+                        setTimeout(function(){
+                            $('.select2').select2();
+                        }, 100);
                 });
                 $(document).on('change','.serviceType.select2',function(){
                         let data = $(this).val();
-                        @this.set('service_type',data);
-                        callSelect2();
+                        @this.set('service_type',data)
+                        setTimeout(function(){
+                            $('.select2').select2();
+                        }, 100);
                 });
                 $(document).on('change','.appVersion.select2',function(){
                         let data = $(this).val();
-                        @this.set('app_version',data);
-                        callSelect2();
+                        @this.set('app_version',data)
+                        setTimeout(function(){
+                            $('.select2').select2();
+                        }, 100);
                 });
                 $('#kt_modal_add_banner').on('shown.bs.modal', function (e) {
-                    $(".select2").select2();    
+                    $(".select2").select2();
                 })
                 $('#kt_modal_add_banner').on('hidden.bs.modal', function (e) {
                         $(".prepaidSelect").prop('disabled', false);
