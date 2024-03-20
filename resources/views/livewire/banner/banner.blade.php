@@ -655,7 +655,6 @@
                 $(document).on('change','.circle.select2',function(e){
                         let data = $(this).val();
                         @this.set('circle',data);
-                        callSelect2();
                         setTimeout(function(){
                             $('.select2').select2();
                         }, 1000);
