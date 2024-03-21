@@ -50427,7 +50427,7 @@ body,
   background-color: transparent;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .app-sidebar-logo {
-  /* border-bottom: 1px dashed #1F212A; */
+  border-bottom: 1px dashed #1F212A;
     background: #056EE9 none repeat scroll 0 0;
     border-bottom: 1px solid #e9ecf3;
 }
@@ -51504,16 +51504,16 @@ td,th
 .tempCSS{
   margin-right:300px
 }
-#myTable{
+.myTable{
   margin-top: 10px;
 }
-#myTable td, #myTable th {
+.myTable td, .myTable th {
   border: 1px solid #ddd;
   padding: 8px;
 }
-#myTable tr:nth-child(even){background-color: #f9f9f9;}
-/* #myTable tr:hover {background-color: #ddd;} */
-/* #myTable th {
+.myTable tr:nth-child(even){background-color: #f9f9f9;}
+/* .myTable tr:hover {background-color: #ddd;} */
+/* .myTablemyTable th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
