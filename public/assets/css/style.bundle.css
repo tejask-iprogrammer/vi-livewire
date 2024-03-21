@@ -125,7 +125,33 @@
   --bs-form-invalid-color: #F8285A;
   --bs-form-invalid-border-color: #F8285A;
 }
+.myTable{
+  margin-top: 10px;
+}
+.myTable td, .myTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.myTable tr:nth-child(even){background-color: #f9f9f9;}
+/* .myTable tr:hover {background-color: #ddd;} */
+/* .myTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+} */
 
+/* .menu-accordion.show .menu-link ,
+  .menu-accordion.show .menu-sub-accordion{
+  background: #f2f6f9 !important;
+    color: #5b9bd1 !important;
+} */
+
+.menu-item.show > .menu-link{
+  background: #f2f6f9;
+  color: #5b9bd1 ;
+}
 [data-bs-theme=dark] {
   color-scheme: dark;
   --bs-body-color: #F5F5F5;
@@ -51503,31 +51529,4 @@ td,th
 
 .tempCSS{
   margin-right:300px
-}
-.myTable{
-  margin-top: 10px;
-}
-.myTable td, .myTable th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-.myTable tr:nth-child(even){background-color: #f9f9f9;}
-/* .myTable tr:hover {background-color: #ddd;} */
-/* .myTable th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-} */
-
-/* .menu-accordion.show .menu-link ,
-  .menu-accordion.show .menu-sub-accordion{
-  background: #f2f6f9 !important;
-    color: #5b9bd1 !important;
-} */
-
-.menu-item.show > .menu-link{
-  background: #f2f6f9;
-  color: #5b9bd1 ;
 }
