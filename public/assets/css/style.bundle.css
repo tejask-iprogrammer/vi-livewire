@@ -46788,6 +46788,8 @@ label.rating-label:hover ~ .rating-label > i, label.rating-label:hover ~ .rating
 
 .flex-column-fluid {
   flex: 1 0 auto;
+  background: #ffff none repeat scroll 0 0;
+
 }
 
 .flex-row-auto {
@@ -50425,7 +50427,9 @@ body,
   background-color: transparent;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .app-sidebar-logo {
-  border-bottom: 1px dashed #1F212A;
+  /* border-bottom: 1px dashed #1F212A; */
+    background: #056EE9 none repeat scroll 0 0;
+    border-bottom: 1px solid #e9ecf3;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .btn-custom {
   color: #B5B5C3;
@@ -50443,13 +50447,17 @@ body,
   background-color: rgba(63, 66, 84, 0.35) !important;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-heading {
-  color: #636674 !important;
+  /*color: #636674 !important;*/
+  color: #5C9ACF;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link {
   color: #9A9CAE;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link .menu-title {
-  color: #9A9CAE;
+  /* color: #9A9CAE; */
+    font-size: 14px;
+    font-weight: 500;
+    color: #485a6a;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link .menu-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link .menu-icon .svg-icon,
@@ -50482,7 +50490,7 @@ body,
   color: #F5F5F5;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.here > .menu-link .menu-title {
-  color: #F5F5F5;
+  /* color: #F5F5F5; */
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.here > .menu-link .menu-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.here > .menu-link .menu-icon .svg-icon,
@@ -50514,9 +50522,9 @@ body,
   transition: color 0.2s ease;
   color: #F5F5F5;
 }
-[data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.show > .menu-link .menu-title {
+/* [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.show > .menu-link .menu-title {
   color: #F5F5F5;
-}
+} */
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.show > .menu-link .menu-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.show > .menu-link .menu-icon .svg-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.show > .menu-link .menu-icon i {
@@ -50548,7 +50556,18 @@ body,
   color: #F5F5F5;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-title, [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-title {
-  color: #F5F5F5;
+  /* color: #F5F5F5; */
+  background: #f2f6f9;
+  color: #5b9bd1;
+  border-radius: 0.475rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  /* flex: 0 0 100%; */
+  padding: 0.65rem 1rem;
+  transition: none;
+  outline: none !important;
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-icon .svg-icon,
@@ -50579,13 +50598,15 @@ body,
   /*rtl:end:remove*/
 }
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link.active {
-  transition: color 0.2s ease;
+  /* transition: color 0.2s ease;
   background-color: #1C1C21;
-  color: #F5F5F5;
+  color: #F5F5F5; */
+  background: #f2f6f9 !important;
+    color: #5b9bd1 !important;
 }
-[data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-title {
+/* [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-title {
   color: #F5F5F5;
-}
+} */
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-icon .svg-icon,
 [data-kt-app-layout=dark-sidebar] .app-sidebar .menu .menu-item .menu-link.active .menu-icon i {
@@ -51482,4 +51503,31 @@ td,th
 
 .tempCSS{
   margin-right:300px
+}
+#myTable{
+  margin-top: 10px;
+}
+#myTable td, #myTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#myTable tr:nth-child(even){background-color: #f9f9f9;}
+/* #myTable tr:hover {background-color: #ddd;} */
+/* #myTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+} */
+
+/* .menu-accordion.show .menu-link ,
+  .menu-accordion.show .menu-sub-accordion{
+  background: #f2f6f9 !important;
+    color: #5b9bd1 !important;
+} */
+
+.menu-item.show > .menu-link{
+  background: #f2f6f9;
+  color: #5b9bd1 ;
 }

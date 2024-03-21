@@ -199,7 +199,7 @@
             @empty
                 <tr>
                   <td class="text-center text-muted small" colspan="100%">
-                      No Products Found
+                      No Records Found
                   </td>
               </tr>
             @endforelse

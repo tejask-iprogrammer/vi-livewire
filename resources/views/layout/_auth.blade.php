@@ -22,13 +22,11 @@
 
                 <!--begin::Footer-->
                 <div class="d-flex flex-center flex-wrap px-5">
+                <!-- <div class="d-flex flex-center flex-wrap px-5"> -->
                     <!--begin::Links-->
-                    <div class="d-flex fw-semibold text-primary fs-base">
-                        <a href="#" class="px-5" target="_blank">Terms</a>
-
-                        <a href="#" class="px-5" target="_blank">Plans</a>
-
-                        <a href="#" class="px-5" target="_blank">Contact Us</a>
+                    <div class="text-gray-900 order-2 order-md-1">
+                        <span class="text-muted fw-semibold me-1">{{ date('Y') }}&copy;</span>
+                        <a href="https://www.iprogrammer.com/" target="_blank" class="text-gray-800 text-hover-primary">Programmer Solutions Pvt. Ltd.</a>
                     </div>
                     <!--end::Links-->
                 </div>
@@ -37,7 +35,9 @@
             <!--end::Body-->
 
             <!--begin::Aside-->
-            <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2" style="background-image: url({{ image('misc/auth-bg.png') }})">
+            <div class="d-none flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2" style="background-image: url({{ image('misc/auth-bg.png') }})">
+            
+            <!-- <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2" style="background-image: url({{ image('misc/auth-bg.png') }})"> -->
                 <!--begin::Content-->
                 <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
                     <!--begin::Logo-->
