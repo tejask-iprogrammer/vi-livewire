@@ -51504,16 +51504,16 @@ td,th
 .tempCSS{
   margin-right:300px
 }
-#myTable{
+.myTable{
   margin-top: 10px;
 }
-#myTable td, #myTable th {
+.myTable td, .myTable th {
   border: 1px solid #ddd;
   padding: 8px;
 }
-#myTable tr:nth-child(even){background-color: #f9f9f9;}
-/* #myTable tr:hover {background-color: #ddd;} */
-/* #myTable th {
+.myTable tr:nth-child(even){background-color: #f9f9f9;}
+/* .myTable tr:hover {background-color: #ddd;} */
+/* .myTable th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;

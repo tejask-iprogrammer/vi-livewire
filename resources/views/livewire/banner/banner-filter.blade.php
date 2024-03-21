@@ -10,7 +10,7 @@
             <button class="btn btn-sm yellow table-group-action-copy CopyData btn btn-primary"><i class="fa fa-copy"></i> Copy</button>
         </div>
     <div class="table-responsive">
-        <table class="table" id="myTable">
+        <table class="myTable" id="myTable">
         <thead>
             <tr>
                 <th><input type="checkbox" value="All" id="chkAll" class="form-check-input chkAll"  /></th>
