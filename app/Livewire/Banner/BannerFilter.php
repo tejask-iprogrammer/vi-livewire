@@ -10,7 +10,7 @@ use App\Models\AppVersion;
 use App\Models\Banners;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Auth;
-
+use DB;
 class BannerFilter extends Component
 {
     use WithPagination;
@@ -42,7 +42,7 @@ class BannerFilter extends Component
         $this->tablistModel = new Tab;
         $this->appversionModel = new AppVersion;
         $this->screenList = $this->bannerscreenModel->bannerScreenData();
-        
+        // DB::enableQueryLog();
         $query = Banners::orderBy("updated_at",'desc');
         // $usersCount = Banners::orderBy("updated_at",'desc');
 
@@ -65,7 +65,7 @@ class BannerFilter extends Component
         });
         $query->when($this->postpaid_persona != "", function($q){
             // return $q->whereIn('postpaid_persona', ["All",$this->postpaid_persona]);
-            return $q->whereRaw('FIND_IN_SET("'.$this->postpaid_persona.'", postpaid_persona) OR FIND_IN_SET("All", postpaid_persona)');
+            return $q->whereRaw('(FIND_IN_SET("'.$this->postpaid_persona.'", postpaid_persona) OR FIND_IN_SET("All", postpaid_persona))');
 
         });
         $query->when($this->brand != "", function($q){
@@ -78,13 +78,13 @@ class BannerFilter extends Component
         $query->when($this->circle != "", function($q){
             // return $q->whereIn('circle', ["0000",$this->circle]);
             // return $q->whereRaw('FIND_IN_SET(?, circle)', [$this->circle]);
-            return $q->whereRaw('FIND_IN_SET("'.$this->circle.'", circle) OR FIND_IN_SET("0000", circle)');
+            return $q->whereRaw('(FIND_IN_SET("'.$this->circle.'", circle) OR FIND_IN_SET("0000", circle))');
         });
 
         $query->when($this->appversion != "", function($q){
             // return $q->whereIn('app_version', ["All Versions",$this->appversion]);
             // return $q->whereRaw('FIND_IN_SET(?, app_version)', [$this->appversion]);
-            return $q->whereRaw('FIND_IN_SET("'.$this->appversion.'", app_version) OR FIND_IN_SET("All Versions", app_version)');
+            return $q->whereRaw('(FIND_IN_SET("'.$this->appversion.'", app_version) OR FIND_IN_SET("All Versions", app_version))');
         });
 
         $query->when($this->screen != "", function($q){
@@ -121,6 +121,8 @@ class BannerFilter extends Component
                     }
             }
         }
+        // $querylast = (DB::getQueryLog()); 
+        // $querylast = $query->toSql();
         addJavascriptFile('assets/js/custom/manageBanner.js');
         return view('livewire.banner.banner-filter',compact('banners','lobList','postpaidPersonaList','brandList','loginTypeList','circleList','appVersionList','screenList','osList','rankList','totalCount'));
     }
