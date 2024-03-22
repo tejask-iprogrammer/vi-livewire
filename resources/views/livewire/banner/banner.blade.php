@@ -1,6 +1,6 @@
 <div class="modal fade" id="kt_modal_add_banner" tabindex="-1" aria-hidden="true" wire:ignore.self>
     <!--begin::Modal dialog-->
-    <div class="modal-dialog modal-dialog-centered modalAddBanner">
+    <div class="modal-dialog modal-dialog-centered mw-1100px ">
     <div>
         @if (session()->has('message'))
             <div class="alert alert-success">
