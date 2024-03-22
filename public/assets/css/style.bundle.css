@@ -51528,5 +51528,19 @@ td,th
 }
 
 .tempCSS{
-  margin-right:300px
+  margin-right:300px;
+  padding-left: 0px;
+}
+.pageFilter{
+  padding-top:20px
+}
+.Byperpage{
+  margin-right: 15px;
+  width: 67%;
+}
+.byperpageTemp{
+  margin-right: 0 !important;
+}
+.modalAddBanner{
+  max-width:90%
 }

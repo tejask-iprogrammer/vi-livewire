@@ -1,7 +1,7 @@
 <x-default-layout>
 
     @section('title')
-        Manage Banners
+        Banner Management
     @endsection
 
     @section('breadcrumbs')
