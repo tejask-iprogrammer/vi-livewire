@@ -210,7 +210,7 @@
             <div class="col-md-2">
                 <div class="d-flex align-items-center">
                     <label class="perpageclass perpageclassTemp" for="">Per Page</label>
-                        <select wire:model.live="Byperpage" class="Byperpage byperpageTemp form-control" >
+                        <select wire:model.live="Byperpage" class="Byperpage byperpageCss form-control" >
                             <option value="10">10</option>
                             <option value="50">50</option>
                             <option value="100">100</option>
@@ -220,7 +220,7 @@
                 </div>
                 
             </div>
-            <div class="col-md-6 tempCSS">
+            <div class="col-md-6 TotalRecords">
                 <b>Total {{$totalCount}} record(s) found</b>
             </div>
         </div>

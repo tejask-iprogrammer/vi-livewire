@@ -152,6 +152,23 @@
   background: #f2f6f9 !important;
   color: #5b9bd1 !important;
 }
+.TotalRecords{
+  margin-right:300px;
+  padding-left: 0px;
+}
+.pageFilter{
+  padding-top:20px
+}
+.Byperpage{
+  margin-right: 15px;
+  width: 67%;
+}
+.byperpageCss{
+  margin-right: 0 !important;
+}
+.modalAddBanner{
+  max-width:90%
+}
 [data-bs-theme=dark] {
   color-scheme: dark;
   --bs-body-color: #F5F5F5;
@@ -51525,22 +51542,4 @@ td,th
 .perpageclass{
     display: block;
     width: 100%;
-}
-
-.tempCSS{
-  margin-right:300px;
-  padding-left: 0px;
-}
-.pageFilter{
-  padding-top:20px
-}
-.Byperpage{
-  margin-right: 15px;
-  width: 67%;
-}
-.byperpageTemp{
-  margin-right: 0 !important;
-}
-.modalAddBanner{
-  max-width:90%
 }
