@@ -161,7 +161,13 @@
                     <td><span class="wordBreak">{{ $banner->getBannerName->screen_title }}</span></td>
                     <td><span class="wordBreak">{{ $banner->device_os }}</span></td>
                     <td><span class="wordBreak">{{ $banner->banner_rank }}</span></td>
-                    <td><span class="wordBreak">{{ $banner->link }}</span></td>
+                        @if($banner->internal_link !="")
+                            <td><span class="wordBreak"><b>Internal Link: </b>{{ $banner->internal_link }}</span></td>
+                        @elseif($banner->external_link !="")
+                            <td><span class="wordBreak"><b>External Link: </b>{{ $banner->external_link }}</span></td>
+                        @else
+                            <td><span class="wordBreak"><b> - </b></span></td>
+                        @endif
                     <td>
                         <span class="wordBreak">
                             @if($banner->status == 1)
