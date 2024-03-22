@@ -154,14 +154,14 @@
 } */
 .TotalRecords{
   margin-right:300px;
-  padding-left: 0px;
+  padding-left: 0px !important;
 }
 .pageFilter{
   padding-top:20px
 }
 .Byperpage{
   margin-right: 15px;
-  width: 67%;
+  width: 67% !important;
 }
 .byperpageCss{
   margin-right: 0 !important;
@@ -51546,4 +51546,5 @@ td,th
 .perpageclass{
     display: block;
     width: 100%;
+    padding-left: 10px !important;
 }
