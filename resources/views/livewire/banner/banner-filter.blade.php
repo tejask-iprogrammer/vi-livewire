@@ -12,7 +12,7 @@
             </select>
             <button class="btn btn-sm yellow table-group-action-copy CopyData btn btn-primary"><i class="fa fa-copy"></i> Copy</button>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-5 col-md-6">
             <div class="col-md-2">
                 <div class="d-flex align-items-center">
                     <label class="perpageclass perpageclassTemp" for="">Per Page</label>
