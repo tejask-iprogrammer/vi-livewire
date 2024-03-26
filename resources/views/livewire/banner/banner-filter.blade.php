@@ -180,24 +180,8 @@
                     <td><span class="wordBreak">{{ $banner->updated_at->format('d M Y, h:i a') }}</span></td>
                     <td>
                         <span class="wordBreak">
-                            <!-- <button type="button" id= "{{ $banner->id }}" value="{{ $banner->id }}"class="btn btn-success editRow">Edit</button>
-                            <button type="button" id= "{{ $banner->id }}" value="{{ $banner->id }}"class="btn btn-danger deleteRow">Delete</button> -->
-                            <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                    Actions
-                                    <i class="ki-duotone ki-down fs-5 ms-1"></i>
-                            </a>
-                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3" data-kt-user-id="{{ $banner->id }}" data-bs-toggle="modal" data-bs-target="#kt_modal_add_banner" data-kt-action="update_row">
-                                            Edit
-                                        </a>
-                                    </div>
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3 deleteRow" value="{{ $banner->id }}" data-kt-user-id="{{ $banner->id }}" data-kt-action="delete_row">
-                                            Delete
-                                        </a>
-                                    </div>
-                                </div>
+                                <button type="button" class="btn btn-outline-primary deleteRow" value="{{ $banner->id }}" data-kt-user-id="{{ $banner->id }}" data-kt-action="delete_row" title="Delete" ><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-outline-primary updateRow" value="{{ $banner->id }}" data-kt-user-id="{{ $banner->id }}" data-bs-toggle="modal" title="Edit" data-bs-target="#kt_modal_add_banner" data-kt-action="update_row"><i class="fa fa-edit"></i></button>
                         </span>
                     </td>
                     
@@ -366,7 +350,7 @@
                             }
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                Livewire.dispatch('deleteRow', [$('.deleteRow').val()]);
+                                Livewire.dispatch('deleteRow', [$(this).val()]);
                             }
                         });
                     });
@@ -379,6 +363,16 @@
                     //     });
                     // // });
                 // Group Action End
+                // document.querySelectorAll('[data-kt-action="update_row"]').forEach(function (element) {
+                //     element.addEventListener('click', function () {
+                //         alert("clicke111")
+                //         Livewire.dispatch('update_banner', [$(this).val()]);
+                //     });
+                // });
+
+                $('body').on("click", ".updateRow", function (e) {
+                    Livewire.dispatch('update_banner', [$(this).val()]);
+                });
 
     </script>
     @endpush

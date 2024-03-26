@@ -51548,3 +51548,10 @@ td,th
     width: 100%;
     padding-left: 10px !important;
 }
+
+.wordBreak button{
+  display:grid;
+  width:50px;
+  margin-left: 30px;
+
+}

@@ -23,11 +23,12 @@ document.querySelectorAll('[data-kt-action="delete_row"]').forEach(function (ele
 });
 
 // Add click event listener to update buttons
-document.querySelectorAll('[data-kt-action="update_row"]').forEach(function (element) {
-    element.addEventListener('click', function () {
-        Livewire.dispatch('update_banner', [this.getAttribute('data-kt-user-id')]);
-    });
-});
+// document.querySelectorAll('[data-kt-action="update_row"]').forEach(function (element) {
+//     element.addEventListener('click', function () {
+//         alert("clicke")
+//         Livewire.dispatch('update_banner', [$(this).val()]);
+//     });
+// });
 
 // Listen for 'success' event emitted by Livewire
 // Livewire.on('success', (message) => {
