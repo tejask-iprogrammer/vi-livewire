@@ -1,5 +1,8 @@
 <div>
 <livewire:banner.banner></livewire:banner.banner>
+<!-- <div class ="pageFilter row align-items-center justify-content-between"> -->
+            
+<!-- </div> -->
 <div class="table-actions-wrapper">
             <button class="btn btn-sm red table-group-action-delete  deleteData btn btn-primary"><i class="fa fa-trash"></i> Delete</button>
             <select class="form-control changeStatus">
@@ -9,6 +12,29 @@
             </select>
             <button class="btn btn-sm yellow table-group-action-copy CopyData btn btn-primary"><i class="fa fa-copy"></i> Copy</button>
         </div>
+        <div class="row mt-5">
+            <div class="col-md-2">
+                <div class="d-flex align-items-center">
+                    <label class="perpageclass perpageclassTemp" for="">Per Page</label>
+                        <select wire:model.live="Byperpage" class="Byperpage byperpageCss form-control" >
+                            <option value="10">10</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="500">500</option>
+                            <option value="{{$totalCount}}">All</option>
+                        </select>
+                </div>
+                
+            </div>
+            <div class = "col-md-2 pt-1">
+                @if(count($banners))
+                    {{$banners->links()}}
+                @endif
+            </div>
+            <div class="col-md-4 TotalRecords pt-3">
+                <b>Total {{$totalCount}} record(s) found</b>
+            </div>
+    </div>
     <div class="table-responsive">
         <table class="myTable" id="myTable">
         <thead>
@@ -196,29 +222,6 @@
 
         </tbody>
         </table>
-        <div class ="pageFilter row align-items-center justify-content-between">
-            <div class="col-md-2">
-                <div class="d-flex align-items-center">
-                    <label class="perpageclass perpageclassTemp" for="">Per Page</label>
-                        <select wire:model.live="Byperpage" class="Byperpage byperpageCss form-control" >
-                            <option value="10">10</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                            <option value="500">500</option>
-                            <option value="{{$totalCount}}">All</option>
-                        </select>
-                </div>
-                
-            </div>
-            <div class="col-md-6 TotalRecords">
-                <b>Total {{$totalCount}} record(s) found</b>
-            </div>
-        </div>
-       
-
-        @if(count($banners))
-            {{$banners->links()}}
-        @endif
     </div>
     <div>
     </div>
