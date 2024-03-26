@@ -149,6 +149,10 @@ class BannerFilter extends Component
         }
         foreach ($deleteArray["ids"] as $key => $bannerId) {
             $bannerDetails = Banners::find($bannerId);
+            $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
+            
+            $this->cacheDelete(explode(',',$bannerDetails->circle),$bannerScreenDetails->screen_name);
+            // $bannerDetails = Banners::find($bannerId);
             // $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
             
             // $this->cacheDelete(explode(',',$bannerDetails->circle),$bannerScreenDetails->screen_name);
@@ -166,7 +170,22 @@ class BannerFilter extends Component
         // }     
         $this->dispatch('success', __('Banners Deleted'));
     }
-
+    public function cacheDelete($cacheCircle = [],$screen_name){
+   
+        if(!empty($cacheCircle)){
+            if(in_array('0000',$cacheCircle)){
+                if(Redis::keys('checkBanner_*') != null){  Redis::del(Redis::keys('checkBanner_*')); }
+                if(Redis::keys($screen_name.'_*') != null){  Redis::del(Redis::keys($screen_name.'_*')); }
+            }else{
+                foreach($cacheCircle as $circles){
+                    //if(!empty($bannerDetails)){
+                        if(Redis::keys('checkBanner_'.$circles.'_'.'*') != null){  Redis::del(Redis::keys('checkBanner_'.$circles.'_'.'*')); }
+                       if(Redis::keys($screen_name."_".$circles.'_*') != null){  Redis::del(Redis::keys($screen_name."_".$circles.'_*')); }
+                    //}
+                }
+            }   
+        }
+    }
     public function groupstatus(array $statusArray){
         if(!(count($statusArray['ids']))){
             $this->dispatch('error', 'Please select minimun one record');
@@ -174,9 +193,9 @@ class BannerFilter extends Component
         }
         foreach ($statusArray["ids"] as $key => $value) {
             $bannerDetails = Banners::find($value);
-            // $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
-          
-            // $this->cacheDelete(explode(',',$bannerDetails->circle),$bannerScreenDetails->screen_name);
+            $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
+                      
+            $this->cacheDelete(explode(',',$bannerDetails->circle),$bannerScreenDetails->screen_name);
             
             if (!empty($bannerDetails)) {
                 switch ($statusArray["status"]) {
@@ -193,7 +212,10 @@ class BannerFilter extends Component
     }
 
     function deleteRowData($deleteDataID){
-        if(Redis::keys('Temp*')){  Redis::del(Redis::keys('Temp*')); }
+        $bannerDetails = Banners::find($deleteDataID);
+        $bannerScreenDetails = BannerScreen::find($bannerDetails->banner_screen);
+                  
+        $this->cacheDelete(explode(',',$bannerDetails->circle),$bannerScreenDetails->screen_name);
         // Prevent deletion of current user
         if ($deleteDataID == Auth::id()) {
             $this->dispatch('error', 'banner cannot be deleted');
