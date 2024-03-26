@@ -51550,7 +51550,25 @@ td,th
 }
 
 .wordBreak button{
-  display:grid;
-  width:50px;
-  margin-left: 30px;
+    display: flex;
+    width: 25px;
+    margin-left: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 0;
+    height: 25px;
+}
+.wordBreak .updateRow{
+  background-color: #E87E04;
+}
+.wordBreak .deleteRow{
+  background-color: #D91E18;
+}
+.wordBreak button i{
+  color: #FFFFFF;
+  padding-right: 0 !important;
+}
+.wordBreak.lastClass{
+  width:70px
 }
