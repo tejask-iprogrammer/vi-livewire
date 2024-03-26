@@ -39,12 +39,15 @@ class BannerFilter extends Component
     {
         // dd($this->Byperpage);
         $this->bannerscreenModel = new BannerScreen;
+     
+        $this->BannersModel = new Banners;
         $this->tablistModel = new Tab;
         $this->appversionModel = new AppVersion;
         $this->screenList = $this->bannerscreenModel->bannerScreenData();
-        // DB::enableQueryLog();
-        $query = Banners::orderBy("updated_at",'desc');
-        // $usersCount = Banners::orderBy("updated_at",'desc');
+
+         $query =  Banners::Join($this->bannerscreenModel->getTable(), 'banners.banner_screen', '=', $this->bannerscreenModel->getTable() . '.id')
+         ->select(['banners.*', 'screen_title','banner_screens.id as screen_id'])
+         ->orderBy($this->BannersModel->getTable() . '.updated_at','desc');
 
         $lobList = ['Prepaid' => 'Prepaid', 'Postpaid' => 'Postpaid', 'Both' => 'Both'];
         $postpaidPersonaList = ['All' => 'All', 'COCP' => 'COCP', 'IOIP' => 'IOIP', 'COIP' => 'COIP', 'Individual' => 'Individual'];
