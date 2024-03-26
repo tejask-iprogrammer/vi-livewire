@@ -41,17 +41,17 @@
             <tr>
                 <th><input type="checkbox" value="All" id="chkAll" class="form-check-input chkAll"  /></th>
                 <th><span class="wordBreak fw-bold">Banner Title<span></th>
-                <th><span class="wordBreak fw-bold">Lob<span><span></th>
-                <th><span class="wordBreak fw-bold">Postpaid Persona<span></th>
-                <th><span class="wordBreak fw-bold">Login Type<span></th>
-                <th><span class="wordBreak fw-bold">Brand<span></th>
+                <th><span class="wordBreak lastClass fw-bold">Lob<span><span></th>
+                <th><span class="wordBreak lastClass fw-bold">Postpaid </br>Persona<span></th>
+                <th><span class="wordBreak lastClass fw-bold">Login Type<span></th>
+                <th><span class="wordBreak lastClass fw-bold">Brand<span></th>
                 <th><span class="wordBreak fw-bold">Circle<span></th>
                 <th><span class="wordBreak fw-bold">App Version<span></th>
                 <th><span class="wordBreak fw-bold">Screen<span></th>
-                <th><span class="wordBreak fw-bold">OS<span></th>
-                <th><span class="wordBreak fw-bold">Rank<span></th>
+                <th><span class="wordBreak lastClass fw-bold">OS<span></th>
+                <th><span class="wordBreak lastClass fw-bold">Rank<span></th>
                 <th><span class="wordBreak fw-bold">Link<span></th>
-                <th><span class="wordBreak fw-bold">Status<span></th>
+                <th><span class="wordBreak fw-bold lastClass">Status<span></th>
                 <th><span class="wordBreak fw-bold">Updated At<span></th>
                 <th><span class="wordBreak lastClass fw-bold">Options<span></th>
             </tr>
@@ -63,7 +63,7 @@
                         <input type="text" class="form-control" wire:model.live="banner_title"/>
                     </span>
                 </td>
-                <td><span class="wordBreak">
+                <td><span class="wordBreak lastClass">
                         <select class="form-control" wire:model.live="lob">
                         <option value="">Select....</option>
                             @foreach($lobList as $key=>$value)
@@ -73,7 +73,7 @@
                     </span>
                 </td>
                 <td>
-                    <span class="wordBreak">
+                    <span class="wordBreak lastClass">
                         <select class="form-control" wire:model.live="postpaid_persona">
                         <option value="">Select....</option>
                             @foreach($postpaidPersonaList as $key=>$value)
@@ -83,7 +83,7 @@
                     </span>
                 </td>
                 <td>
-                    <span class="wordBreak">
+                    <span class="wordBreak lastClass">
                         <select wire:model.live="loginType" class="form-control">
                             <option value="" selected>Select....</option>
                             @foreach($loginTypeList as $key=>$value)
@@ -93,7 +93,7 @@
                    </span>
                 </td>
                 <td>
-                    <span class="wordBreak">
+                    <span class="wordBreak lastClass">
                         <select wire:model.live="brand" class="form-control">
                             <option value="" selected>Select....</option>
                             @foreach($brandList as $key=>$value)
@@ -135,7 +135,7 @@
                 </td>
 
                 <td>
-                    <span class="wordBreak">
+                    <span class="wordBreak lastClass">
                         <select wire:model.live="os" class="form-control">
                             <option value="" selected>Select....</option>
                             @foreach($osList as $key=>$value)
@@ -146,7 +146,7 @@
                 </td>
 
                 <td>
-                    <span class="wordBreak">
+                    <span class="wordBreak lastClass">
                         <select wire:model.live="rank" class="form-control">
                             <option value="" selected>Select....</option>
                             @foreach($rankList as $key=>$value)
@@ -158,7 +158,7 @@
                 <td>
                 </td>
                 <td>
-                    <span class="wordBreak">
+                    <span class="wordBreak lastClass">
                         <select wire:model.live="status" class="form-control">
                             <option value="" selected>Select....</option>
                             <option value="1">Active</option>
@@ -178,15 +178,15 @@
             <tr>
                     <td><input class="form-check-input selectMultichk" name="multi_chk[]"  type="checkbox" value="{{$banner->id}}" id="chk_{{$banner->id}}"></td>
                     <td><span class="wordBreak">{{ $banner->banner_title }}</span></td>
-                    <td><span class="wordBreak">{{ $banner->lob }}</span></td>
-                    <td><span class="wordBreak">{{ $banner->postpaid_persona }}</span></td>
-                    <td><span class="wordBreak">{{ $banner->login_type }}</span></td>
-                    <td><span class="wordBreak">{{ $banner->brand }}</span></td>
+                    <td><span class="wordBreak lastClass">{{ $banner->lob }}</span></td>
+                    <td><span class="wordBreak lastClass">{{ $banner->postpaid_persona }}</span></td>
+                    <td><span class="wordBreak lastClass">{{ $banner->login_type }}</span></td>
+                    <td><span class="wordBreak lastClass">{{ $banner->brand }}</span></td>
                     <td><span class="wordBreak">{{ $banner->circle }}</span></td>
                     <td><span class="wordBreak">{{ $banner->app_version }}</span></td>
                     <td><span class="wordBreak">{{ $banner->getBannerName->screen_title }}</span></td>
-                    <td><span class="wordBreak">{{ $banner->device_os }}</span></td>
-                    <td><span class="wordBreak">{{ $banner->banner_rank }}</span></td>
+                    <td><span class="wordBreak lastClass">{{ $banner->device_os }}</span></td>
+                    <td><span class="wordBreak lastClass">{{ $banner->banner_rank }}</span></td>
                         @if($banner->internal_link !="")
                             <td><span class="wordBreak"><b>Internal Link: </b>{{ $banner->internal_link }}</span></td>
                         @elseif($banner->external_link !="")
@@ -195,7 +195,7 @@
                             <td><span class="wordBreak"><b> - </b></span></td>
                         @endif
                     <td>
-                        <span class="wordBreak">
+                        <span class="wordBreak lastClass">
                             @if($banner->status == 1)
                                 <div class="badge bg-success text-wrap">Active</div>
                             @else
