@@ -180,8 +180,8 @@
                     <td><span class="wordBreak">{{ $banner->updated_at->format('d M Y, h:i a') }}</span></td>
                     <td>
                         <span class="wordBreak">
-                                <button type="button" class="btn btn-outline-primary deleteRow" value="{{ $banner->id }}" data-kt-user-id="{{ $banner->id }}" data-kt-action="delete_row" title="Delete" ><i class="fa fa-trash" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-outline-primary updateRow" value="{{ $banner->id }}" data-kt-user-id="{{ $banner->id }}" data-bs-toggle="modal" title="Edit" data-bs-target="#kt_modal_add_banner" data-kt-action="update_row"><i class="fa fa-edit"></i></button>
+                            <button type="button" class="btn btn-outline-primary deleteRow" value="{{ $banner->id }}" data-kt-user-id="{{ $banner->id }}" data-kt-action="delete_row" title="Delete" ><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-outline-primary updateRow" value="{{ $banner->id }}" data-kt-user-id="{{ $banner->id }}" data-bs-toggle="modal" title="Edit" data-bs-target="#kt_modal_add_banner" data-kt-action="update_row"><i class="fa fa-edit"></i></button>
                         </span>
                     </td>
                     
