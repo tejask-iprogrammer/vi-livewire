@@ -40,6 +40,7 @@
         <thead>
             <tr>
                 <th><input type="checkbox" value="All" id="chkAll" class="form-check-input chkAll"  /></th>
+                <th><span class="wordBreak fw-bold">Thumbnail Images<span></th>
                 <th><span class="wordBreak fw-bold">Banner Title<span></th>
                 <th><span class="wordBreak lastClass fw-bold">Lob<span><span></th>
                 <th><span class="wordBreak lastClass fw-bold">Postpaid </br>Persona<span></th>
@@ -56,7 +57,9 @@
                 <th><span class="wordBreak lastClass fw-bold">Options<span></th>
             </tr>
             <tr>
-            <td>
+                <td>
+                </td>
+                <td>
                 </td>
                 <td>
                     <span class="wordBreak">
@@ -177,6 +180,7 @@
             @forelse($banners as $banner)
             <tr>
                     <td><input class="form-check-input selectMultichk" name="multi_chk[]"  type="checkbox" value="{{$banner->id}}" id="chk_{{$banner->id}}"></td>
+                    <td><span class="wordBreak"><img class="img-thumbnail"src="https://viapprewamp.viapplogs.net/{{$banner->banner_name}}" alt="astro/1711515672.jpg" width="100" height="100"></span></td>
                     <td><span class="wordBreak">{{ $banner->banner_title }}</span></td>
                     <td><span class="wordBreak lastClass">{{ $banner->lob }}</span></td>
                     <td><span class="wordBreak lastClass">{{ $banner->postpaid_persona }}</span></td>
