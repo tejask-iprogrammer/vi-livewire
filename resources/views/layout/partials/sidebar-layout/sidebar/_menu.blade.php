@@ -93,7 +93,7 @@
 			<!--end:Menu item-->
 
 			<!-- manage banner Start -->
-			<div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ request()->routeIs('banner-management.managebanner.*') ? 'here show' : '' }}">
+			<div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ request()->routeIs('banner-management.*') ? 'here show' : '' }}">
 				<!--begin:Menu link-->
 				<span class="menu-link">
 					<span class="menu-icon">{!! getIcon('abstract-28', 'fs-2') !!}</span>
@@ -111,6 +111,21 @@
 								<span class="bullet bullet-dot"></span>
 							</span>
 							<span class="menu-title">Manage Banners</span>
+						</a>
+						<!--end:Menu link-->
+					</div>
+					<!--end:Menu item-->
+				</div>
+
+				<div class="menu-sub menu-sub-accordion">
+					<!--begin:Menu item-->
+					<div class="menu-item">
+						<!--begin:Menu link-->
+						<a class="menu-link {{ request()->routeIs('banner-management.TelcoWidgetBanner.*') ? 'active' : '' }}" href="{{ route('banner-management.TelcoWidgetBanner.index') }}">
+							<span class="menu-bullet">
+								<span class="bullet bullet-dot"></span>
+							</span>
+							<span class="menu-title">Manage telco widget banners</span>
 						</a>
 						<!--end:Menu link-->
 					</div>

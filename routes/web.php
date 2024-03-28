@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Apps\BannerManagementController;
+use App\Http\Controllers\Apps\TelcoWidgetBannersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::name('banner-management.')->group(function () {
         Route::resource('/banner-management/managebanner', BannerManagementController::class);
+        Route::resource('/banner-management/TelcoWidgetBanner', TelcoWidgetBannersController::class);
+
     });
+    
 
 });
 

@@ -32,6 +32,11 @@ Breadcrumbs::for('banner-management.managebanner.index', function (BreadcrumbTra
     $trail->parent('dashboard');
     $trail->push('Manage Banner', route('banner-management.managebanner.index'));
 });
+Breadcrumbs::for('banner-management.TelcoWidgetBanner.index', function (BreadcrumbTrail $trail) {
+    // dd($trail->parent("banner-management.managebanner.index"));
+    $trail->parent('dashboard');
+    $trail->push('Manage telco widget banners', route('banner-management.TelcoWidgetBanner.index'));
+});
 
 // Home > Dashboard > User Management > Users > [User]
 Breadcrumbs::for('user-management.users.show', function (BreadcrumbTrail $trail, User $user) {
