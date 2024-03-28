@@ -393,12 +393,10 @@ public function cacheDelete($cacheCircle = [],$screen_name){
         $this->edit_mode = true;
 
         $banners = Banners::find($id);
-        // dd($banners->banner_screen);
         $this->banner_screen = $banners->banner_screen;
         $this->user_id = $banners->id;
         $this->circle = explode(',', $banners->circle);
         $this->hiddenCircleArray = $banners->circle;
-        // dd($this->hiddenCircleArray);
         $this->login_type = $banners->login_type;
         $this->brand = $banners->brand;
         $this->lob = $banners->lob;
@@ -437,7 +435,6 @@ public function cacheDelete($cacheCircle = [],$screen_name){
         $this->isnotified = $banners->is_notified;
         $this->start_date_time = $banners->start_date_time;
         $this->end_date_time = $banners->end_date_time;
-        // $this->banner_name = $banners->banner_name;
         $this->saved_avatar = $banners->banner_name;
         $this->saved_avatar_notified = $banners->notified_banner;
     }

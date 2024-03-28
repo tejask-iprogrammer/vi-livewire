@@ -101,22 +101,13 @@ class Telcowidget extends Component
         $circleList = ["0000" => 'All Circle',"0001" => 'Andhra Pradesh','0002' => 'Chennai','0003' => 'Delhi','0004' => 'Uttar Pradesh East','0005' => 'Gujarat','0006' => 'Haryana','0007' => 'Karnataka','0008' => 'Kolkata','0009' => 'Mumbai','0010' => 'Rajastan','0011' => 'West Bengal','0012' => 'Punjab','0013' => 'Uttar Pradesh West','0014' => 'Maharashtra','0015' => 'Tamil Nadu','0016' => 'Kerala','0017' => 'Orissa','0018' => 'Assam','0019' => 'North East','0020' => 'Bihar','0021' => 'Madhya Pradesh','0022' => 'Himachal Pradesh','0023' => 'Jammu And Kashmir'];
         $loginTypeList = ['Primary' => 'Primary', 'Secondary' => 'Secondary', 'Both' => 'Both'];
         $brandList = ['Idea' => 'Idea', 'Vodafone' => 'Vodafone', 'Brandx' => 'Brandx'];
-        // $lobList = ['Prepaid' => 'Prepaid', 'Postpaid' => 'Postpaid', 'Both' => 'Both'];
         $planList = ['L'=>'Limited','UL'=>'Unlimited','Both'=>'Both'];
         $prepaidPersonaList = ['All' => 'All', 'Youth' => 'Youth', 'Nonyouth' => 'Nonyouth'];
-        // $postpaidPersonaList = ['All' => 'All', 'COCP' => 'COCP', 'IOIP' => 'IOIP', 'COIP' => 'COIP', 'Individual' => 'Individual'];
-        // $socidIncludeExcludeList = ['1' => 'Include Socid', '2' => 'Exclude Socid'];
-        // $redHierarchyList = ["All" => 'All',"Primary" => 'Primary','Secondary' => 'Secondary', 'Individual' => 'Individual'];
         $linkTypeList = ['1' => 'Internal Link','2' => 'External Link'];
-        // $serviceTypeList = ['DXL' => 'DXL','EAI' => 'EAI','SR' => 'SR','ETopUp' => 'ETopUp','EBPP' => 'EBPP'];
         $osList = ["android" => 'android','ios' => 'ios', 'Both' => 'Both'];
-        // $appVersion = ['1' => 'Include Socid', '2' => 'Exclude Socid'];
         $rankList = ['1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10','11'=>'11','12'=>'12','13'=>'13','14'=>'14','15'=>'15','16'=>'16','17'=>'17','18'=>'18','19'=>'19','20'=>'20'];
-        // $screenList = $this->bannerscreenModel->bannerScreenData();
-        // $tabsList = $this->tablistModel->listTabData();
         $packType = ['UL' => 'UL','HERO_UL' => 'HERO_UL','COMBO'=>'COMBO','NO_PACK'=>'NO_PACK','ALL'=>'ALL'];
         $appVersionList = $this->appversionModel->listTabData();
-        // return view('livewire.banner.banner', compact('roles','circleList','loginTypeList','brandList','lobList','planList','prepaidPersonaList','postpaidPersonaList','socidIncludeExcludeList','redHierarchyList','linkTypeList','tabsList','serviceTypeList','osList','appVersion','rankList','screenList','appVersionList'));
         return view('livewire.telcowidget.telcowidget', compact('circleList','loginTypeList','brandList','appVersionList','planList','osList','prepaidPersonaList','packType','rankList','linkTypeList'));
     }
 
@@ -137,25 +128,13 @@ class Telcowidget extends Component
                  ]);
             }
             
-            
-            
-            // if($this->banner_screen){
-            //     $data['banner_screen'] = $this->banner_screen;
-            // }
             if($this->circle){
                 $data['circle'] = implode(',', $this->circle);
             }
             if($this->login_type){
                 $data['login_type'] = $this->login_type;
             }
-            // if($this->socid){
-            //     $data['socid'] = $this->socid;
-            // }else{
-            //     $data['socid'] = "";
-            // }
-            // if($this->socid_include_exclude){
-            //     $data['socid_include_exclude'] = $this->socid_include_exclude;
-            // }
+            
             if($this->device_os){
                 $data['device_os'] = $this->device_os;
             }
@@ -192,14 +171,6 @@ class Telcowidget extends Component
                 unlink($image_path);
             }
 
-            // if(isset($this->banner_name_notified)){
-            //     $image_path = public_path('uploads/livewire-tmp/'.$this->banner_name_notified->getFilename());
-            //     $imageName = carbon::now()->timestamp.'.'.$this->banner_name_notified->extension();
-            //     $tempdata = $this->banner_name_notified->storeAs('astro',$imageName,'s3');
-            //     $data['notified_banner'] = $tempdata;
-            //     unlink($image_path);
-            // }
-
             if($this->banner_rank){
                 $data['banner_rank'] = $this->banner_rank;
             }
@@ -208,45 +179,20 @@ class Telcowidget extends Component
             }else{
                 $data['prepaid_persona'] = "";
             }
-            // if($this->postpaid_persona){
-            //     $data['postpaid_persona'] = implode(',', $this->postpaid_persona);
-            // }else{
-            //     $data['postpaid_persona'] = "";
-            // }
-            // if($this->red_hierarchy){
-            //     $data['red_hierarchy'] = implode(',', $this->red_hierarchy);
-            // }
-            // if($this->service_type){
-            //     $data['service_type'] = implode(',', $this->service_type);
-            // }
+            
             if($this->app_version){
                 $data['app_version'] = implode(',', $this->app_version);
             }
             if($this->brand){
                 $data['brand'] = $this->brand;
             }
-            // if($this->lob){
-            //     $data['lob'] = $this->lob;
-            // }
+          
             if($this->plan){
                 $data['plan'] = $this->plan;
             }
             if($this->analytics_tag){
                 $data['analytics_tag'] = $this->analytics_tag;
             }
-            // if($this->subtitle){
-            //     $data['subtitle'] = $this->subtitle;
-            // }
-            // if($this->country){
-            //     $data['country'] = $this->country;
-            // }
-            // // if($this->link_type){
-            // //     $data['link_type'] = $this->link_type;
-            // // }
-            // if($this->tab_name){
-            //     $data['tab_name'] = $this->tab_name;
-            // }
-
             if($this->internal_link){
                 $data['internal_link'] = $this->internal_link;
             }
@@ -259,15 +205,7 @@ class Telcowidget extends Component
                 $data['external_link'] = "";
             }
             
-            // if($this->campaign_id){
-            //     $data['campaign_id'] = $this->campaign_id;
-            // }
-            // if($this->banner_text_content){
-            //     $data['banner_text_content'] = $this->banner_text_content;
-            // }
-            // if($this->coupon_code){
-            //     $data['coupon_code'] = $this->coupon_code;
-            // }
+            
             if($this->is_pack_expiry_near !=""){
                 $data['is_pack_expiry_near'] = $this->is_pack_expiry_near;
             }
@@ -280,33 +218,9 @@ class Telcowidget extends Component
                 $data['status'] = $this->status;
             }
 
-            // if($this->validity_period){
-            //     $data['validity_period'] =  $this->validity_period;
-            // }
-            // if($this->isnotified != ""){
-            //     $data['is_notified'] = $this->isnotified;
-            // }
-            // dd($data);
-            // Update or Create a new user record in the database
-            // if(Redis::keys('Temp*')){  Redis::del(Redis::keys('Temp*')); }
-            // $screen_name = BannerScreen::find($this->banner_screen);
-            // if(Redis::keys('checkBanner_*') != null){  Redis::del(Redis::keys('checkBanner_*')); }
-            // if(Redis::keys($screen_name->type.'_*') != null){  Redis::del(Redis::keys($screen_name->type.'_*')); }
+            
             $TelcoWidgetBannerModel = TelcoWidgetBannerModel::find($this->record_id) ?? TelcoWidgetBannerModel::create($data);
-            // $previous_image = TelcoWidgetBannerModel::find($this->record_id);
-
-            // if ($this->edit_mode) {
-            //     $filteredArray = array_unique(array_filter($this->circle));
-            //     $circleList = implode(',', $filteredArray);
-
-            //     // $hiddenCircleArraytemp = explode(',', $this->hiddenCircleArray);
-            //     $cacheCircle = array_unique(array_merge($filteredArray,explode(",", $this->hiddenCircleArray)));
-            //     $this->cacheDelete($cacheCircle,$screen_name->type);
-            //  }else{
-            //     $filteredArray = array_unique(array_filter($this->circle));
-            //     unset($this->hiddenCircleArray);
-            //     $this->cacheDelete($filteredArray,$screen_name->type);
-            // }
+            if(Redis::keys('getTelcoWidgetBanners_*')){  Redis::del(Redis::keys('getTelcoWidgetBanners_*')); }
 
             // if ($this->edit_mode) {
                 foreach ($data as $k => $v) {
