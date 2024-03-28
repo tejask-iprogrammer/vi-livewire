@@ -167,8 +167,6 @@ class Telcowidget extends Component
             // $image=new Image();
             if($this->banner_name){
                 $data['banner_name'] = $this->banner_name;
-            }else{
-                $data['banner_name'] = "";
             }
 
             if($this->banner_rank){

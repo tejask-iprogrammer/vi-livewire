@@ -224,14 +224,10 @@ class Banner extends Component
 
             if($this->banner_name){
                 $data['banner_name'] = $this->banner_name;
-            }else{
-                $data['banner_name'] = "";
             }
 
             if($this->banner_name_notified){
                 $data['notified_banner'] = $this->banner_name_notified;
-            }else{
-                $data['notified_banner'] = "";
             }
             // $image=new Image();
             
