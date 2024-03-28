@@ -173,7 +173,7 @@
                             </div>
                             <div class="row">
                                 <div class="col mt-4">
-                                    <label class="fw-semibold fs-6 mb-2">Pack Type</label>
+                                    <label class="required fw-semibold fs-6 mb-2">Pack Type</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <select wire:model="pack_type" class="form-control">

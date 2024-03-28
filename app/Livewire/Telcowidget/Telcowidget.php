@@ -69,6 +69,7 @@ class Telcowidget extends Component
         'status'=>'required',
         'is_pack_expiry_near'=>'required',
         'is_data_exhausted'=>'required',
+        'pack_type'=>'required',
 
     ];
     protected $messages = [
@@ -88,6 +89,7 @@ class Telcowidget extends Component
         'mrp.required' => 'mrp cannot be empty.',
         'rail_title.required' => 'rail title cannot be empty.',
         'rail_view_all.required' => 'View All Rail Redirection cannot be empty.',
+        'pack_type.required'=>'Please select Pack Type.'
     ];
     public function __construct()
     {
@@ -163,12 +165,10 @@ class Telcowidget extends Component
             }
 
             // $image=new Image();
-            if(isset($this->banner_name)){
-                $image_path = public_path('uploads/livewire-tmp/'.$this->banner_name->getFilename());
-                $imageName = carbon::now()->timestamp.'.'.$this->banner_name->extension();
-                $tempdata = $this->banner_name->storeAs('astro',$imageName,'s3');
-                $data['banner_name'] = $tempdata;
-                unlink($image_path);
+            if($this->banner_name){
+                $data['banner_name'] = $this->banner_name;
+            }else{
+                $data['banner_name'] = "";
             }
 
             if($this->banner_rank){
@@ -227,10 +227,21 @@ class Telcowidget extends Component
                     $TelcoWidgetBannerModel->$k = $v;
                 }
                 $TelcoWidgetBannerModel->save();
+                // dd($TelcoWidgetBannerModel->id);
+                // die();
             // }else{
 
             // }
       
+            if(isset($this->banner_name)){
+                $image_path = public_path('uploads/livewire-tmp/'.$this->banner_name->getFilename());
+                $imageName = 'telcobanner-'.$TelcoWidgetBannerModel->id.'-'.carbon::now()->timestamp.'.'.$this->banner_name->extension();
+                $s3Path = $this->banner_name->storeAs('appimages',$imageName,'s3');
+                $TelcoWidgetBannerModel->banner_name = $s3Path; 
+                $TelcoWidgetBannerModel->save();
+                unlink($image_path);
+            }
+
             if ($this->edit_mode) {
                 // Assign selected role for user
 

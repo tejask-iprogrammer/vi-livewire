@@ -222,22 +222,19 @@ class Banner extends Component
                 $data['banner_title'] = $this->banner_title;
             }
 
-            // $image=new Image();
-            if(isset($this->banner_name)){
-                $image_path = public_path('uploads/livewire-tmp/'.$this->banner_name->getFilename());
-                $imageName = carbon::now()->timestamp.'.'.$this->banner_name->extension();
-                $tempdata = $this->banner_name->storeAs('astro',$imageName,'s3');
-                $data['banner_name'] = $tempdata;
-                unlink($image_path);
+            if($this->banner_name){
+                $data['banner_name'] = $this->banner_name;
+            }else{
+                $data['banner_name'] = "";
             }
 
-            if(isset($this->banner_name_notified)){
-                $image_path = public_path('uploads/livewire-tmp/'.$this->banner_name_notified->getFilename());
-                $imageName = carbon::now()->timestamp.'.'.$this->banner_name_notified->extension();
-                $tempdata = $this->banner_name_notified->storeAs('astro',$imageName,'s3');
-                $data['notified_banner'] = $tempdata;
-                unlink($image_path);
+            if($this->banner_name_notified){
+                $data['notified_banner'] = $this->banner_name_notified;
+            }else{
+                $data['notified_banner'] = "";
             }
+            // $image=new Image();
+            
 
             if($this->banner_rank){
                 $data['banner_rank'] = $this->banner_rank;
@@ -347,6 +344,24 @@ class Banner extends Component
             // }else{
 
             // }
+
+            if(isset($this->banner_name)){
+                $image_path = public_path('uploads/livewire-tmp/'.$this->banner_name->getFilename());
+                $imageName = 'banner-'.$banners->id.'-'.carbon::now()->timestamp.'.'.$this->banner_name->extension();
+                $s3PathBanner = $this->banner_name->storeAs('appimages',$imageName,'s3');
+                $banners->banner_name = $s3PathBanner; 
+                $banners->save();
+                unlink($image_path);
+            }
+
+            if(isset($this->banner_name_notified)){
+                $image_path = public_path('uploads/livewire-tmp/'.$this->banner_name_notified->getFilename());
+                $imageName = 'banner-'.$banners->id.'-'.carbon::now()->timestamp.'.'.$this->banner_name_notified->extension();
+                $s3bannernameNotified = $this->banner_name_notified->storeAs('astro',$imageName,'s3');
+                $banners->notified_banner = $s3bannernameNotified; 
+                $banners->save();
+                unlink($image_path);
+            }
       
             if ($this->edit_mode) {
                 // Assign selected role for user
