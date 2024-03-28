@@ -439,6 +439,13 @@
                             $('.select2').select2();
                         }, 1000);
                 });
+                $(document).on('change','.linkType.select2',function(){
+                        // let data = $(this).val();
+                        // @this.set('app_version',data)
+                        setTimeout(function(){
+                            $('.select2').select2();
+                        }, 1000);
+                });
                 $('#kt_modal_add_telco_widget').on('shown.bs.modal', function (e) {
                     $(".select2").select2();
                 })
