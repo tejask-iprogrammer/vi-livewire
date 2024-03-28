@@ -236,7 +236,7 @@
                                     <label class="fw-semibold fs-6 mb-2">Link Type</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="link_type" class="linkType form-control">
+                                    <select wire:model="link_type" class="linkType select2 form-control">
                                         <option value="" selected>Select</option>
                                         @foreach($linkTypeList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
