@@ -236,7 +236,7 @@
                                     <label class="fw-semibold fs-6 mb-2">Link Type</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select wire:model="link_type" class="linkType select2 form-control">
+                                    <select wire:model="link_type" class="linkType form-control">
                                         <option value="" selected>Select</option>
                                         @foreach($linkTypeList as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
@@ -439,7 +439,7 @@
                             $('.select2').select2();
                         }, 1000);
                 });
-                $(document).on('change','.linkType.select2',function(){
+                $(document).on('change','.linkType',function(){
                         // let data = $(this).val();
                         // @this.set('app_version',data)
                         setTimeout(function(){
